@@ -1,0 +1,19 @@
+- title: A Smart Predictor using Machine Learning
+  icon: <i class="fa fa-code-fork" aria-hidden="true"></i>
+  description: 
+  image: bla
+  link: machine_learning
+
+- title: Tensor Flow for Machine Learning
+  icon: <i class="fa fa-download" aria-hidden="true"></i>
+  description: 
+  image: bla
+  link: tensor_flow
+  
+- title: Caffe for Deep Learning
+  icon: <i class="fa fa-download" aria-hidden="true"></i>
+  description: 
+  image: bla
+  link: caffe_for_deep_learning
+
+

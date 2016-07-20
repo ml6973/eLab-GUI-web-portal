@@ -1,0 +1,20 @@
+- title: Introduction to Docker Containers
+  icon: <i class="fa fa-code-fork" aria-hidden="true"></i>
+  description: This guide is an introduction to Docker contaienrs. Starting from the evolution of Docker in containerization world, to installation of Docker Engine. This course is a must have for beginners in order to proceed.
+  image: bla
+  link: docker_containers
+
+
+- title: Orchestration of Containers
+  icon: <i class="fa fa-download" aria-hidden="true"></i>
+  description: 
+  image:  bla
+  link: Kubernetes
+
+- title: Continous Integration and Development
+  icon: <i class="fa fa-download" aria-hidden="true"></i>
+  description: 
+  image:  bla
+  link: Integration
+  
+

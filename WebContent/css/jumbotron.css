@@ -1,0 +1,26 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.jumbotron {
+    margin-bottom: 0px;
+    background-image: url(/eLab-GUI-web-portal/resources/siteImages/low-poly-texture-2-creditby-Zacharie-Loire.png);
+    background-position: 0% 50%;
+    background-size: auto;
+    background-repeat: no-repeat;
+    color: black;
+ 
+    text-shadow: white 0.1em 0.1em 0.5em;
+
+}
+.classContainer {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    vertical-align: center;
+}
+.vm {
+    -webkit-column-span: all; /* Chrome, Safari, Opera */
+    column-span: all;
+}

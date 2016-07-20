@@ -1,0 +1,3 @@
+RewriteEngine on
+ 
+FallbackResource /eLab-GUI-web-portal/index.php

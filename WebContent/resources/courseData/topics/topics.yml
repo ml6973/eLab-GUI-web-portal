@@ -1,0 +1,18 @@
+- title: OpenStack Core Services
+  icon: <i class="fa fa-download" aria-hidden="true"></i>
+  description:  This guide describes how to install and configure OpenStack for high availability. It supplements the OpenStack Installation Guides and assumes that you are familiar with the material in those guides.This guide documents OpenStack Liberty, OpenStack Kilo, and OpenStack Juno releases.
+  image:  bla
+  link: openstack_installation
+
+- title: OpenStack Code Contribution
+  icon: <i class="fa fa-code-fork" aria-hidden="true"></i>
+  description: This guide provides detailed instructions on the documentation contribution workflow and conventions to be considered by all contributors. Please follow these guidelines to keep the documentation structure, style, and syntax consistent.
+  image: bla
+  link: openstack_contribution
+  
+- title: Cloud Dashboard
+  icon: <i class="fa fa-download" aria-hidden="true"></i>
+  description: 
+  image:  bla
+  link: cloud_dashboard
+  
