@@ -115,22 +115,26 @@ class MasterView {
 			            <div class="footer-center">
 			                <div>
 			                <h5>Courses</h5>
-			                <ul class=\'list-unstyled\'>
-			                    <li><a href="#/topics/openstack_contribution">Openstack Contribution</a></li>
-			                    <li><a href="#/topics/openstack_installation">Openstack Installation</a></li>
-			                    <li><a href="#/topics/cloud_dashboard">Cloud Dashboard</a></li>
-			                    <li><a href="#/topics/ceph_installation">CEPH</a></li>
-			                    <li><a href="#/topics/swift_installation">Swift</a></li>
-			                    <li><a href="#/topics/docker_containers">Docker Containers</a></li>
-			                    <li><a href="#/topics/Kubernetes">Orchestration of Containers</a></li>
-			                    <li><a href="#/topics/machine_learning">Machine Learning</a></li>
-			                    <li><a href="#/topics/tensor_flow">Tensor Flow for Machine Learning</a></li>
-			                    <li><a href="#/topics/caffe_for_deep_learning">Caffe for Deep Learning</a></li>
-			                    <li><a href="#/topics/internet_of_things">Internet of Things</a></li>
-			                </ul>
+			                <ul class=\'list-unstyled\'>';
+   								$fullPath = dirname(__FILE__) . DIRECTORY_SEPARATOR . "../resources/courseData/topics/";
+   								$files = scandir($fullPath);
+	  							$files = array_diff($files, array('.', '..'));
+	  							$coursesArray = array();
+	  							foreach($files as $file) {
+	  								$yaml = Spyc::YAMLLoad($fullPath.$file);
+	  								foreach($yaml as $topic) {
+	  									if (strcasecmp($topic['title'], "Coming soon"))
+	  										array_push($coursesArray, '<li><a href="topics?'.$topic["link"].'">'.$topic['title'].'</a></li>');
+	  								}
+	  							}
+	  							sort($coursesArray, SORT_REGULAR | SORT_NATURAL);
+	  							foreach ($coursesArray as $course) {
+	  								echo $course;
+	  							}
+			                echo '</ul>
 			                </div>
 			            </div>
-			            <div class="footer-right">
+			          <!--  <div class="footer-right">
 			                <div>
 			                <h5>Service</h5>
 			                <ul class=\'list-unstyled\'> 
@@ -139,7 +143,7 @@ class MasterView {
 			                    <li><a href="#/">Admin</a></li>
 			                </ul>
 			                </div>
-			            </div>
+			            </div> -->
 			        </div>
 			
 			
