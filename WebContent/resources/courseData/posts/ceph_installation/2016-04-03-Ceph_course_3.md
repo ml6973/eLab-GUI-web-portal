@@ -23,7 +23,7 @@ $ sudo su -
 
 To check all the drivers attached 
 
-```sh$
+```sh
 # lsblk
 ```
 Now You can see all the 16 drives here and one more drive having our OS installed
@@ -32,12 +32,12 @@ Creating Partition:
 
 For /dev/sda we will follow manual partition method
 
-```sh$
+```sh
 # fdisk /dev/sda
 ```
 Now type in few options in the order given below one by one
 
-```sh$
+```sh
 m
 n
 p
@@ -49,7 +49,7 @@ w
 
 To automate this process for /dev/sdb
 
-```sh$
+```sh
 # (echo m; echo n; echo p; echo 1; echo; echo; echo w) | sudo fdisk /dev/sdb 
 ```
 
@@ -57,25 +57,25 @@ You can use above command just by changing the device name for rest of the 14 dr
 
 Now we need to add the IP and host name in hosts file. The host name appears as follows on your system
 
-```sh$
+```sh
 root@ceph1:~#
 ```
 
 Here **ceph1** is the host name
 
-```sh$
+```sh
 # nano /etc/hosts
 ```
 
 Don't use floting/public IP. Do **ip a** to get static IP. 
 
-```sh$
+```sh
 10.40.0.253 ceph1
 ```
 
 Now we need to reboot the server
 
-```sh$
+```sh
 # reboot
 ```
 

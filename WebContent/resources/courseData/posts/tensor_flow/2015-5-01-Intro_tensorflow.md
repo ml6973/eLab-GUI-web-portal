@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 1 Tensor Flow  
+title: Lab 1 Tensor Flow
 categories: tensor-flow
 author: Mitha Ann Philip
 description: Machine learning is an intense area. It can invoke smarter and innovative products for future technologies. Tensor Flow is one tool that provides a platform to make it practical. This is lab will provide an introduction on Tensor Flow.

@@ -1,0 +1,86 @@
+- title: Lab 1 Create an Ubuntu One Account
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/FYou29ov3qU" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 2 Join the OpenStack Foundation
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/0X5V3C4jdKI" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 3 Setup Gerrit Account
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/oZ0sGpigHFA" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 4 Setup Git Review
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/9EL90z1h1FM" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 5 Testing
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/d4XWYmxuy9k" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 6 Working with Bugs
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LbTzJ0DrJsA" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 7 Committing A Bug Fix
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4lXJFM5NCZg" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 9 Document Change Verification 
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LDGI_WBoN8Y" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 10 Submitting Your Info to Stackalytics
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/xAJwW9SKgj8" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Course 1 Basic design and hardware investigation
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pKH777qDxFE" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Course 2 Key pair creation and distribution
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gFjOGYXCYJM" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Course 3 Installing Distributed Shell and other infrastructure host packages
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/f37E1FAkSmI" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Course 4 Creating partitions and logical volumes
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3tSbbJE-P4Y" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Course 5 Configuring the Network
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Bfopx3nqwuU" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Course 6 Interface naming and 8021 module
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/250PG9VYIZA" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Course 7 Configuring bridges, VLANS, and interfaces within
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Ua8j-SX1Www" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Course 8 Configuring Ansible and running playbooks
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZpIrEw6a0LI" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Course 1 Chameleon Dashboard Overview
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://youtu.be/embed/inupiSFM8jc" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Course 1 Basic packages installation
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://youtu.be/embed/inupiSFM8jc" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 1 Introduction to Docker Containers
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4dnDkWCBqhA" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 2 System Set Up for Docker Installation
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/y_YlLJnMPlI" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 3 Installing Docker Engine
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ciFrpDAk4WU" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 4 Setting Up Demo Website Host 1
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Evk8CZJeJkQ" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 5 Setting Up Demo Website Host 2
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/DmjC2-VKGYg" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 1 Tensor Flow
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/TBwAREbXGhQ" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 2 Installation Steps for Tensor Flow
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EpbD571lhz0" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 3 Tensors in Tensor Flow
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/MbDitQ8mj2s" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 4 Digit Recognition using Tensor Flow
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/CY5kG-SayL0" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 5 Convolutional Neural Network
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Fdag-HaBX-w" frameborder="0" allowfullscreen></iframe></div>

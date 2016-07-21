@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 3 Tensors in Tensor Flow  
+title: Lab 3 Tensors in Tensor Flow
 categories: tensor-flow
 author: Mitha Ann Philip
 description: Tensors are multidimensional arrays/list of values. Computations are carried out using tensors. This is a practical guide with worked out basic examples that would help you familiarize with Tensor Flow.

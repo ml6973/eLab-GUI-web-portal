@@ -28,31 +28,31 @@ $ sudo su -
   
 Install bellow mentioned packages:
 
-```sh$
+```sh
 # yum install epel-release -y
 ```
-```sh$
+```sh
 # yum install boost-devel* -y
 ```
-```sh$
+```sh
 # yum install lttn* -y
 ```
-```sh$
+```sh
 # yum install librados* -y 
 ```
-```sh$
+```sh
 # yum install libceph* -y
 ```
-```sh$
+```sh
 # yum install librbd* -y
 ```
-```sh$
+```sh
 # easy_install ceph-deploy
 ```
-```sh$
+```sh
 # yum install xfsprogs xfsdump -y
 ```
-```sh$
+```sh
 # yum install nano -y
 ```
 

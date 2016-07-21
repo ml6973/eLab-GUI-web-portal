@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 5 Convolutional Neural Network using Tensor Flow  
+title: Lab 5 Convolutional Neural Network using Tensor Flow
 categories: tensor-flow
 author: Mitha Ann Philip
 description: Convolutional Neural Networks are variants of multilayer perceptrons. We will apply convolutional nets to the digit recognition network model and see if it improves the accuracy of digit recognition. This lab is a practical guide focussing on applying Convolutional Neural Network (CNN) to the digit recognition neural network model.

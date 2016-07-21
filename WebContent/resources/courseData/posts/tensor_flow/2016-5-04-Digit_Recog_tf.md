@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 4 Digit Recognition using Tensor Flow  
+title: Lab 4 Digit Recognition using Tensor Flow
 categories: tensor-flow
 author: Mitha Ann Philip
 description: MNIST Digit Recognition is an introduction towards multiclass classification. The database used is MNIST, which contains handwritten images of digits. This is a practical guide which implements a neural network model using Tensor Flow to recognize the digits in the image and to classify them accordingly.

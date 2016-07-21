@@ -20,11 +20,11 @@ $ sudo su -
 ```
 In last session we have partitioned the drive, now we will deploy XFS filesystem on it.    
 
-```sh$
+```sh
 # mkfs.xfs -f /dev/sda1
 ```  
 
-```sh$
+```sh
 # mkfs.xfs -f /dev/sdb1
 ```  
 
@@ -32,32 +32,32 @@ If you want to use other drives as Ceph OSD deploy filesystem on it using simila
 
 To check if file system is deployed or not 
 
-```sh$
+```sh
 # blkid
 ```
 
 Make new directory for Ceph installation 
 
-```sh$
+```sh
 # mkdir my-ceph
 # cd my-ceph
 ```
 
 Now execute below command one by one
 
-```sh$
+```sh
 # yum install ceph*  -y
 ```
 
-```sh$
+```sh
 # ceph-deploy new <hostname> 
 ```
 
-```sh$
+```sh
 # ceph-deploy install <hostname> 
 ```
 
-```sh$
+```sh
 # ceph-deploy mon create-initial 
 ```
 
@@ -65,21 +65,21 @@ Above command will create key pair for Ceph.
 
 Now we need to prepare and activate the OSDs
 
-```sh$
+```sh
 # ceph-deploy --overwrite-conf osd prepare <hostname>:/dev/sda1
 ```
 
-```sh$
+```sh
 # ceph-deploy --overwrite-conf osd activate <hostname>:/dev/sda1
 ```
 
 Follow same process for /dev/sdb1
 
-```sh$
+```sh
 # ceph-deploy --overwrite-conf osd prepare <hostname>:/dev/sdb1
 ```
 
-```sh$
+```sh
 # ceph-deploy --overwrite-conf osd activate <hostname>:/dev/sdb1
 ```
 
@@ -87,20 +87,20 @@ This will finish the **Ceph Deployment**
 
 To check the ceph Health
 
-```sh$
+```sh
 # ceph -s
 ```
 Some other usefull commands for Ceph
 
-```sh$
+```sh
 # ceph version
 ```
 
-```sh$
+```sh
 # ceph osd tree
 ```
 
-```sh$
+```sh
 # ceph mon stat
 ```
 
