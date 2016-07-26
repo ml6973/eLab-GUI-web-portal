@@ -103,7 +103,7 @@ class MasterView {
 			<footer id=\'foot\' class=\'footer-distributed\'>
 			    <div class="container">
 			        <div class="row">
-			            <div class="footer-left">
+			       <!--     <div class="footer-left">
 			                <div>
 			                <h5>GitHub</h5>
 			                <ul class=\'list-unstyled\'>   
@@ -111,8 +111,8 @@ class MasterView {
 			                    <li><a href="#/about">Technical Support</a></li>
 			                </ul>
 			                </div>
-			            </div>
-			            <div class="footer-center">
+			            </div> -->
+			            <div class="footer-left">
 			                <div>
 			                <h5>Courses</h5>
 			                <ul class=\'list-unstyled\'>';

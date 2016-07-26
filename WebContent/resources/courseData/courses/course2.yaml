@@ -1,0 +1,4 @@
+- title: Software Defined Storage
+  description: Software-defined storage (SDS) is an evolving concept for computer data storage software to manage policy-based provisioning and management of data storage independent of the underlying hardware. This course is all about implementation of object and block storage using Software Defined Storage platforms.
+  image: cirros-0.3.4-x86_64-uec-kernel
+  topicFile: objstorage.yaml

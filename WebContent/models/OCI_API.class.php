@@ -90,8 +90,22 @@ class OCI_API {
 		curl_close($ch);
 		
 		$response = json_decode($response, true);
+		
+		$instance = (array_key_exists($imageName, $response))?
+		$response[$imageName]:null;
+		
+		if (is_null($instance))
+			return null;
 	
-		return($response[$imageName]);
+		$instance = explode("-", $instance)[0];
+		$instance = trim($instance);
+		
+		return($instance);
 	}
 }
+
+if (isset($_POST['getInstanceID']) && isset($_POST['getInstanceImage'])) {
+	echo OCI_API::getInstanceByImageName($_POST['getInstanceID'], $_POST['getInstanceImage']);
+}
+
 ?>

@@ -49,7 +49,7 @@ print_r($instances);
 <h2>It should retrieve a a specific instance for a user</h2>
 <?php 
 
-$imageName = "ghooks-15";
+$imageName = "cirros-0.3.4-x86_64-uec-kernel";
 $instance = OCI_API::getInstanceByImageName($s1->getUserId(), $imageName);
 print_r($instance);
 
