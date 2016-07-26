@@ -79,7 +79,7 @@ class MasterView {
     	<span class="icon-bar"></span>
     	<span class="icon-bar"></span>
     	</button>
-    	<a id="webname" class="navbar-brand" href="/#/"> <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>pen Cloud eLab</a>
+    	<a id="webname" class="navbar-brand" href="/'.$base.'/courses"> <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>pen Cloud eLab</a>
     	</div>
     	<div id="navbar" class="navbar-collapse collapse">
     	<ul id="login" class="nav navbar-nav navbar-right">

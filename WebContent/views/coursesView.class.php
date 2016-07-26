@@ -16,6 +16,7 @@ class CoursesView {
 	title: Openstack eLab
 	--- ';*/
 	echo '
+	<script src="js/getVMIP.js"></script>
 	<!--Banner-->
 	<div class="jumbotron">
 	   	<div class="container">
@@ -27,7 +28,8 @@ class CoursesView {
 	<div class="container">
 		<h2 class="text-left">Openstack Developer Certification:</h2>
 	  <p>This course is an introduction class covering the core OpenStack projects including Nova, Neutron, Glance, Keystone and Horizon. This course covers lessons that range from community code contribution, understanding the architecture, to installing and configuring. This course is a great primer for anyone interested in OpenStack code development. This course is designed for technical individuals and consists of hands on labs.</p>
-		<div class="classContainer">';
+		<br>
+		<div class="col-md-8">';
 			$fileName = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/topics/topics.yml";
 			$yaml = Spyc::YAMLLoad($fileName);
 			foreach($yaml as $topic) {
@@ -43,15 +45,16 @@ class CoursesView {
 			}
 			echo '
 	    	<br><br>
-		<div class="vm" ng-include>';
-			vmInfo::show();
+		</div>
+		<div class="col-md-2" ng-include>';
+			vmInfo::show("Image1");
 		echo '</div>
-	    </div>
 	</div>
 	<div class="container">
 	  <h2 class="text-left"> Software Defined Storage</h2>
 	  <p>Software-defined storage (SDS) is an evolving concept for computer data storage software to manage policy-based provisioning and management of data storage independent of the underlying hardware. This course is all about implementation of object and block storage using Software Defined Storage platforms</p>
-	  <div class="classContainer">';
+	  <br>
+	  <div class="col-md-8">';
 			$fileName = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/topics/objstorage.yaml";
 			$yaml = Spyc::YAMLLoad($fileName);
 			foreach($yaml as $topic) {
@@ -67,16 +70,18 @@ class CoursesView {
 			}
 			echo '
 	    	<br><br>
-		<div class="vm" ng-include>';
-			vmInfo::show();
-		echo '</div>
+		</div>
+		<div class="col-md-2" ng-include>';
+			vmInfo::show("Image2");
+		echo '
 	    </div>
 	</div>
 	
 	<div class="container">
 	  <h2 class="text-left"> Docker Containers Certification</h2>
 	  <p>Docker has brought a revolution in containerization technology. With evolving shift in Cloud computing towards containerization, more popularly Docker Containerization,  our tutorials are aimed at helping enthusiasts understand basic and important features of Docker containers. The videos and manuals together provide practical as well as theoretical knowledge for people from various levels of understanding starting from Beginner – Need to know all, to Users – Wanting to know more.</p>
-	  <div class="classContainer">';
+	  <br>
+	  <div class="col-md-8">';
 			$fileName = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/topics/docker.yaml";
 			$yaml = Spyc::YAMLLoad($fileName);
 			foreach($yaml as $topic) {
@@ -92,16 +97,18 @@ class CoursesView {
 			}
 			echo '
 	    	<br><br>
-		<div class="vm" ng-include>';
-			vmInfo::show();
-		echo '</div>
+		</div>
+		<div class="col-md-2" ng-include>';
+			vmInfo::show("Image3");
+		echo '
 	    </div>
 	</div>
 	
 	<div class="container">
 	  <h2 class="text-left">Machine Learning Certification</h2>
 	  <p>Neural Network is inspired from our biological neural system. High end technologies these days, do not require human intervention for its functioning. Humans key in the algorithm to make it predict results, automate the decision making process and thereby promoting smart moves on the classification / recognition problem at hand. The following sections of tutorials are potential sources of information providing the key concepts of machine learning, catering to users of all levels.</p>
-	  <div class="classContainer">';
+	  <br>
+	  <div class="col-md-8">';
 			$fileName = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/topics/topics3.yaml";
 			$yaml = Spyc::YAMLLoad($fileName);
 			foreach($yaml as $topic) {
@@ -117,16 +124,18 @@ class CoursesView {
 			}
 			echo '
 	    	<br><br>
-		<div class="vm" ng-include>';
-			vmInfo::show();
-		echo '</div>
+		</div>
+		<div class="col-md-2" ng-include>';
+			vmInfo::show("Image4");
+		echo '
 	    </div>
 	</div>
 	
 	<div class="container">
 	  <h2 class="text-left">Internet of Things Certification (Coming soon):</h2>
 	  <p>This guide provides detailed instructions on the documentation contribution workflow and conventions to be considered by all contributors. Please follow these guidelines to keep the documentation structure, style, and syntax consistent.</p>
-	  <div class="classContainer">';
+	  <br>
+	  <div class="col-md-8">';
 			$fileName = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/topics/topics4.yml";
 			$yaml = Spyc::YAMLLoad($fileName);
 			foreach($yaml as $topic) {
@@ -142,9 +151,10 @@ class CoursesView {
 			}
 			echo '
 	    	<br><br>
-		<div class="vm" ng-include>';
-			vmInfo::show();
-		echo '</div>
+		</div>
+		<div class="col-md-2" ng-include>';
+			//vmInfo::show("Image5");
+		echo '
 	    </div>
 	</div>';
   }

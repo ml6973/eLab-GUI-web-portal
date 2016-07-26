@@ -66,5 +66,32 @@ class OCI_API {
 	
 		return($response);
 	}
+	
+	public static function getInstanceByImageName($userID, $imageName) {
+	
+		$json = array("api_uname" => "webportal",
+				"api_pass" => "greg123",
+				"userid" => $userID);
+		$json = json_encode($json);
+	
+		$ch = curl_init();
+	
+		curl_setopt($ch, CURLOPT_URL, "http://129.114.110.218:12345/lablist/");
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+				'Content-Type: application/json',
+				'Content-Length: ' . strlen($json))
+				);
+	
+		$response = curl_exec($ch);
+	
+		curl_close($ch);
+		
+		$response = json_decode($response, true);
+	
+		return($response[$imageName]);
+	}
 }
 ?>

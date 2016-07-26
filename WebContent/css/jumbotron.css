@@ -14,13 +14,3 @@ body {
     text-shadow: white 0.1em 0.1em 0.5em;
 
 }
-.classContainer {
-    -webkit-column-count: 2; /* Chrome, Safari, Opera */
-    -moz-column-count: 2; /* Firefox */
-    column-count: 2;
-    vertical-align: center;
-}
-.vm {
-    -webkit-column-span: all; /* Chrome, Safari, Opera */
-    column-span: all;
-}

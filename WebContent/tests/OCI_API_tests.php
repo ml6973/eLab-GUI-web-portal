@@ -40,8 +40,18 @@ OCI_API::registerUser($s1, $s2);
 
 <h2>It should retrieve a list of instances for a user</h2>
 <?php 
+
 $instances = OCI_API::getInstances($s1->getUserId());
 print_r($instances);
+
+?>
+
+<h2>It should retrieve a a specific instance for a user</h2>
+<?php 
+
+$imageName = "ghooks-15";
+$instance = OCI_API::getInstanceByImageName($s1->getUserId(), $imageName);
+print_r($instance);
 
 ?>
 
