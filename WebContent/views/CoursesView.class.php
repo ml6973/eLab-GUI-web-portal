@@ -54,7 +54,7 @@ class CoursesView {
 				echo '
 		    	<br><br>
 			</div>
-			<div class="col-md-2" ng-include>';
+			<div class="col-md-3" ng-include>';
 				vmInfo::show($courseYaml[0]['image']);
 			echo '</div>
 		</div>';

@@ -1,9 +1,8 @@
 
 body {
-	/*background image*/
-	background-image: url(/eLab-GUI-web-portal/resources/siteImages/login_bg_dim.jpg);
+	background-image: url(/eLab-GUI-web-portal/resources/siteImages/classRoom.jpg);
     background-position: center;
-    background-size: auto;
+    background-size: cover;
     background-repeat: no-repeat;
 
     font-family: 'Roboto', sans-serif;
@@ -26,7 +25,7 @@ h1, h2 {
 	margin-top: 10px;
 	font-size: 38px;
     font-weight: 100;
-    color: #555;
+    color: white;
     line-height: 50px;
 }
 
@@ -92,14 +91,14 @@ img { max-width: 100%; }
 }
 
 .top-content .text {
-	color: #fff;
+	color: black;
 }
 
 .top-content .text {
-	text-shadow: black 0em 0em 1em;
+	text-shadow: white;
 }
 
-.top-content .text h1 { color: #fff; }
+.top-content .text h1 { color: white; }
 
 .top-content .description {
 	margin: 20px 0 10px 0;
@@ -110,27 +109,27 @@ img { max-width: 100%; }
 */
 
 .top-content .description a {
-	color: #fff;
+	color: black;
 }
 .top-content .description a:hover, 
 .top-content .description a:focus { border-bottom: 1px dotted #fff; }
 
 .form-box {
-	margin-top: 35px;
+	margin-top: 25px;
 }
 
 .form-top {
 	overflow: hidden;
-	padding: 0 25px 15px 25px;
-	background: #444;
-	background: rgba(0, 0, 0, 0.6);
+	padding: 0 25px 0px 25px;
+	background: #1e1c1c;
+	background: rgba(0, 125, 0, 0.6);
 	-moz-border-radius: 4px 4px 0 0; -webkit-border-radius: 4px 4px 0 0; border-radius: 4px 4px 0 0;
-	text-align: left;
+	text-align: center;
 }
 
 .form-top-left {
 	float: left;
-	width: 75%;
+	width: 100%;
 	padding-top: 25px;
 }
 
@@ -149,9 +148,9 @@ img { max-width: 100%; }
 }
 
 .form-bottom {
-	padding: 25px 25px 30px 25px;
-	background: #444;
-	background: rgba(0, 0, 0, 0.5);
+	padding: 15px 25px 30px 25px;
+	background: #1e1c1c;
+	background: rgba(0, 125, 0, 0.6);
 	-moz-border-radius: 0 0 4px 4px; -webkit-border-radius: 0 0 4px 4px; border-radius: 0 0 4px 4px;
 	text-align: left;
 }
@@ -229,4 +228,8 @@ a[name=register] {
     -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
     -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
+}
+
+.register {
+	position: absolute;
 }

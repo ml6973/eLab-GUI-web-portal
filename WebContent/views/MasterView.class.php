@@ -78,19 +78,22 @@ class MasterView {
     	<span class="icon-bar"></span>
     	<span class="icon-bar"></span>
     	<span class="icon-bar"></span>
-    	</button>
-    	<a id="webname" class="navbar-brand" href="/'.$base.'/courses"> <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>pen Cloud eLab</a>
-    	</div>
+    	</button>';
+    	if (!is_null($authenticatedUser))
+    		echo '<a id="webname" class="navbar-brand" href="/'.$base.'/courses"> <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>pen Cloud eLab</a>';
+    	else
+    		echo '<a id="webname" class="navbar-brand" href="/'.$base.'/courses"> Open Cloud eLab</a>';
+
+    	echo '</div>
     	<div id="navbar" class="navbar-collapse collapse">
-    	<ul id="login" class="nav navbar-nav navbar-right">
+    	<ul id="login" class="nav navbar-nav navbar-right">';
     	
-    	<!-- <li><a href="" id="login-btn" ng-click=\'Login()\' ng-show=[[buttonShow]]><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></li> -->
-    	<li><a href="/'.$base.'/logout" id="logout-btn" ng-click=\'/'.$base.'/logout\' ng-hide=[[buttonShow]]>Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>li>
-    	<!--
-    	<button id="login-btn" class="btn btn-info" ng-click=\'Login()\' ng-show=[[buttonShow]]>Login</button>
-    	<button id="logout-btn" class="btn btn-info" ng-click=\'Logout()\' ng-hide=[[buttonShow]]>Logout</button>
-    	-->
+    	if (!is_null($authenticatedUser))
+    		echo '<li><a href="/'.$base.'/logout" id="logout-btn" ng-click=\'/'.$base.'/logout\' ng-hide=[[buttonShow]]>Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>';
+		else
+			echo '<li><a href="/'.$base.'/registration" id="logout-btn" ng-click=\'/'.$base.'/registration\' ng-hide=[[buttonShow]]>Register <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>';
     	
+    	echo '
     	</ul>
     	</div><!--/.navbar-collapse -->
     	</div>

@@ -3,6 +3,8 @@ class LoginView {
 	
 	public static function show() {
 		MasterView::showHeader();
+		MasterView::showNavBar();
+		CarouselView::showCarousel();
 		LoginView::showDetails();
 	}
 	
@@ -19,26 +21,28 @@ class LoginView {
 
 		<div class="top-content">
 		 
-		<div class="inner-bg">
-		<div class="container">
+	<!--	<div class="inner-bg"> -->
+	<!--	<div class="container"> -->
+	<!--	<div class="jumbotron"> -->
 		<div class="row">
-		<div class="col-sm-8 col-sm-offset-2 text">
+<!--		<div class="col-sm-8 col-sm-offset-2 text">
 		<h1><strong>eLab</strong> Login Panel</h1>
 		<div class="description">
 		<p>We offer more valuable courses to registered users.<br>If you have any question, feel free to <a href="/#/about"><strong>contact us</strong></a>!</p>
+		</div> -->
 		</div>
 		</div>
-		</div>
+<!--	    </div> -->
 		<div class="row">
 		<div class="col-sm-6 col-sm-offset-3 form-box">
 		<div class="form-top">
 		<div class="form-top-left">
-		<h3>Login to our site</h3>
-		<p>Enter your username and password:</p>
+		<h1><strong>eLab</strong> Login Panel</h1>
+		<p>Discover how to obtain your dream career.</p>
 		</div>
-		<div class="form-top-right">
+	<!--	<div class="form-top-right">
 		<i class="fa fa-lock"></i>
-		</div>
+		</div> -->
 		</div>
 		<div class="form-bottom">
 		<form role="form" action="" method="post" class="login-form">';
@@ -61,15 +65,15 @@ class LoginView {
 		<label class="sr-only" for="form-password">Password</label>
 		<input type="password" name="password" placeholder="Password..." class="form-password form-control" id="password" ng-model=\'password\' tabindex="2" required>
 		</div>';
-		echo '<button type="submit" class="btn" ng-click=\'submit()\' tabindex="3">Sign in!</button>
+		echo '<button type="submit" class="btn login-button" ng-click=\'submit()\' tabindex="3">Sign in!</button>
 		</form>
 		</div>
 		</div>
 		</div>
 		<br><br>
-		<div class="row">
-		<a name="register" class="btn" color="#4CAF50" href="/'.$base.'/registration">Register!</a>
-		</div>
+	<!--	<div class="row">
+		<a name="register" class="btn register" color="#4CAF50" href="/'.$base.'/registration">Register!</a>
+		</div> -->
 		<div class="row">
 		<div class="col-sm-6 col-sm-offset-3 social-login">
 		<h3>...or login with:</h3>

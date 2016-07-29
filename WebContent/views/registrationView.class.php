@@ -25,23 +25,23 @@ class registrationView {
 		            <div class="inner-bg">
 		                <div class="container">
 		                    <div class="row">
-		                        <div class="col-sm-8 col-sm-offset-2 text">
+		               <!--         <div class="col-sm-8 col-sm-offset-2 text">
 		                            <h1><strong>eLab</strong> Registration Panel</h1>
 		                            <div class="description">
-		                            	<p>We offer more valuable courses to registered users.<br>If you have any questions, feel free to <a href="/#/about"><strong>contact us</strong></a>!</p>
+		                            	<p>Start learning career building material!</p>
 		                            </div>
-		                        </div>
+		                        </div> -->
 		                    </div>
 		                    <div class="row">
 		                        <div class="col-sm-6 col-sm-offset-3 form-box">
 		                        	<div class="form-top">
 		                        		<div class="form-top-left">
-		                        			<h3>Register to our site</h3>
-		                            		<p>Enter your email, desired username and password:</p>
+		                        			<h1><strong>eLab</strong> Registration Panel</h1>
+		                            		<p>Start learning career building material!</p>
 		                        		</div>
-		                        		<div class="form-top-right">
+		                  <!--      		<div class="form-top-right">
 		                        			<i class="fa fa-lock"></i>
-		                        		</div>
+		                        		</div> -->
 		                            </div>
 		                            <div class="form-bottom">
 					                    <form role="form" action="" method="post" class="register-form">';

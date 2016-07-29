@@ -7,6 +7,7 @@ class LoginController {
 			header('Location: /'.$_SESSION['base'].'/courses');
 		$user = null;
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+			print_r(" "); //fixes connection reset on login?
 			$user = new User($_POST);  
 			$users = UsersDB::getUsersBy('userName', $user->getUserName());
 			if (empty($users))

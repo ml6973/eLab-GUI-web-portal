@@ -1,4 +1,16 @@
-- title: OpenStack Core Services
+- title: OpenStack Core Services Training
+  icon: <i class="fa fa-download" aria-hidden="true"></i>
+  description: 
+  image:  bla
+  link: core_services
+
+- title: OpenStack API Programming
+  icon: <i class="fa fa-download" aria-hidden="true"></i>
+  description: 
+  image:  bla
+  link: api_programming
+
+- title: OpenStack Multinode Deployment
   icon: <i class="fa fa-download" aria-hidden="true"></i>
   description:  This guide describes how to install and configure OpenStack for high availability. It supplements the OpenStack Installation Guides and assumes that you are familiar with the material in those guides.This guide documents OpenStack Liberty, OpenStack Kilo, and OpenStack Juno releases.
   image:  bla
@@ -15,4 +27,3 @@
   description: 
   image:  bla
   link: cloud_dashboard
-  

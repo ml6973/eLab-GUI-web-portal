@@ -91,6 +91,9 @@ class OCI_API {
 		
 		$response = json_decode($response, true);
 		
+		if (is_null($response))
+			return null;
+		
 		$instance = (array_key_exists($imageName, $response))?
 		$response[$imageName]:null;
 		
