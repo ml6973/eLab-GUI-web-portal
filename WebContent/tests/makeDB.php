@@ -35,9 +35,18 @@ function makeDB($dbName) {
 							  userId             int(11) NOT NULL COLLATE utf8_unicode_ci,
 							  email           	 varchar(255) COLLATE utf8_unicode_ci,
 							  vmPassword         varchar(255) COLLATE utf8_unicode_ci,
+							  messengerId		 varchar(255) COLLATE utf8_unicode_ci,
 							  FOREIGN KEY (userId) REFERENCES Users(userId)
 							)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;"
 		);
+		$st->execute ();
+		
+		$st = $db->prepare ("CREATE TABLE Registration (
+							  userId             int(11) NOT NULL COLLATE utf8_unicode_ci,
+							  complete			 boolean DEFAULT false,
+							  FOREIGN KEY (userId) REFERENCES Users(userId)
+							)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;"
+				);
 		$st->execute ();
 		
 		$sql = "INSERT INTO Users (userId, userName, passwordHash) VALUES
@@ -48,14 +57,26 @@ function makeDB($dbName) {
 	    $st->execute(array(':userId' => 3, ':userName' => 'Alice', ':passwordHash' => 'zzz'));
 	    $st->execute(array(':userId' => 4, ':userName' => 'George', ':passwordHash' => 'www'));
 	    
-	    $sql = "INSERT INTO UserData (userId, email, vmPassword) VALUES
-		                          (:userId, :email, :vmPassword)";
+	    $sql = "INSERT INTO UserData (userId, email, vmPassword, messengerId) VALUES
+		                          (:userId, :email, :vmPassword, :messengerId)";
 	    $st = $db->prepare($sql);
-	    $st->execute(array(':userId' => 1, ':email' => 'May@gdail.com', ':vmPassword' => 'xxxx'));
-	    $st->execute(array(':userId' => 2, ':email' => 'John@gdail.com', ':vmPassword' => 'yyyy'));
-	    $st->execute(array(':userId' => 3, ':email' => 'Alice@gdail.com', ':vmPassword' => 'zzzz'));
-	    $st->execute(array(':userId' => 4, ':email' => 'George@gdail.com', ':vmPassword' => 'wwww'));
+	    $st->execute(array(':userId' => 1, ':email' => 'May@gdail.com', ':vmPassword' => 'xxxx', 'messengerId' => '12345'));
+	    $st->execute(array(':userId' => 2, ':email' => 'John@gdail.com', ':vmPassword' => 'yyyy', 'messengerId' => '123456'));
+	    $st->execute(array(':userId' => 3, ':email' => 'Alice@gdail.com', ':vmPassword' => 'zzzz', 'messengerId' => '1234567'));
+	    $st->execute(array(':userId' => 4, ':email' => 'George@gdail.com', ':vmPassword' => 'wwww', 'messengerId' => '12345678'));
 	
+	    $sql = "INSERT INTO Registration (userId) VALUES
+		                          (:userId)";
+	    $st = $db->prepare($sql);
+	    $st->execute(array(':userId' => 1));
+	    $st->execute(array(':userId' => 2));
+	    $st->execute(array(':userId' => 3));
+	    
+	    $sql = "INSERT INTO Registration (userId, complete) VALUES
+		                          (:userId, :complete)";
+	    $st = $db->prepare($sql);
+	    $st->execute(array(':userId' => 4, ':complete' => true));
+	    
 	} catch ( PDOException $e ) {
 		echo $e->getMessage ();  // not final error handling
 	}

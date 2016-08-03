@@ -3,8 +3,8 @@ class UserDataDB {
 	
 	public static function addUserData($user, $userdata) {
 		// Inserts the User object $userdata into the Users table and returns userId
-		$query = "INSERT INTO UserData (userId, email, vmPassword)
-		                      VALUES(:userId, :email, :vmPassword)";
+		$query = "INSERT INTO UserData (userId, email, vmPassword, messengerId)
+		                      VALUES(:userId, :email, :vmPassword, :messengerId)";
 		$returnId = 0;
 		try {
 			if (is_null($userdata) || $userdata->getErrorCount() > 0 || is_null($user) || $user->getErrorCount() > 0)
@@ -14,6 +14,7 @@ class UserDataDB {
 			$statement->bindValue(":userId", $user->getUserId());
 			$statement->bindValue(":email", $userdata->getEmail());
 			$statement->bindValue(":vmPassword", $userdata->getVMPassword());
+			$statement->bindValue(":messengerId", $userdata->getMessengerId());
 			$statement->execute ();
 			$statement->closeCursor();
 		} catch (Exception $e) { // Not permanent error handling
@@ -25,7 +26,7 @@ class UserDataDB {
 	
 	public static function updateUserData($user, $userdata) {
 		// Removes userData by 
-		$query = "UPDATE UserData SET email= :email, vmPassword = :vmPassword WHERE userId = :userId";
+		$query = "UPDATE UserData SET email= :email, vmPassword = :vmPassword, messengerId = :messengerId WHERE userId = :userId";
 		$returnId = 0;
 		try {
 			if (is_null($userdata) || $userdata->getErrorCount() > 0 || is_null($user) || $user->getErrorCount() > 0)
@@ -35,6 +36,7 @@ class UserDataDB {
 			$statement->bindValue(":userId", $user->getUserId());
 			$statement->bindValue(":email", $userdata->getEmail());
 			$statement->bindValue(":vmPassword", $userdata->getVMPassword());
+			$statement->bindValue(":messengerId", $userdata->getMessengerId());
 			$statement->execute ();
 			$statement->closeCursor();
 		} catch (Exception $e) { // Not permanent error handling
@@ -50,7 +52,7 @@ class UserDataDB {
 		$userdataRowSets = NULL;
 		try {
 			$db = Database::getDB ();
-			$query = "SELECT userId, email, vmPassword FROM UserData";
+			$query = "SELECT userId, email, vmPassword, messengerId FROM UserData";
 			if (!is_null($type)) {
 			    if (!in_array($type, $allowedTypes))
 					throw new PDOException("$type not an allowed search criterion for Userdata");

@@ -3,8 +3,15 @@ class LoginController {
 
 	public static function run() {
 		if (!is_null((array_key_exists('authenticatedUser', $_SESSION))?
-		$_SESSION['authenticatedUser']:null))
-			header('Location: /'.$_SESSION['base'].'/courses');
+		$_SESSION['authenticatedUser']:null)){
+			$_SESSION['registered'] = RegistrationDB::getRegistrationRowSetsBy('userId', $_SESSION['authenticatedUser']->getUserId());
+			if (!is_null((array_key_exists('registered', $_SESSION))?
+			$_SESSION['registered']:null) && $_SESSION['registered'] == 1){
+				header('Location: /'.$_SESSION['base'].'/courses');
+			}else{
+				header('Location: /'.$_SESSION['base'].'/registrationComplete');
+			}
+		}
 		$user = null;
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			print_r(" "); //fixes connection reset on login?

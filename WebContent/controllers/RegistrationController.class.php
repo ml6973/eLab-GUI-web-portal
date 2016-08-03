@@ -3,8 +3,14 @@ class RegistrationController {
 
 	public static function run() {
 		if (!is_null((array_key_exists('authenticatedUser', $_SESSION))?
-		$_SESSION['authenticatedUser']:null))
-			header('Location: /'.$_SESSION['base'].'/courses');
+		$_SESSION['authenticatedUser']:null)){
+			if (!is_null((array_key_exists('registered', $_SESSION))?
+			$_SESSION['registered']:null) && $_SESSION['registered'] == 1){
+				header('Location: /'.$_SESSION['base'].'/courses');
+			}else{
+				header('Location: /'.$_SESSION['base'].'/registrationComplete');
+			}
+		}
 		$user = null;
 		$userData = null;
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -28,6 +34,14 @@ class RegistrationController {
 				UserDataDB::addUserData($user, $userData);
 				$_SESSION['authenticatedUserData'] = $userData;
 				$_SESSION['authenticatedUser'] = $user;
+				RegistrationDB::addRegistration($user);
+				if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
+					pclose(popen("start \"bla\" \"" . 'C:\Python27\python.exe' . "\" " . escapeshellcmd(dirname(__FILE__) . DIRECTORY_SEPARATOR . '../resources/register.py http://129.114.110.218:12345/register/ '.$user->getUserName().' '.$userData->getEmail().' '.$userData->getVMPassword().' '.$user->getUserId().' oci_eLab root'), "r"));
+				}else{
+					$registerCMD = escapeshellcmd('/usr/bin/python ' . dirname(__FILE__) . DIRECTORY_SEPARATOR . '../resources/register.py http://129.114.110.218:12345/register/ '.$user->getUserName().' '.$userData->getEmail().' '.$userData->getVMPassword().' '.$user->getUserId().' oci_eLab root');
+					$registerCMD .= '> /dev/null 2>&1 &';
+					exec($registerCMD, $output, $exit);
+				}
 				header('Location: /'.$_SESSION['base'].'/courses');
 			} else  
 				registrationView::show($user, $userData);

@@ -80,9 +80,9 @@ class MasterView {
     	<span class="icon-bar"></span>
     	</button>';
     	if (!is_null($authenticatedUser))
-    		echo '<a id="webname" class="navbar-brand" href="/'.$base.'/courses"> <i class="fa fa-spinner fa-spin fa-1x fa-fw"></i>pen Cloud eLab</a>';
-    	else
     		echo '<a id="webname" class="navbar-brand" href="/'.$base.'/courses"> Open Cloud eLab</a>';
+    	else
+    		echo '<a id="webname" class="navbar-brand" href="/'.$base.'/login"> Open Cloud eLab</a>';
 
     	echo '</div>
     	<div id="navbar" class="navbar-collapse collapse">

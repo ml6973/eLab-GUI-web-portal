@@ -14,6 +14,13 @@ CREATE TABLE UserData (
   userId             int(11) NOT NULL COLLATE utf8_unicode_ci UNIQUE,
   email           	 varchar(255) COLLATE utf8_unicode_ci,
   vmPassword         varchar(255) COLLATE utf8_unicode_ci,
+  messengerId        varchar(255) COLLATE utf8_unicode_ci,
+  FOREIGN KEY (userId) REFERENCES Users(userId)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE Registration (
+  userId             int(11) NOT NULL COLLATE utf8_unicode_ci,
+  complete			 boolean DEFAULT false,
   FOREIGN KEY (userId) REFERENCES Users(userId)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -26,11 +33,20 @@ INSERT INTO Users (userId, userName, passwordHash) VALUES
 INSERT INTO Users (userId, userName,  passwordHash) VALUES 
 	   (4, 'Farhan', '$2y$10$ZqaudocomXwVGEKWErXh5O4c8ib201PVlj2rF5HDCgAnQPChei3p6');
 	  
-INSERT INTO UserData (userId, email, vmPassword) VALUES 
-	   (1, 'greg@gdail.com', 'ryanVM');  
-INSERT INTO UserData (userId, email, vmPassword) VALUES 
-	   (2, 'ryan@gdail.com', 'gregVM');
-INSERT INTO UserData (userId, email, vmPassword) VALUES 
-	   (3, 'brandon@gdail.com', 'brandonVM');
-INSERT INTO UserData (userId, email, vmPassword) VALUES 
-	   (4, 'farhan@gdail.com', 'farhanVM');
+INSERT INTO UserData (userId, email, vmPassword, messengerId) VALUES 
+	   (1, 'greg@gdail.com', 'ryanVM', '123');  
+INSERT INTO UserData (userId, email, vmPassword, messengerId) VALUES 
+	   (2, 'ryan@gdail.com', 'gregVM', '456');
+INSERT INTO UserData (userId, email, vmPassword, messengerId) VALUES 
+	   (3, 'brandon@gdail.com', 'brandonVM', '789');
+INSERT INTO UserData (userId, email, vmPassword, messengerId) VALUES 
+	   (4, 'farhan@gdail.com', 'farhanVM', '100');
+	   
+INSERT INTO Registration (userId, complete) VALUES 
+	   (1, false);
+INSERT INTO Registration (userId, complete) VALUES 
+	   (2, false);
+INSERT INTO Registration (userId, complete) VALUES 
+	   (3, false);
+INSERT INTO Registration (userId, complete) VALUES 
+	   (4, true);

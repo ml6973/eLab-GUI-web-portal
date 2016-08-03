@@ -15,7 +15,8 @@ include_once("../models/Messages.class.php");
 <h2>It should create a valid UserData object when all input is provided</h2>
 <?php 
 $validTest = array("email" => "test@gdail.com",
-				   "vmPassword" => "testpassword"
+				   "vmPassword" => "testpassword",
+				   "messengerId" => "1234567890"
 );
 $s1 = new UserData($validTest);
 echo "$s1";

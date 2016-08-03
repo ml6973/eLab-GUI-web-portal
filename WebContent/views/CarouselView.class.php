@@ -48,7 +48,7 @@ class CarouselView {
 				height: 175px;
 				position: initial;
 				background: #333;
-				background-color: rgba(0,0,0,0.5);
+				background-color: rgba(0,0,0,0.1);
 				margin-top: 0px;
 			}
 			.quote {

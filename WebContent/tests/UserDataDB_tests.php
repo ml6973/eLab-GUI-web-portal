@@ -36,7 +36,7 @@ foreach ($userdatas as $userdata)
 echo "Number of userdata in db before added is: ". count(UserDataDB::getUserDataBy()) ."<br>";
 $validTest = array("userName" => "blahuser", "password" => "123");
 $user = new User($validTest);
-$validTest = array("email" => "test@gdail.com", "vmPassword" => "testPassword");
+$validTest = array("email" => "test@gdail.com", "vmPassword" => "testPassword", "messengerId" => "1234567890");
 $userdata = new UserData($validTest);
 $userId = UsersDB::addUser($user);
 $user->setUserId($userId);
@@ -49,8 +49,8 @@ echo "User ID of new user is: $userId<br>";
 <?php 
 echo "Number of userdata in db before added is: ". count(UserDataDB::getUserDataBy()) ."<br>";
 $user = new User($validTest);
-$validTest = array("email" => "test@gdail.com", "vmPassword" => "goodPassword");
-$invalidUserData = new UserData(array("email" => "test", "vmPassword" => "goodPassword"));
+$validTest = array("email" => "test@gdail.com", "vmPassword" => "goodPassword", "messengerId" => "0987654321");
+$invalidUserData = new UserData(array("email" => "test", "vmPassword" => "goodPassword", "messengerId" => "garbage"));
 $userId = UserDataDB::addUserData($user, $invalidUserData);
 echo "Number of users in db after added is: ". count(UserDataDB::getUserDataBy()) ."<br>";
 echo "User ID of new user is: $userId<br>";
@@ -76,7 +76,7 @@ $userdata = UserDataDB::getUserDataBy('userId', '5');
 echo "The value of UserData 5 is:<br>$userdata[0]<br>";
 $user = UsersDB::getUsersBy('userId', '5')[0];
 $user->setUserId('5');
-$validTest = array("email" => "fixedemail@gdail.com", "vmPassword" => "fixedPassword");
+$validTest = array("email" => "fixedemail@gdail.com", "vmPassword" => "fixedPassword", "messengerId" => "0987654321");
 $userdata = new UserData($validTest);
 UserDataDB::updateUserData($user, $userdata);
 $userdata = UserDataDB::getUserDataBy('userId', '5');

@@ -35,4 +35,6 @@ STUDYSHEET_TOO_LONG The study sheet has a maximum limit of 10000 characters.
 RESPONSE_TOO_LONG The response has a maximum limit of 255 characters.
 USER_ID_INVALID The entered user ID is invalid
 USER_ID_EMPTY The user ID cannot be left blank
-VMPASSWORD_EMPTY The default virtual machine passwords cannot be blank
+VMPASSWORD_EMPTY The default virtual machine password cannot be blank
+MESSENGERID_EMPTY The messenger id field cannot be blank
+MESSENGERID_INVALID You must enter a valid messenger id

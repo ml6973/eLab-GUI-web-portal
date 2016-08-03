@@ -5,6 +5,7 @@ class UserData {
 	private $formInput;
 	private $email;
 	private $vmPassword;
+	private $messengerId;
 	
 	public function __construct($formInput = null) {
 		$this->formInput = $formInput;
@@ -41,16 +42,21 @@ class UserData {
 		return $this->vmPassword;
 	}
 	
+	public function getMessengerId() {
+		return $this->messengerId;
+	}
+	
 	public function getParameters() {
 		// Return data fields as an associative array
 		$paramArray = array("email" => $this->email,
-							"vmPassword" => $this->vmPassword
+							"vmPassword" => $this->vmPassword,
+							"messengerId" => $this->messengerId
 		); 
 		return $paramArray;
 	}
 
 	public function __toString() {
-		$str = "email:[" .$this->email ."] "."vmPassword:[" .$this->vmPassword ."]";
+		$str = "email:[" .$this->email ."] "."vmPassword:[" .$this->vmPassword ."] "."messengerId:[".$this->messengerId ."]";
 		return $str;
 	}
 	
@@ -73,6 +79,7 @@ class UserData {
 		else  {	 
 	      $this->validateEmail();
 	      $this->validateVMPassword();
+	      $this->validateMessengerId();
 		}	
 	}
 
@@ -81,6 +88,7 @@ class UserData {
 		$errors = array();
 		$this->email = "";
 		$this->vmPassword = "";
+		$this->messengerId = "";
 	}
 
 	public function resetErrors() {
@@ -101,6 +109,16 @@ class UserData {
 		$this->vmPassword = $this->extractForm('vmPassword');
 		if (empty($this->vmPassword))
 			$this->setError('vmPassword', 'VMPASSWORD_EMPTY');
+	}
+	
+	private function validateMessengerId() {
+		$this->messengerId = $this->extractForm('messengerId');
+		if (empty($this->messengerId)){
+			$this->setError('messengerId', 'MESSENGERID_EMPTY');
+			return;
+		}
+		if (!preg_match("/^[0-9]+$/", $this->messengerId))
+			$this->setError('messengerId', 'MESSENGERID_INVALID');
 	}
 }
 ?>

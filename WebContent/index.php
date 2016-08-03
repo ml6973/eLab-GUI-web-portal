@@ -22,6 +22,9 @@
 		case "registration":
 			RegistrationController::run();
 			break;
+		case "registrationComplete":
+			RegistrationCompleteController::run();
+			break;
 		case "courses":
 			CoursesController::run();
 			break;

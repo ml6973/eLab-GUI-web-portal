@@ -7,6 +7,7 @@ class LogoutController {
 		session_destroy();
 		session_start();
 		$_SESSION['authenticatedUser'] = null;
+		$_SESSION['registered'] = null;
 		header("Location: /$base");
 	}
 }

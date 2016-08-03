@@ -14,7 +14,7 @@ class OCI_API {
 		return($response);
 	}
 	
-	public static function registerUser($user, $userData) {
+/*	public static function registerUser($user, $userData) {
 	
 		$json = array("api_uname" => "webportal", 
 						"api_pass" => "greg123",
@@ -40,6 +40,10 @@ class OCI_API {
 		curl_close($ch);
 	
 		return($response);
+	}*/
+	
+	public static function registerUser($user, $userData) {
+		
 	}
 	
 	public static function getInstances($userID) {
