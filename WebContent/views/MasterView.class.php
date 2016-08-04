@@ -69,8 +69,10 @@ class MasterView {
     	}
     	</style>
     	
-    	<div ng-controller=\'headController\'>
-    	<nav class="navbar navbar-inverse navbar-fixed-top">
+    	<div ng-controller=\'headController\'>';
+    	echo '<style>.navbar-inverse{background-color: white;} .logo{margin-top: 5px; margin-right: 10px;} .navbar-inverse .navbar-brand{color: rgb(17, 43, 79);} .navbar-inverse .navbar-brand:hover{color: rgb(241, 89, 37);}
+    			.navbar-inverse .navbar-nav > li > a{color: rgb(17, 43, 79);} .navbar-inverse .navbar-nav > li > a:hover{color: rgb(241, 89, 37);}</style>';
+    	echo '<nav class="navbar navbar-inverse navbar-fixed-top">
     	<div class="container">
     	<div class="navbar-header">
     	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -79,17 +81,26 @@ class MasterView {
     	<span class="icon-bar"></span>
     	<span class="icon-bar"></span>
     	</button>';
-    	if (!is_null($authenticatedUser))
-    		echo '<a id="webname" class="navbar-brand" href="/'.$base.'/courses"> Open Cloud eLab</a>';
-    	else
-    		echo '<a id="webname" class="navbar-brand" href="/'.$base.'/login"> Open Cloud eLab</a>';
+    	if (!is_null($authenticatedUser)){
+    		echo '<img class="logo" src="/'.$base."/resources/siteImages/logo.png".'" alt="Logo" height="40" width="75">';
+    		echo '<a id="webname" class="navbar-brand pull-right" href="/'.$base.'/courses"> Open Cloud eLab</a>';
+    	}
+    	else {
+    		echo '<img class="logo" src="/'.$base."/resources/siteImages/logo.png".'" alt="Logo" height="40" width="75">';
+    		echo '<a id="webname" class="navbar-brand pull-right" href="/'.$base.'/login"> Open Cloud eLab</a>';
+    	}
 
     	echo '</div>
     	<div id="navbar" class="navbar-collapse collapse">
     	<ul id="login" class="nav navbar-nav navbar-right">';
     	
-    	if (!is_null($authenticatedUser))
-    		echo '<li><a href="/'.$base.'/logout" id="logout-btn" ng-click=\'/'.$base.'/logout\' ng-hide=[[buttonShow]]>Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>';
+    	echo '<style>.alignName{line-height: 50px;}</style>';
+    	
+    	if (!is_null($authenticatedUser)){
+    		echo '<li class="pull-right"><a href="/'.$base.'/logout" id="logout-btn" ng-click=\'/'.$base.'/logout\' ng-hide=[[buttonShow]]>Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>';
+    		echo '<li> <span class="label label-default alignName">Welcome '.
+    				$authenticatedUser->getUserName().'</span></li>';
+    	}
 		else
 			echo '<li><a href="/'.$base.'/registration" id="logout-btn" ng-click=\'/'.$base.'/registration\' ng-hide=[[buttonShow]]>Register <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>';
     	
@@ -153,7 +164,7 @@ class MasterView {
 			        <div class="row">
 			            <div class="footer-bottom-left">
 			                <div>
-			                <p class="footer-company-name text-muted">2016 © Openstack eLab. All rights reserved. <br>Site built by Xin Zhang.</p>
+			                <p class="footer-company-name text-muted">2016 © Openstack eLab. All rights reserved. <br>Site built by Gregory Hooks.</p>
 			                </div>
 			            </div>
 			

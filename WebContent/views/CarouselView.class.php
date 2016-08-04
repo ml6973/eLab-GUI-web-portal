@@ -19,9 +19,13 @@ class CarouselView {
 		echo '<style>
   			.carousel-inner > .item > img,
   			.carousel-inner > .item > a > img {
-      			width: 10%;
-				height: 10%;
+      			width: 135px;
+				height: 135px;
       			margin: auto;
+				border-radius: 100%;
+				-moz-border-radius: 100%;
+				-webkit-border-radius: 100%;
+				-o-border-radius: 100%;
   			}
 			.carousel-inner {
 				top: 20px;
@@ -58,6 +62,7 @@ class CarouselView {
 				top: 70px;
 				left: 50px;
 				margin: auto;
+				text-shadow: 0 1px 2px rgba(0,0,0,1);
 			}
 				
 			.carousel-fade .carousel-inner .item {
