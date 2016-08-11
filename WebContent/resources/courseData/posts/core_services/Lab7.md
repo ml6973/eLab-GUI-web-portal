@@ -17,20 +17,7 @@ description: Horizon Dashboard - Neutron as an Admin
 * * *
 
 First, you need to identify the allocation of the rack and servers you desire to use. We would like to keep the ip's chosen for our elements in a contiguous range. For our case, we designed our setup as follows:
-
-10.241.1.54 > Storage/Cinder
-
-10.241.1.55 > Infrastructure 1
-
-10.241.1.56 > Infrastructure 2
-
-10.241.1.57 > Infrastructure 3
-
-10.241.1.58 > Compute Node 1
-
-10.241.1.59 > Logging/HA Proxy
-
-  
+#check
 
 This arrangement is the bare minimum needed for an iteration of an openstack cloud. Three(3) infrastructure nodes are required for Galera to operate in a highly available manner;otherwise, a single infrastructure node can be used. Generally speaking, Galera will operate best with an odd number of infrastructure nodes.
 
