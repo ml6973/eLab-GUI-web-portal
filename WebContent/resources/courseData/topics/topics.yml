@@ -27,3 +27,9 @@
   description: 
   image:  bla
   link: cloud_dashboard
+  
+- title: Horizon Dashboard For OpenStack Services
+  icon: <i class="fa fa-download" aria-hidden="true"></i>
+  description: 
+  image:  bla
+  link: horizon_dashboard
