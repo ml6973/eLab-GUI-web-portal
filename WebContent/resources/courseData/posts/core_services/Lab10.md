@@ -47,40 +47,6 @@ description: Horizon Dashboard - Keystone as a User
 
 -[Summary](#summary)
 
-**Slide 1**:
-Welcome to the tutorial on Keystone using the Horizon dashboard. My name is Gonzalo De La Torre and I will be training you how to access the Admin features provided by the Keystone Service through the Horizon Dashboard.
-
-**Slide 2**:
-The contents to be covered in this tutorial include:
-
-- Horizon Dashboard - Keystone
-
-- Accessing the Horizon Dashboard
-
-- Services
-- Tenant
-    * List Tenant
-    * Create Tenant
-    * Delete Tenant
-    * Edit Tenant
-- Users and Roles
-    * Create User
-    * Delete User
-    * Get User
-    * List User
-
-- Summary
-
-
-**Slide 3**:
-Prerequisites:
-You must have gone through the Introduction to Cloud Computing Lab before starting this one. 
-
-**Slide 4**:
-Let us begin with a brief introduction: 
-
-Keystone is the identity service in charge of providing authentication and authorization to access the openstack services. Horizon, which is the OpenStack dashboard project, it is a canonical representation that allows you to access the openstack services like Nova, Neutron, Swift, Keystone through a web based user interface. It allows the admin and other users to access and manage the functional components using just a web browser.
-
 The Horizon dashboard supports 3 types of central dashboards. These are: 
 User Dashboard
 System Dashboard
