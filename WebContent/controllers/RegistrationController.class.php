@@ -46,6 +46,8 @@ class RegistrationController {
 			} else  
 				registrationView::show($user, $userData);
 		} else  // Initial link
+			$_SESSION['user'] = null;
+			$_SESSION['userData'] = null;
 			registrationView::show();
 	}
 	

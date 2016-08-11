@@ -34,6 +34,7 @@ foreach ($users as $user)
 echo "Number of users in db before added is: ". count(UsersDB::getUsersBy()) ."<br>";
 $validTest = array("userName" => "joan", "password" => "123");
 $user = new User($validTest);
+$user->setFacebookId('101');
 $userId = UsersDB::addUser($user);
 echo "Number of users in db after added is: ". count(UsersDB::getUsersBy()) ."<br>";
 echo "User ID of new user is: $userId<br>";
@@ -59,8 +60,8 @@ echo "User ID of new user is: $userId<br>";
 
 <h2>It should get a User by userName</h2>
 <?php 
-$users = UsersDB::getUsersBy('userName', 'George');
-echo "The value of User George is:<br>$users[0]<br>";
+$users = UsersDB::getUsersBy('userName', 'May');
+echo "The value of User May is:<br>$users[0]<br>";
 ?>
 
 <h2>It should get a User by userId</h2>
@@ -90,6 +91,24 @@ else
 <?php
 $userNames = UsersDB::getUserValuesBy('userName', 'userId', 1);
 print_r($userNames);
+?>
+
+<h2>It should get a user name by facebook id</h2>
+<?php
+$userNames = UsersDB::getUserValuesBy('userName', 'facebookId', '101');
+print_r($userNames);
+?>
+
+<h2>It should add a user with no facebook id</h2>
+<?php 
+echo "Number of users in db before added is: ". count(UsersDB::getUsersBy()) ."<br>";
+$validTest = array("userName" => "joan2", "password" => "1234");
+$user = new User($validTest);
+$userId = UsersDB::addUser($user);
+echo "Number of users in db after added is: ". count(UsersDB::getUsersBy()) ."<br>";
+echo "User ID of new user is: $userId<br>";
+$users = UsersDB::getUsersBy('userId', $userId);
+echo "The value of User 3 is:<br>$users[0]<br>";
 ?>
 </body>
 </html>

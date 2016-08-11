@@ -2,6 +2,8 @@
 	ob_start();
 	include("includer.php");
 	
+	require_once __DIR__ . '/libraries/facebook-sdk-v5/autoload.php';
+	
 	session_start();   
 	$url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
 	list($fill, $base, $control, $action, $arguments) =
@@ -15,6 +17,9 @@
 	switch ($control) {
 		case "login": 
 			LoginController::run();
+			break;
+		case "fblogin":
+			FBLoginController::run();
 			break;
 		case "logout" :
 			LogoutController::run ();

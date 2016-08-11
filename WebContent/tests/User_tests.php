@@ -16,6 +16,7 @@ include_once("../models/Messages.class.php");
 <?php 
 $validTest = array("userName" => "ghooks", "password" => "test");
 $s1 = new User($validTest);
+$s1->setFacebookId('12345');
 echo "The object is: $s1<br>";
 $test1 = (is_object($s1))?'':
 'Failed:It should create a valid object when valid input is provided<br>';

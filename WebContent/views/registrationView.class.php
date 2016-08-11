@@ -100,12 +100,12 @@ class registrationView {
 			                        	<a class="btn btn-link-2" href="/'.$base.'/login">
 			                        		<i class="fa fa-facebook"></i> Facebook
 			                        	</a>
-			                        	<a class="btn btn-link-2" href="/'.$base.'/login">
+			                <!--        	<a class="btn btn-link-2" href="/'.$base.'/login">
 			                        		<i class="fa fa-twitter"></i> Twitter
 			                        	</a>
 			                        	<a class="btn btn-link-2" href="/'.$base.'/login">
 			                        		<i class="fa fa-google-plus"></i> Google Plus
-			                        	</a>
+			                        	</a>  -->
 		                        	</div>
 		                        </div>
 		                    </div>

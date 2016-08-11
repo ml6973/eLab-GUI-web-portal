@@ -19,6 +19,7 @@ PASSWORD_EMPTY Your password cannot be left blank
 PASSWORD_MISMATCH The entered passwords do not match
 USER_NAME_DOES_NOT_EXIST This user name does not exist
 USER_NAME_ALREADY_EXISTS This user name already exists
+DISPLAY_NAME_ALREADY_EXISTS This display name has already been taken
 PASSWORD_INCORRECT The entered password was incorrect
 CLASS_NAME_EMPTY The class name cannot be left blank
 CLASS_NAME_HAS_INVALID_CHARS The entered class name has contained invalid characters
@@ -38,3 +39,4 @@ USER_ID_EMPTY The user ID cannot be left blank
 VMPASSWORD_EMPTY The default virtual machine password cannot be blank
 MESSENGERID_EMPTY The messenger id field cannot be blank
 MESSENGERID_INVALID You must enter a valid messenger id
+USER_SIGN_IN_FACEBOOK This user must sign in through facebook

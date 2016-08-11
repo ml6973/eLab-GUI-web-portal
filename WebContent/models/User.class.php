@@ -6,6 +6,7 @@ class User {
 	private $userName;
 	private $password;
 	private $passwordHash;
+	private $facebookId;
 	private $userId;
 	
 	public function __construct($formInput = null) {
@@ -47,9 +48,13 @@ class User {
 		return $this->userId;
 	}
 	
+	public function getFacebookId() {
+		return $this->facebookId;
+	}
+	
 	public function getParameters() {
 		// Return data fields as an associative array
-		$paramArray = array("userName" => $this->userName, "passwordHash" => $this->passwordHash); 
+		$paramArray = array("userName" => $this->userName, "passwordHash" => $this->passwordHash, "facebookId" => $this->facebookId); 
 		return $paramArray;
 	}
 	
@@ -57,9 +62,14 @@ class User {
 		// Set the value of the userId to $id
 		$this->userId = $id;
 	}
+	
+	public function setFacebookId($id) {
+		// Set the value of the userId to $id
+		$this->facebookId = $id;
+	}
 
 	public function __toString() {
-		$str = "User name: ".$this->userName." PasswordHash: ".$this->passwordHash;
+		$str = "User name: ".$this->userName." PasswordHash: ".$this->passwordHash." Facebook Id: ".$this->facebookId;
 		return $str;
 	}
 	
@@ -95,6 +105,11 @@ class User {
 	 	$this->userName = "";
 	 	$this->password = "";
 	 	$this->passwordHash = "";
+	}
+	
+	public function resetErrors() {
+		$this->errorCount = 0;
+		$this->errors = array();
 	}
 
 	private function validateUserName() {

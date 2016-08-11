@@ -12,6 +12,18 @@ class LoginView {
 		$base = $_SESSION['base'];
 		$user = (array_key_exists('user', $_SESSION))?
 		$_SESSION['user']:null;
+		
+		$fb = new Facebook\Facebook([
+		 'app_id' => '1778791989060640',
+		 'app_secret' => '561f5ac04a6101c6d917b71ecb2c4ed6',
+		 'default_graph_version' => 'v2.2',
+		 ]);
+		
+		$helper = $fb->getRedirectLoginHelper();
+		
+		$permissions = ['email']; // Optional permissions
+		$loginUrl = $helper->getLoginUrl('http://129.114.110.223/'.$base.'/controllers/FBController.php', $permissions);
+		
 		echo 
 		'<div>
 		<!-- CSS -->
@@ -78,15 +90,15 @@ class LoginView {
 		<div class="col-sm-6 col-sm-offset-3 social-login">
 		<h3>...or login with:</h3>
 		<div class="social-login-buttons">
-		<a class="btn btn-link-2" href="/'.$base.'/login">
+		<a class="btn btn-link-2" href="' . htmlspecialchars($loginUrl) . '">
 		<i class="fa fa-facebook"></i> Facebook
 		</a>
-		<a class="btn btn-link-2" href="/'.$base.'/login">
+	<!--	<a class="btn btn-link-2" href="/'.$base.'/login">
 		<i class="fa fa-twitter"></i> Twitter
 		</a>
 		<a class="btn btn-link-2" href="/'.$base.'/login">
 		<i class="fa fa-google-plus"></i> Google Plus
-		</a>
+		</a> -->
 		</div>
 		</div>
 		</div>

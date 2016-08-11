@@ -23,6 +23,7 @@ function makeDB($dbName) {
 		$st = $db->prepare(
 			"CREATE TABLE Users (
 					userId             int(11) NOT NULL AUTO_INCREMENT,
+					facebookId		   varchar (255) UNIQUE COLLATE utf8_unicode_ci,
 					userName           varchar (255) UNIQUE NOT NULL COLLATE utf8_unicode_ci,
 					passwordHash           varchar(255) COLLATE utf8_unicode_ci,
 				    dateCreated    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -49,13 +50,13 @@ function makeDB($dbName) {
 				);
 		$st->execute ();
 		
-		$sql = "INSERT INTO Users (userId, userName, passwordHash) VALUES
-		                          (:userId, :userName, :passwordHash)";
+		$sql = "INSERT INTO Users (userId, facebookId, userName, passwordHash) VALUES
+		                          (:userId, :facebookId, :userName, :passwordHash)";
 		$st = $db->prepare($sql);
-		$st->execute(array(':userId' => 1, ':userName' => 'May', ':passwordHash' => 'xxx'));
-	    $st->execute(array(':userId' => 2, ':userName' => 'John', ':passwordHash' => 'yyy'));
-	    $st->execute(array(':userId' => 3, ':userName' => 'Alice', ':passwordHash' => 'zzz'));
-	    $st->execute(array(':userId' => 4, ':userName' => 'George', ':passwordHash' => 'www'));
+		$st->execute(array(':userId' => 1, 'facebookId' => '123', ':userName' => 'May', ':passwordHash' => 'xxx'));
+	    $st->execute(array(':userId' => 2, 'facebookId' => '1234', ':userName' => 'John', ':passwordHash' => 'yyy'));
+	    $st->execute(array(':userId' => 3, 'facebookId' => '1235', ':userName' => 'Alice', ':passwordHash' => 'zzz'));
+	    $st->execute(array(':userId' => 4, 'facebookId' => '1236', ':userName' => 'George', ':passwordHash' => 'www'));
 	    
 	    $sql = "INSERT INTO UserData (userId, email, vmPassword, messengerId) VALUES
 		                          (:userId, :email, :vmPassword, :messengerId)";

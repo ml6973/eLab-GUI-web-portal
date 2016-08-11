@@ -3,8 +3,8 @@ class UsersDB {
 	
 	public static function addUser($user) {
 		// Inserts the User object $user into the Users table and returns userId
-		$query = "INSERT INTO Users (userName, passwordHash)
-		                      VALUES(:userName, :passwordHash)";
+		$query = "INSERT INTO Users (userName, passwordHash, facebookId)
+		                      VALUES(:userName, :passwordHash, :facebookId)";
 		$returnId = 0;
 		try {
 			if (is_null($user) || $user->getErrorCount() > 0)
@@ -12,7 +12,8 @@ class UsersDB {
 			$db = Database::getDB ();
 			$statement = $db->prepare ($query);
 			$statement->bindValue(":userName", $user->getUserName());
-			$statement->bindValue(":passwordHash", $user->getPasswordHash());	
+			$statement->bindValue(":passwordHash", $user->getPasswordHash());
+			$statement->bindValue(":facebookId", $user->getFacebookId());
 			$statement->execute ();
 			$statement->closeCursor();
 			$returnId = $db->lastInsertId("userId");
@@ -24,11 +25,11 @@ class UsersDB {
 
 	public static function getUserRowSetsBy($type = null, $value = null) {
 		// Returns the rows of Users whose $type field has value $value
-		$allowedTypes = ["userId", "userName"];
+		$allowedTypes = ["userId", "userName", "facebookId"];
 		$userRowSets = NULL;
 		try {
 			$db = Database::getDB ();
-			$query = "SELECT userId, userName, passwordHash FROM Users";
+			$query = "SELECT userId, facebookId, userName, passwordHash FROM Users";
 			if (!is_null($type)) {
 			    if (!in_array($type, $allowedTypes))
 					throw new PDOException("$type not an allowed search criterion for Users");
@@ -53,6 +54,7 @@ class UsersDB {
 			foreach ($rowSets as $userRow ) {
 				$user = new User($userRow);
 				$user->setUserId($userRow['userId']);
+				$user->setFacebookId($userRow['facebookId']);
 				array_push ($users, $user );
 			}
 	 	}

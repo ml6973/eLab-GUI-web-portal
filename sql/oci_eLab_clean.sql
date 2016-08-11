@@ -4,6 +4,7 @@ USE oci_eLab;
 
 CREATE TABLE Users (
   userId             int(11) NOT NULL AUTO_INCREMENT UNIQUE,
+  facebookId		 varchar (255) UNIQUE COLLATE utf8_unicode_ci,
   userName           varchar (255) UNIQUE NOT NULL COLLATE utf8_unicode_ci,
   passwordHash           varchar(255) COLLATE utf8_unicode_ci,
   dateCreated    	 TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

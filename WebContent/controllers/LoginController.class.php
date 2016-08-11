@@ -19,7 +19,9 @@ class LoginController {
 			$users = UsersDB::getUsersBy('userName', $user->getUserName());
 			if (empty($users))
 				$user->setError('userName', 'USER_NAME_DOES_NOT_EXIST');
-			else {
+			else if (!empty($users[0]->getFacebookId())) {
+				$user->setError('userName', 'USER_SIGN_IN_FACEBOOK');
+			} else {
 				if (strcmp($user->getPasswordHash(), $users[0]->getPasswordHash()) != 0)
 				if (!$user->verifyPassword($users[0]->getPasswordHash()))
 					$user->setError('password', 'PASSWORD_INCORRECT');
