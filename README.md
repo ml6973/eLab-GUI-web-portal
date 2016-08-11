@@ -20,7 +20,7 @@ WebContent -> resources -> courseData
 
 ### 2. Add a course (if needed)
 
-The course directory defines the courses that'll appear on the main page.  The document must be in YAML format and can be named anything, the following is an example:
+The course directory defines the courses that'll appear on the main page.  The document must be in YAML format and can be named anything.  Each file represents one course.  The following is an example:
 
 example.yaml
 ```
@@ -31,7 +31,7 @@ example.yaml
 ```
 
 ### 3. Add a topic (if needed) 
-The topic directory defines the topics that'll appear on the main page underneath each course description.  The document must be in YAML format and the name must match the "topicFile:" attribute defined previously, the following is an example:
+The topic directory defines the topics that'll appear on the main page underneath each course description.  The document must be in YAML format and the name must match the "topicFile:" attribute defined previously.  The file can contain multiple topics. The following is an example:
 
 exampleTopic.yml
 ```
@@ -43,7 +43,7 @@ exampleTopic.yml
 ```
 
 ### 4. Add posts
-The posts directory defines the posts (labs) that'll appear once you click a topic.  The directory name must match the "link:" attribute defined previously.  The files that populate this directory must be in MD format, with the **required header**.  An example md document is shown below:
+The posts directory defines the posts (labs) that'll appear once you click a topic.  The directory name must match the "link:" attribute defined previously.  The files that populate this directory must be in MD format, with the **required header**.  Each file represents one lab.  An example md document is shown below:
 
 examplePost / post1.md
 ```
