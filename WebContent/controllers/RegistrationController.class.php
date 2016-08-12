@@ -48,6 +48,7 @@ class RegistrationController {
 		} else  // Initial link
 			$_SESSION['user'] = null;
 			$_SESSION['userData'] = null;
+			$_SESSION['fb_access_token'] = null;
 			registrationView::show();
 	}
 	

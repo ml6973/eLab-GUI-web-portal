@@ -31,6 +31,7 @@ class LoginController {
 		}
 		$_SESSION['user'] = $user;
 		if (is_null($user) || $user->getErrorCount() != 0) {
+			$_SESSION['fb_access_token'] = null;
 			loginView::show($user);
 		} else {
 			$userData = UserDataDB::getUserDataBy('userId', $user->getUserId());
