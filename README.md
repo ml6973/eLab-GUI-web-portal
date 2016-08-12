@@ -68,4 +68,5 @@ The videos directory contains a single file "videos.yaml".  Simply append the fo
 
 ### Things to keep track of
 1. The website will sort the document files alphabetically, so if you wish to change the order in which items appear, you must ensure that the names of the documents correspond your desired order.
-2. The YAML parser used for this site will fail if there is improper usage of whitespaces and tabs.  Please ensure that for each document you create or append to in YAML, that there are no unnecessary or trailing whitespaces.
+2. The YAML parser used for this site will fail if there is improper usage of whitespaces and tabs.  Please ensure that for each document you create or append to in YAML, that there are no unnecessary or trailing whitespaces.  This also applies to the special header described in part 4.
+3. Please ensure that no file or directory names contain whitespaces.
