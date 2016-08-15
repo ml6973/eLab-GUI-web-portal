@@ -6,10 +6,9 @@ author:
 description: Horizon Dashboard - Keystone as a User
 ---
 
-
+* * *
 #### Lab 10: Horizon Dashboard - Keystone as a User #
-
-
+* * *
 
 ## Table of Contents
 
