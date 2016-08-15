@@ -9,7 +9,7 @@ description: Horizon Dashboard - Keystone as an Admin
 #### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
 * * *
 
-#### Lab 5: Horizon Dashboard - Keystone as an Admin #
+#### Lab 4: Horizon Dashboard - Keystone as an Admin #
 
 * * *
 
