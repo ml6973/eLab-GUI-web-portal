@@ -97,4 +97,4 @@ Similarly you can delete the object using drop down list. Before you delete a co
 ## Summary
 
 ## References
-http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html
+* http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html
