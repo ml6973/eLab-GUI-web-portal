@@ -6,10 +6,6 @@ author:
 description: Introduction to Cloud Computing
 ---
 
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
-  
-
 * * *
 
 #### Lab 1: Introduction to Cloud Computing #
@@ -76,3 +72,5 @@ $ ip a s <interface>
 ```
 
 * * *
+## References
+* http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html
