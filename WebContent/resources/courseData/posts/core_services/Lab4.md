@@ -40,7 +40,7 @@ description: Horizon Dashboard - Keystone as an Admin
 -[Summary](#summary)
 
 **Slide 1**:
-Welcome to the tutorial on Keystone using the Horizon dashboard. My name is Gonzalo De La Torre and I will be training you how to access the Admin features provided by the Keystone Service through the Horizon Dashboard.
+Welcome to the tutorial on Keystone using the Horizon dashboard. In this tutorial, let us see how to access the Admin features provided by the Keystone Service through the Horizon Dashboard.
 
 **Slide 2**:
 The contents to be covered in this tutorial include:
