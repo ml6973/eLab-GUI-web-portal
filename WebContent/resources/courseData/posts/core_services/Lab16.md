@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 16 Glance Command Line Interface
+title: Lab 16 Command Line Interface - Glance
 categories: core_services
 author: 
 description: Glance Command Line Interface
