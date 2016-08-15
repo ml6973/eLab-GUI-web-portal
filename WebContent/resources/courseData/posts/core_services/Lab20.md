@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 19 Command Line Interface - Cinder
+title: Lab 20 Command Line Interface - Cinder
 categories: core_services
 author: 
 description: Cinder Command Line Interface
