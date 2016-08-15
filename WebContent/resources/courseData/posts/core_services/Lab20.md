@@ -9,7 +9,8 @@ description: Cinder Command Line Interface
 #### Lab 20 Command Line Interface - Cinder 
 * * *
 
-## TABLE OF CONTENTS
+## Table of Contents
+
 * Introduction
 * Cinder general commands
 * Create cinder volume
@@ -116,5 +117,6 @@ nova volume-attach
 cinder create  
 cinder availability-zone-list  
 cinder --version  
+
 ## References
-[Openstack Document](http://docs.openstack.org/cli-reference/cinder.html)
+* [Openstack Document](http://docs.openstack.org/cli-reference/cinder.html)
