@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 17 Command Line Interface - Keystone
+title: Lab 17 Keystone Command Line Interface
 categories: core_services
 author: 
 description: Keystone Command Line Interface
