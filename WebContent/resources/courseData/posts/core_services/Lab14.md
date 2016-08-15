@@ -78,4 +78,4 @@ Now let’s see how to delete a volume.
 
 ## References
 
-http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html
+* http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html
