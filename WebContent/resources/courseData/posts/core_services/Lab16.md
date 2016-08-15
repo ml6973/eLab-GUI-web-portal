@@ -5,8 +5,9 @@ categories: core_services
 author: 
 description: Glance Command Line Interface
 ---
-
-# Command Line Interface - GLANCE 
+* * *
+#### Command Line Interface - Glance 
+* * *
 
 ## TABLE OF CONTENTS
 
