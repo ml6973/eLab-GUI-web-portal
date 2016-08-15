@@ -6,7 +6,7 @@ author:
 description: Glance Command Line Interface
 ---
 * * *
-#### Command Line Interface - Glance 
+#### Lab 16 Command Line Interface - Glance 
 * * *
 
 ## TABLE OF CONTENTS
