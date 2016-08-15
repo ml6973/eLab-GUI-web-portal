@@ -6,9 +6,7 @@ author:
 description: Installing OpenStack (AIO) using DevStack
 ---
 * * *
-
 #### Lab 3: Installing OpenStack (AIO) using DevStack #
-
 * * *
 
 First, you need to identify the allocation of the rack and servers you desire to use. We would like to keep the ip's chosen for our elements in a contiguous range. For our case, we designed our setup as follows:
