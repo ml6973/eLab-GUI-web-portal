@@ -9,7 +9,7 @@ description: Cinder Command Line Interface
 #### Lab 20 Command Line Interface - Cinder 
 * * *
 
-## Table of Contents
+# Table of Contents
 
 * Introduction
 * Cinder general commands
