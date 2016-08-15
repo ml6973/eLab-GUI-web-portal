@@ -9,7 +9,7 @@ description: Glance Command Line Interface
 #### Lab 17 Command Line Interface - Glance 
 * * *
 
-## Table of Contents
+# Table of Contents
 
 * Available images
 * Getting Images
