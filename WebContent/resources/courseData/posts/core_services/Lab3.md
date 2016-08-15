@@ -5,11 +5,6 @@ categories: core_services
 author: 
 description: Installing OpenStack (AIO) using DevStack
 ---
-
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
-  
-
 * * *
 
 #### Lab 3: Installing OpenStack (AIO) using DevStack #
@@ -76,3 +71,6 @@ $ ip a s <interface>
 ```
 
 * * *
+## Reference
+
+http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html
