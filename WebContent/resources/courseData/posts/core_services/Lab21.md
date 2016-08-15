@@ -9,7 +9,8 @@ description: Swift Command Line Interface
 #### Lab 21 Command Line Interface - Swift 
 * * *
 
-## TABLE OF CONTENTS
+# Table of Contents
+
 * Introduction
 * Swift general commands
 * Creating a container
@@ -123,6 +124,7 @@ $swift delete OCI
 ```
 ## Summary
 In this tutorial you have learned how to use Openstack service project Swift through command line interface.
+
 ## Summary of Commands
 Some of the commands we used during this lab are:  
 swift stat  
@@ -133,7 +135,7 @@ swift download
 swift delete  
 
 ## References:
-[Openstack Reference](http://docs.openstack.org/cli-reference/swift.html)
+* [Openstack Reference](http://docs.openstack.org/cli-reference/swift.html)
 
 
 
