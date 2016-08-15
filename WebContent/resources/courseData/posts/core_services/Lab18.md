@@ -6,7 +6,7 @@ author:
 description: Nova Command Line Interface
 ---
 
-# Command Line Interface - GLANCE 
+# Command Line Interface - NOVA 
 
 ## TABLE OF CONTENTS
 
