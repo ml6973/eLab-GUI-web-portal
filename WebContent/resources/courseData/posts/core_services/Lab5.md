@@ -16,7 +16,7 @@ description: Horizon Dashboard - Glance as an Admin
 
 * * *
 
-## TABLE OF CONTENTS
+# TABLE OF CONTENTS
 
 * Introduction
 * Accessing Horizon Dashboard
