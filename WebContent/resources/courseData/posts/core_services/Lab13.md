@@ -5,9 +5,6 @@ categories: core_services
 author: 
 description: Horizon Dashboard - Neutron as a User
 ---
-
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
   
 
 * * *
