@@ -5,7 +5,6 @@ categories: core_services
 author: 
 description: Keystone Command Line Interface
 --- 
-
 # Command Line Interface - KEYSTONE 
 
 ## TABLE OF CONTENTS
