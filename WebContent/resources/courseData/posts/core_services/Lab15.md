@@ -5,9 +5,6 @@ categories: core_services
 author: 
 description: Horizon Dashboard - Swift as a User
 ---
-
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
   
 
 * * *
@@ -100,3 +97,4 @@ Similarly you can delete the object using drop down list. Before you delete a co
 ## Summary
 
 ## References
+http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html
