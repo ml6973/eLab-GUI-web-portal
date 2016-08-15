@@ -16,7 +16,7 @@ description: Horizon Dashboard - Swift as a User
 
 * * *
 
-# TABLE OF CONTENTS
+# Table of Contents
 
 * Introduction
 * Creating a Container
@@ -25,7 +25,8 @@ description: Horizon Dashboard - Swift as a User
 * Download Objects from the Container
 * Copy a Object
 * Delete the Objects and Container
-
+* Summary
+* References
 
 ## Introduction
 Recently, the widespread use of smart mobile devices, such as iPhone, iPad, Android phones and Windows family devices, has led to a great demand for cloud computing. 
@@ -95,3 +96,7 @@ Now here you can see the copy of the txt file.
 
 ## Delete the Objects and Container
 Similarly you can delete the object using drop down list. Before you delete a container you need to delete all the objects and pseudo folders in the container.
+
+## Summary
+
+## References
