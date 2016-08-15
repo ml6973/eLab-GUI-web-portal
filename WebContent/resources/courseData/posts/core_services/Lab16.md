@@ -9,7 +9,7 @@ description: Keystone Command Line Interface
 #### Lab 16 Command Line Interface - Keystone 
 * * *
 
-## TABLE OF CONTENTS
+# Table of Contents
 
 * Introduction
 * Accessing your OpenStack environment
@@ -24,7 +24,7 @@ description: Keystone Command Line Interface
 ## Introduction
 Welcome to the command Line Interface - keystone Lab. 
 
-### Accessing your OpenStack environment
+## Accessing your OpenStack environment
 Let us first open a terminal window to connect to our OpenStack environment. In this case we have proceeded to install OpenStack using devstack in an all-in-one node. The three things you will require to connect to your environment are:  
 User  
 IP address of your OpenStack environment  
@@ -35,7 +35,7 @@ In your terminal you can access your OpenStack environment by typing:
 $ ssh ~/.ssh/cloud.key cc@129.114.110.19
 ```
 
-### Authentication
+## Authentication
 Now that we have accessed our OpenStack environment, the first thing we need to do is to authenticate our OpenStack user credentials. To do so, lets change to the Devstack directory. In my case, I cloned this directory into my home folder:
 ```sh
 $ cd ~/devstack  
@@ -50,7 +50,7 @@ $ keystone token-get
 ```
 As we can observe on the output, the current used token has an expiration date, an ID, and is specific to a particular tenant and user. In this case admin and admin.
 
-### Tenants
+## Tenants
 By default, whenever installing OpenStack using devstack, a series of default tenants will be created. Within those, the admin tenant and demo tenant. We will focus our exercises on using the admin tenant to manipulate, create or delete other tenants. To get a list of tenants using keystone, we can use the command:
 ```sh
 $ keystone tenant-list
@@ -81,7 +81,7 @@ There are different parameters that can be used to update the tenant such as the
 ```sh
 $ keystone tenant-update --name my-new-tenant --description "" --enabled false <tenant ID>
 ```
-### Roles
+## Roles
 By default, whenever installing OpenStack using devstack, a series of default roles will be created. Within those, the admin role, user role, and service role. To get a list of tenants using keystone, we use the command:
 ```sh
 $ keystone role-list
@@ -106,7 +106,7 @@ To delete the role we can use the command:
 ```sh
 $ keystone role-delete <role ID>
 ```
-### Users
+## Users
 In this section you will learn how to manage operations on users which include listing users, creating users, getting user information, deleting users, change a user’s password, list user’s roles, add a role to a user, remove a role from the user, and update a user’s information.
 
 To obtain a list of current users we can use the command:
@@ -185,5 +185,5 @@ $ keystone user-update
 $ keystone user-delete   
 
 ## References
-[Openstack Document](http://docs.openstack.org/ops-guide/ops_users.html#customizing-authorization)  
-[Openstack Config file](http://docs.openstack.org/kilo/config-reference/content/policy-json-file.html)
+* [Openstack Document](http://docs.openstack.org/ops-guide/ops_users.html#customizing-authorization)  
+* [Openstack Config file](http://docs.openstack.org/kilo/config-reference/content/policy-json-file.html)
