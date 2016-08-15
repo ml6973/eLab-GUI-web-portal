@@ -7,9 +7,7 @@ description: Horizon Dashboard - Nova as an Admin
 ---
 
 * * *
-
 #### Lab 6: Horizon Dashboard - Nova as an Admin #
-
 * * *
 
 # Table of Contents
