@@ -7,9 +7,7 @@ description: Horizon Dashboard - Glance as an Admin
 ---
 
 * * *
-
 #### Lab 5: Horizon Dashboard - Glance as an Admin #
-
 * * *
 
 # Table of Contents
