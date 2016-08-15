@@ -12,33 +12,12 @@ description: Horizon Dashboard - Keystone as a User
 
 ## Table of Contents
 
--[Horizon Dashboard - Keystone](#horizondashboard-Keystone)
-
--[Accessing the Horizon Dashboard](#accessingthehorizondashboard)
-
--[Services](#services)
-
--[Tenant](#tenant)
-
-* [ListTenant](#tenant)
-
-* [Create Tenant](#createtenant)
-
-* [Delete Tenant](#deletetenant)
-
-* [Edit Tenant](#edittenant)
-
--[Users and Roles](#usersandroles)
-
-* [Create User](#createuser)
-
-* [Delete User](#deleteuser)
-
-* [Get User](#getuser)
-
-* [List User](#listuser)
-
--[Summary](#summary)
+* Horizon Dashboard - Keystone
+* Accessing the Horizon Dashboard
+* Services
+* Tenant
+* Users and Roles
+* Summary
 
 The Horizon dashboard supports 3 types of central dashboards. These are: 
 User Dashboard
@@ -74,13 +53,17 @@ Password: secrete and then click connect button.
 Now let us begin familiarizing with Horizon Dashboard. 
 
 We will start with Services.
-### Services
+
+
+## Services
 Within the horizon dashboard, the service list can be found in system information. The navigation is: 
 
 Admin → System→ System Information
 
 The system information table has the information like service Name, the openstack service to which it is associated with, host address and the status -  whether it is enabled or disabled.
-### Tenants
+
+
+## Tenants
 A Tenant is another term for a project. It represents a group of users who have dedicated access to their compute resources. 
 #### List Tenant
 List tenant will provide you with a list of the currently available tenants / projects.
@@ -119,7 +102,7 @@ In Project Members, you can add members using the + icon beside every user. The 
 In Quota tab, the related fields can be edited and saved using the save button. 
 
 
-### Users and Roles
+## Users and Roles
 #### Create User
 
 Click on the Create User button available on the top right corner of the screen. 
@@ -147,7 +130,6 @@ Follow the navigation : In Identity→ Users
 This screen shows the list of users. So here if you notice, all the users have a hyperlink to their details screen. The details screen will provide with the information of the users.
  To see the details of a particular user, keep cursor on the user name you wish to view.Using the hand symbol, click on the user name. The following screen will show the details of the user (demoUser).
 
-
 #### List User
 List user screen will provide you with the list of currently available users. 
 	You can get to the list of users by following the navigation: 
@@ -157,14 +139,17 @@ Within demo project; Identity → Users
 The list user screen has information like User Name which is the name of the user, and then Email of the user, a unique User ID, it has information whether the user is Enabled or disabled and it also have an Action field with options for you to edit the user.
 
 Now let us see how to edit a user.
+
 #### Edit User
 To update/edit the user details, click on the edit button on the action column of the user name. The Edit button allows you to edit the username, email, and primary project.
 
 
  The drop down can be accessed to edit the status of the user, the password for the user and also Delete a user. 
 
-### Summary
+
+## Summary
 The keystone dashboard provides a web based user interface for openstack services. It provides with an interface that provides access information on the most important components of keystone, that are required for the management of users, roles, tenants and services.
 
-References
-http://docs.openstack.org
+
+## References
+* http://docs.openstack.org
