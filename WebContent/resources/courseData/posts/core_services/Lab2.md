@@ -6,8 +6,8 @@ author:
 description: Creating a Local Testing Environment
 ---
 
+* * *
 ## Lab 2: Creating a Local Testing Environment #
-
 * * *
 
 ## Install VirtualBox
