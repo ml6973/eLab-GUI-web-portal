@@ -13,7 +13,7 @@ description: Horizon Dashboard - Neutron as a User
 
 * * *
 
-# TABLE OF CONTENTS
+# Table of Contents
 
 * Prerequisites
 * Overview
@@ -149,10 +149,10 @@ Remote: You must specify the source of the traffic to be allowed via this rule. 
 
 After configuring, click on Add. You will now see your added rule on the refreshed security group rules page. 
 
-## Conclusion:
+## Summary
 In this module, you have learned how to configure Openstack Neutron features as a demo user
 
-## Reference:   
+## Reference
 * http://docs.openstack.org/mitaka/networking-guide/intro-os-networking-overview.html#openstack-networking-concepts Accessed: July 27, 2016.
 * “OpenStack Fundamentals Configuring a Tenant Network” Byron Hynes, Enterprise Technology Strategist, Skillsoft. Accessed: July 27, 2016.
 * “Introduction to Openstack Neutron”, David Mahler. Accessed: July 27, 2016.
