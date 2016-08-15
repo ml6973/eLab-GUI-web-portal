@@ -9,7 +9,7 @@ description: Nova Command Line Interface
 #### Lab 18 Command Line Interface - Nova 
 * * *
 
-## Table of Contents
+# Table of Contents
 
 * Creating and Managing Instances
 * Nova Services
