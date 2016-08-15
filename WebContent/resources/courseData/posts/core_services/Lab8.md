@@ -76,3 +76,6 @@ $ ip a s <interface>
 ```
 
 * * *
+
+Reference
+http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html
