@@ -6,17 +6,11 @@ author:
 description: Horizon Dashboard - Glance as an Admin
 ---
 
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
-  
-
 * * *
-
 #### Lab 5: Horizon Dashboard - Glance as an Admin #
-
 * * *
 
-## TABLE OF CONTENTS
+# Table of Contents
 
 * Introduction
 * Accessing Horizon Dashboard
@@ -27,10 +21,6 @@ description: Horizon Dashboard - Glance as an Admin
 * Summary
 * References
 
- 
-Welcome to the Horizon Dashboard Glance Tutorial. 
-
-We assume you have the basic knowledge about openstack and its services. 
 
 ## Introduction 
 Glance is OpenStack’s Image Service. It imparts discovery, registration and delivery services for server and disk images. It is the core openstack service which allows the creation of virtual disk images and storing them. The images that are stored can be used as templates which the clients can use to get a new server up and running easily. The virtual machine images can be stored in backends, local file systems, or even in the openstack object storage - Swift. 

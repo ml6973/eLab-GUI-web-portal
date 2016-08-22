@@ -6,10 +6,6 @@ author:
 description: Horizon Dashboard - Cinder as a User
 ---
 
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
-  
-
 * * *
 
 #### Lab 14: Horizon Dashboard - Cinder as a User #
@@ -81,3 +77,5 @@ Now let’s see how to delete a volume.
 ## Summary 
 
 ## References
+
+* http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html

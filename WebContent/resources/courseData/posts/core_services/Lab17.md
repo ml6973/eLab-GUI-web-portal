@@ -1,188 +1,199 @@
 ---
 layout: post
-title: Lab 17 Keystone Command Line Interface
+title: Lab 17 Command Line Interface - Glance
 categories: core_services
 author: 
-description: Keystone Command Line Interface
+description: Glance Command Line Interface
 ---
+* * *
+#### Lab 17 Command Line Interface - Glance 
+* * *
 
-# Command Line Interface - KEYSTONE 
+# Table of Contents
 
-## TABLE OF CONTENTS
-
-* Introduction
-* Accessing your OpenStack environment
-* Authentication
-* Tenants
-* Roles
-* Users
+* Available images
+* Getting Images
+* Create an Image
+* Image Deactivate
+* Reactivate Image
+* Updating an Image
+* Tags
+* Image Delete
 * Summary
-* Summary of Commands
-* References
+* Glance Commands
+* Sources
 
-## Introduction
-Welcome to the command Line Interface - keystone Lab. 
 
-### Accessing your OpenStack environment
-Let us first open a terminal window to connect to our OpenStack environment. In this case we have proceeded to install OpenStack using devstack in an all-in-one node. The three things you will require to connect to your environment are:  
-User  
-IP address of your OpenStack environment  
-Private key corresponding to the public key provided during instance creation
+ 
+Welcome to the Glance Command Line Interface eLab. 
 
-In your terminal you can access your OpenStack environment by typing:
-``` sh
-$ ssh ~/.ssh/cloud.key cc@129.114.110.19
-```
+We assume you have the basic knowledge about openstack and its services. 
 
-### Authentication
-Now that we have accessed our OpenStack environment, the first thing we need to do is to authenticate our OpenStack user credentials. To do so, lets change to the Devstack directory. In my case, I cloned this directory into my home folder:
+## Introduction 
+
+The Glance project provides a service where you can upload and discover data assets that are meant to be used with other services. This currently includes images and metadata definitions. Glance image services include discovering, registering, and retrieving virtual machine images. Let us see how we can proceed with performing these tasks.
+First you will need to access your openstack environment and source your credentials as admin user and admin tenant. You have already done this in the keystone tutorial.
+
+In your terminal type 
+
 ```sh
-$ cd ~/devstack  
+$ ssh -i ~/.ssh/oci-openstack.pem cc@129.114.110.61
 ```
-Source credentials as an admin user and admin tenant by typing:  
+```sh
+$ cd ~/devstack
+```
 ```sh
 $ source openrc admin admin
 ```
-When you source your credentials, you are requesting keystone to provide you with a token that will allow you to work with the OpenStack Services Clients. These clients give you the ability to operate the command line interface for each one of these. In this case, let us use the keystone CLI to obtain information on the token being used for the admin user and admin tenant. Let us type:
-```sh
-$ keystone token-get
-```
-As we can observe on the output, the current used token has an expiration date, an ID, and is specific to a particular tenant and user. In this case admin and admin.
 
-### Tenants
-By default, whenever installing OpenStack using devstack, a series of default tenants will be created. Within those, the admin tenant and demo tenant. We will focus our exercises on using the admin tenant to manipulate, create or delete other tenants. To get a list of tenants using keystone, we can use the command:
-```sh
-$ keystone tenant-list
-```
-In the output we will be able to obtain information for each tenant such as the tenant ID, tenant name, and information on whether the tenant is enabled or disabled for usage.
+Now that you are in the Openstack environment, we can proceed with using the glance command line interface. Glance is the reference implementation of the OpenStack Images API. As such, Glance fully implements versions 1 and 2 of the Images API.
 
-Let us say that we would like to obtain more information on the admin tenant. We can use the command:
-``` sh
-$ keystone tenant-get <tenant ID>
-```
-You can also provide the <tenant name> instead of <tenant ID>.
+Currently Nova uses the Images v1 API, but work is in progress to convert Nova (and other OpenStack services that consume images) to using the Images v2 API. Once that occurs, it will be possible to deploy OpenStack without deploying the Images v1 API. At that point, the Images v1 API will be deprecated, following the standard OpenStack deprecation policy. The glance command line utility interacts with OpenStack Images Service (Glance).
 
-This command will provide you with additional properties information of this tenant. As an example, whenever we requested a list of tenants, the description property was not displayed as it is in this case. This property is filled out by the admin during the creation of a tenant or while editing.
+## Available images
+To view the existing images you can use the command:
 
-To create a new tenant (also known as project or account) you can use the command:
-``` sh
-$ keystone tenant-create --name<tenant name>
-```
-The keystone tenant-create command only requires a tenant-name of your liking to create it; nevertheless, you can pass to this command additional parameters like description of the tenant or define to enable (or not) the tenant to be created by giving the options of true or false. As an example:
 ```sh
-$ keystone tenant-create --name OCI2 --description “OCI tenant” --enabled true
+$ glance image-list
 ```
-If by any reason you would like to update the information on any tenant you can use the command:
-```sh
-$ keystone tenant-update <tenant ID>
-```
-There are different parameters that can be used to update the tenant such as the tenant’s name, the tenant’s description, or set the enabled flag to true or false. As an example let us update our recently created tenant
-```sh
-$ keystone tenant-update --name my-new-tenant --description "" --enabled false <tenant ID>
-```
-### Roles
-By default, whenever installing OpenStack using devstack, a series of default roles will be created. Within those, the admin role, user role, and service role. To get a list of tenants using keystone, we use the command:
-```sh
-$ keystone role-list
-```
-The keystone service has its own role access policies. These policies determine which user can access which objects in which way, and are defined in the service's policy.json file.
-Whenever an API call to an OpenStack service is made, the service's policy engine uses the appropriate policy definitions to determine if the call can be accepted. Any changes to policy.json are effective immediately, which allows new policies to be implemented while the service is running.
 
-The keystone policy file can be found in:
-``` sh
-$ /etc/keystone/policy.json
-```
-Let’s say that we would like to create a new role. We can use the command:
-```sh
-$ keystone role-create --name my-role
-```
-If we want to get detailed information about the role we just created, we can use the command:
-```sh
-$ keystone role-get <role ID>
-```
-This information is the same one that is displayed when you just created the role.
-To delete the role we can use the command:
-```sh
-$ keystone role-delete <role ID>
-```
-### Users
-In this section you will learn how to manage operations on users which include listing users, creating users, getting user information, deleting users, change a user’s password, list user’s roles, add a role to a user, remove a role from the user, and update a user’s information.
+You will now see a list of images that are already present in a tabular form with the attributes of the image name and the image ID.
 
-To obtain a list of current users we can use the command:
-```sh
-$ keystone user-list
-```
-In a default OpenStack installation using devstack, multiple users will be created such as an admin user, demo user, and users for the installed OpenStack services.
-Let's see how you can create a new user. To create a new user let us type the command:
-```sh
-$ keystone user-create
-```
-You will notice that this command will give us an error since it requires us to pass additional arguments. The only required argument this keystone command requests is the --name. Arguments such as tenant, pass, email, enabled are optional. Lets us look a little bit deeper into this commands and see how they work.
+Running this command displays the list of images with their names and unique ID. If you run this same command using a version 1 image API, you can use: 
 
-Let us assume that we want to create a new user that is assigned to the demo tenant, give the password of mypassword and we want this user to be enabled immediately. To perform such action we need to use the command:
 ```sh
-$ keystone user-create --name new-user --tenant demo --pass mypassword --enabled true
+$ glance --os-image-api-version 1 image-list
 ```
-By pressing enter, a box containing different information properties of the new user will be shown. These properties are email, enabled, user ID, user name, tenant ID and the name of the user. If we wanted to get this same information for any other user we could use the command:
+
+As you can see in the version 1 API you can see some extra attributes about the image like Disk format, Container format, Size and Status.
+
+## Getting Images
+There are many images that you can use for instance like CentOS, CirrOS, Ubuntu, Debian etc. Each of these have their own resource from which you can download them. For example, to view the current cloud images for Ubuntu you could browse:
+
 ```sh
-$ keystone user-get 006c14e6546e4cdc91d1ed9be45a7a7e
+https://cloud-images.ubuntu.com/trusty/current/
 ```
-To give a new password to the user we can use:
+
 ```sh
-$ keystone user-password-update --pass newpassword 006c14e6546e4cdc91d1ed9be45a7a7e
+$ glance --os-image-api-version 1 image-list
 ```
-To list the roles assigned to a particular user we can use the command:
+Let us download a few Ubuntu images. First we create a directory to save these downloaded images on our instance.
+
+Now we get the image into the directory. You can use
+
 ```sh
-$ keystone user-role-list
+$ wget https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img
 ```
-To add a new role to a user we can type the command:   
+
+## Create an Image
+
+Let us now use this downloaded image to create a new glance image. The following command shows you how to create a glance image using version 2 API
+
 ```sh
-$ keystone user-role-add --user new-user --role Member --tenant demo
+$ glance --os-image-api-version 2 image-create --protected False --name ubuntu-14-04-V2 --min-disk 2 --visibility private --tags ubuntu --disk-format qcow2 --min-ram 1024 --container-format bare --file ~/downloaded_images/trusty-server-cloudimg-amd64-disk1.img --progress
 ```
-To remove a role from a user, we can use:    
+
+As you can see we have set many of the parameters of this image like –protected, --name, --visibility, --tags, --disk-format, --min-ram, --container-format, --file, --progress. Let us look at one more way of creating an image with version 1 image API and using a location url. Here you find that you can directly specify the “location” parameter which is a url from which the image can directly be downloaded. If you take a look at the displayed table, you can see that there is a “Property column” and a “Value” column. The properties are all the optional arguments that you can modify or set for the image that you created. This parameter was not available when you used the same command with image version 1 API.  You can use the command:
+
 ```sh
-$ keystone user-role-remove --user new-user --role Member --tenant demo
+$ glance --os-image-api-version 1 image-create --name "ubuntu-14-04" --disk-format qcow2 --container-format bare --is-public False --location
 ```
-To update a user’s information, you can use:    
+
+To see the optional parameters you can always use the command
 ```sh
-$ keystone user-update --name super-user --email new_email@oci.com --enabled false 006c14e6546e4cdc91d1ed9be45a7a7e
+$ glance help image-create
 ```
-To validate the update of this information, we can use:  
+You can also see the parameters for the glance command by typing 
 ```sh
-$ keystone user-get 006c14e6546e4cdc91d1ed9be45a7a7e
+$ glance (return key)
 ```
-Finally, to delete a user, we can use the command:   
+
+This command will give you an error but it will also give you a list of parameters that you can use with the glance command.
+
+Now that you have created two glance images using two different methods, let us take a look at our list of images. You can use the command:
+
 ```sh
-$ keystone user-delete 006c14e6546e4cdc91d1ed9be45a7a7e
+$ glance image-list
 ```
-To validate that the user has been deleted we can use the command:   
+Now that we have uploaded images, if you want to download one of these images on your instance so that you can reuse them,you could use the command:
+
 ```sh
-$ keystone user-list
+$ glance image-download 257520b3-22cd-49f0-bf8d-b958292941e3 > cirros-0.3.4-x86_64-uec.ami 
 ```
-We can observe that super-user is no longer listed
+
+## Image Deactivate
+You can deactivate an image by using the command. 
+
+```sh
+$ glance image-deactivate <image id>
+```
+To check the status of this image and verify that it has been deactivated you can use the command
+
+```sh
+$ glance image-show <image id>
+```
+This command gives a detailed description of the image that you have referenced with you’re the image ID
+
+
+## Reactivate Image
+Now that you have deactivated this image if you wish to reactivate it you could use the command
+
+```sh
+$ glance image-reactivate <image id>
+```
+
+## Updating an Image
+You can update any of the attributes of the image for example here we are going to change the name from cirros-0.3.4-x86_64-uec to XYZ that has been created by using the command:
+
+```sh
+$ glance image-update <image ID> --name XYZ
+```
+
+You can see that the image name has been changed. Likewise, you can change other attributes too.
+
+## Tags
+You can also add tags as metadata to the images that you create. You can use the command:
+
+```sh
+$ glance image-tag-update <image ID> --name XYZ
+```
+You can also delete the tag that you have created using the command
+
+```sh
+$  glance image-tag-delete <image id> ABCtag
+```
+
+## Image Delete
+You can delete the image you created by using the command glance image-delete and specifying the image id:
+
+```sh
+$ glance image-delete <image id>
+```
+So now when you do a glance image-list you can see that the image you created has been deleted
 
 ## Summary
-In this lab, we covered how to use Keystone’s command line interface to list, update, create and delete tenants, roles and users.
+In this tutorial we have seen the two versions of the image API and how to use the glance CLI to:
 
-## Summary of Commands    
-$ keystone token-get   
-$ keystone tenant-list   
-$ keystone tenant-create   
-$ keystone tenant-update   
-$ keystone role-list   
-$ keystone role-create   
-$ keystone role-get   
-$ keystone role-delete   
-$ keystone user-list   
-$ keystone user-create   
-$ keystone user-get   
-$ keystone user-password-update   
-$ keystone user-role-list   
-$ keystone user-role-add   
-$ keystone user-role-remove   
-$ keystone user-update   
-$ keystone user-delete   
+* List available images
+* Download and Upload images
+* Create an Image
+* Delete an image
+* Deactivate and Reactivate an Image
+* Update an Image
+* Add Tags to an image
+
+## Glance Commands Summary
+
+* glance --os-image-api-version 1 image-list
+* glance image-create <parameters>
+* glance image-deactivate <image-id>
+* glance image-show <image-id>
+* glance image-reactiactivate <image-id>
+* glance image-update <image-id> <parameter to be updated>
+* glance image-delete <image-id>
 
 ## References
-[Openstack Document](http://docs.openstack.org/ops-guide/ops_users.html#customizing-authorization)  
-[Openstack Config file](http://docs.openstack.org/kilo/config-reference/content/policy-json-file.html)
+* [Openstack Doc](http://docs.openstack.org/icehouse/training-guides/content/operator-getting-started.html)
+* [Deploying OPenstack](https://www.safaribooksonline.com/library/view/deploying-openstack/9781449311223/ch03.html)
+* [Architecture](http://docs.openstack.org/developer/glance/architecture.html)
+

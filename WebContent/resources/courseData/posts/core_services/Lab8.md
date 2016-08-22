@@ -6,10 +6,7 @@ author:
 description: Horizon Dashboard - Cinder as an Admin
 ---
 
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
   
-
 * * *
 
 #### Lab 8: Horizon Dashboard - Cinder as an Admin #
@@ -76,3 +73,6 @@ $ ip a s <interface>
 ```
 
 * * *
+
+Reference
+http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html

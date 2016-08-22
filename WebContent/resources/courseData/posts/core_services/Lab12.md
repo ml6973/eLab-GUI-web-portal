@@ -5,9 +5,6 @@ categories: core_services
 author: 
 description: Horizon Dashboard - Nova as a User
 ---
-
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
   
 
 * * *
@@ -16,7 +13,7 @@ description: Horizon Dashboard - Nova as a User
 
 * * *
 
-## TABLE OF CONTENTS
+## Table of Contents
 
 * Introduction
 * Accessing Horizon Dashboard
@@ -190,7 +187,7 @@ Nova is OpenStack’s compute services. The horizon dashboard acts as a user int
 
 
 ## Reference
-http://blog.flux7.com/blogs/openstack/tutorial-what-is-nova-and-how-to-install-use-it-openstack
-http://docs.openstack.org/admin-guide/cli_set_compute_quotas.html
+* http://blog.flux7.com/blogs/openstack/tutorial-what-is-nova-and-how-to-install-use-it-openstack
+* http://docs.openstack.org/admin-guide/cli_set_compute_quotas.html
 
 

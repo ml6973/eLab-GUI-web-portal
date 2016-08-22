@@ -5,9 +5,6 @@ categories: core_services
 author: 
 description: Horizon Dashboard - Neutron as a User
 ---
-
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
   
 
 * * *
@@ -16,7 +13,7 @@ description: Horizon Dashboard - Neutron as a User
 
 * * *
 
-# TABLE OF CONTENTS
+# Table of Contents
 
 * Prerequisites
 * Overview
@@ -79,7 +76,7 @@ Just click on “Create Network” button on top right corner of the screen.
 Give it a Name, The Admin State has two options UP or DOWN implying the state you want the network to start in. 
 
 #### Creating SubNet:
-After creating network, you can define a subnetwork for it by clicking on the Next button. Creating a subnet is a choice. You can create a network without creating a subnet, but if you don’t specify a subnet you won’t be able to attach the network to an instance. Subnets help you define and differentiate different areas of  your network for purposes such as security and broadcasting. Meaning, ig you have a large network with many nodes, you can group some nodes together for specific purposes and so on. Through subnetting, networks can be organized more clearly specially in case of large networks. 
+After creating network, you can define a subnetwork for it by clicking on the Next button. Creating a subnet is a choice. You can create a network without creating a subnet, but if you don’t specify a subnet you won’t be able to attach the network to an instance. Subnets help you define and differentiate different areas of  your network for purposes such as security and broadcasting. Meaning, if you have a large network with many nodes, you can group some nodes together for specific purposes and so on. Through subnetting, networks can be organized more clearly specially in case of large networks. 
 
 Give your subnet a Name. The Network address has to be in CIDR format. Now select the IP (Internet Protocol) version which provides an identification and location system for computers on networks and also used for routing traffic across internet. There is an option at the bottom to Disable Gateway. If you have a gateway and if you have a network it will be routed but you can disable that as well. By default the gateway of the IP will be the first usable IP of 192.168.1.1. 
 
@@ -152,10 +149,10 @@ Remote: You must specify the source of the traffic to be allowed via this rule. 
 
 After configuring, click on Add. You will now see your added rule on the refreshed security group rules page. 
 
-## Conclusion:
+## Summary
 In this module, you have learned how to configure Openstack Neutron features as a demo user
 
-## Reference:   
+## Reference
 * http://docs.openstack.org/mitaka/networking-guide/intro-os-networking-overview.html#openstack-networking-concepts Accessed: July 27, 2016.
 * “OpenStack Fundamentals Configuring a Tenant Network” Byron Hynes, Enterprise Technology Strategist, Skillsoft. Accessed: July 27, 2016.
 * “Introduction to Openstack Neutron”, David Mahler. Accessed: July 27, 2016.

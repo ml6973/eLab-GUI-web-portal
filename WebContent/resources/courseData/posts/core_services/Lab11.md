@@ -6,9 +6,6 @@ author:
 description: Horizon Dashboard - Glance as a User
 ---
 
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
-  
 
 * * *
 
@@ -16,7 +13,7 @@ description: Horizon Dashboard - Glance as a User
 
 * * *
 
-# TABLE OF CONTENTS
+# Table of Contents
 
 * Introduction
 * Accessing Horizon Dashboard
@@ -104,3 +101,6 @@ A success message will appear on the top right corner of the screen to confirm t
 ## Summary
 To summarise, Glance is the only image service for openstack. 
 Within demo project, go to project and then Image list can be accessed within the compute tab. The Horizon Dashboard manages images using the functionalities that allows you to manage the virtual disks and servers. A demo user do not have the permission to delete an image, but can list, create and edit images. 
+
+## Reference
+* http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html

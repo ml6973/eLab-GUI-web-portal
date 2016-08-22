@@ -6,9 +6,6 @@ author:
 description: Horizon Dashboard - Swift as an Admin
 ---
 
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
-  
 
 * * *
 
@@ -76,3 +73,7 @@ $ ip a s <interface>
 ```
 
 * * *
+
+Reference
+
+http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html

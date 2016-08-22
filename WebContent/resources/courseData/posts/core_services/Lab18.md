@@ -5,10 +5,11 @@ categories: core_services
 author: 
 description: Nova Command Line Interface
 ---
+* * *
+#### Lab 18 Command Line Interface - Nova 
+* * *
 
-# Command Line Interface - NOVA 
-
-## TABLE OF CONTENTS
+# Table of Contents
 
 * Creating and Managing Instances
 * Nova Services
@@ -172,4 +173,4 @@ View and modify the security groups
 Delete an instance
 
 ##References   
-[Openstack Document](http://docs.openstack.org/cli-reference/nova.html)
+* [Openstack Document](http://docs.openstack.org/cli-reference/nova.html)

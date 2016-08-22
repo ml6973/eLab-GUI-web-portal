@@ -6,68 +6,23 @@ author:
 description: Horizon Dashboard - Nova as an Admin
 ---
 
-#### We followed, abridged, and skipped around the guide laid out at: # [http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html](http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html)
-
-  
-
 * * *
-
 #### Lab 6: Horizon Dashboard - Nova as an Admin #
-
 * * *
 
-## Table of Contents
-- [Introduction](#Introduction)
-- [Accessing Horizon Dashboard](#AccessingHorizonDashboard)
-- [Instances](#Instances)
-     * [List Instances](#ListInstance)
-    * [Create an Instance](#CreateanInstance)
-    * [Edit Instance](#editInstance)
-- [Flavors](#flavors)
-    * [Create Flavor](#createflavor)
-    * [Delete Flavor](#deleteflavor)
-- [Quota](#quota)
-- [Security Group](#securitygroup)
-    * [Create Security Group](#createsecuritygroup)
-    * [Manage Security Rules](#managesecurityrules)
-        * [Add Rule](#Addrule)
-        * [Delete Rule](#DeleteRule)
-    * [Delete Security Group](#DeleteSecurityGroup)
-    * [Delete an Instance](#DeleteanInstance)
-- [Summary](#summary)
-- [Reference](#Reference)
+# Table of Contents
+* Introduction
+* Accessing the Horizon Dashboard
+* Creating and Managing Instances
+* Creating and Managing Flavors
+* Quota
+* Deleting an Instance
+* Summary
+* References
 
 ## Introduction
 
-Welcome to the tutorial on Horizon Dashboard Nova. 
-
-We assume that you have a basic knowledge on OpenStack and its services. 
-
-Let us begin the tutorial with a brief introduction on Nova.
-
-The openstack cloud operating system uses Nova to offer on-demand computing resources. It is OpenStack’s compute service project which is used for managing and hosting cloud computing systems. 
-
-Nova is built using a component based architecture and it enables additions of new features with ease. When it comes to small deliveries/deployments, Nova along with its components share a centralized SQL based database. Whereas for bigger deployments, a system that aggregates data across the multiple stores needs to be used. 
-
-There are 8 components which makes up Nova. They are: 
-
-Database: which uses SQL database for data storage
-
-The API: This component is used to receive http requests and also communicate with other components. 
-
-Then we have Web based Dashboard: which is as an external interface component - used to communicate with API 
-
-The Auth Manager is responsible for projects/tenants, users and roles. This python class allows you to communicate with the backend DB
-
-The Object store component allows you to store and retrieve images
-
-The scheduler allocates to hosts to virtual machines
-The Network component is responsible for vlans, bridges and IP forwarding.
-
-Compute component takes care of the communication between hypervisor and virtual machine 
-
-Nova has the following features of being fault tolerant service, recoverable and also it provides API compatibility with Amazon services.
-
+Welcome to the tutorial on Horizon Dashboard Nova. The openstack cloud operating system uses Nova to offer on-demand computing resources. It is OpenStack’s compute service project which is used for managing and hosting cloud computing systems. Nova is built using a component based architecture and it enables additions of new features with ease. When it comes to small deliveries/deployments, Nova along with its components share a centralized SQL based database. Whereas for bigger deployments, a system that aggregates data across the multiple stores needs to be used. 
 
 Let us now familiarize with the Nova Service in the Horizon Dashboard:
 
@@ -79,7 +34,7 @@ Password: secrete
 
 Afterwards, click connect button. 
 
-## Instances
+## Creating and Managing Instances
 List Instances
 Once you are in horizon dashboard, Follow the navigation:
 Admin → System → Instances
@@ -128,7 +83,7 @@ The hypervisor list can be found by navigating to :
 
 Admin → System → Hypervisor
 
-## Flavors
+## Creating and Managing Flavors
  Flavor denotes the size of the instance to be launched. Server compute, memory and storage capacity of computing instances are defined using flavor. 
 Follow the navigation: 
 
@@ -186,65 +141,7 @@ Let us take a look at the default quota fields:
 
 **security-group-rules**: Security group rules is the number of rules given for a single security group. 
 
-
-## Security Group
-
-To see the security groups that are available in the horizon dashboard, let us follow the navigation:
-
-Project → Compute → Access & Security
-
-It is the security group that defines which of the incoming network traffic sources can be trusted and are forwarded to instances. It acts as a cloud firewall. If there are no security groups available, then a default one is assigned to the instances. 
-
-### Create Security Group
-
-Let us now see how to create a new security group. 
-
-Click on the create security group button on top right corner of the screen. 
-
-
-In the screen that has popped up, provide the name and description of the security group that you wish to create. 
-
-If the creation of the security group was successful, then the success message will be displayed on the top right corner of the screen.
-### Manage Security Rules
-
-The security rules can be accessed by using the button Manage Rules at the right hand side of the screen. 
-
-Let us click on the button Manage Rules now. The rules available for the chosen security group can be seen here. 
-
-#### Add Rule
-
-We can add a new rule to the security group by clicking on the button Add rule at the top right corner of the screen.
-
-In the screen that just popped up, frame the rule that you wish to have for the security group. 
-A rule decides on the traffic that is allowed towards the instances that uses the security group.
-
-To create the rule, click on the Add button. 
-
-To confirm the creation of the Rule, we need to wait for the success message that appears on the top right corner of the screen. 
-
-#### Delete Rule
-
-Now we will see how to delete a rule for a security group.  
-
-Click on the checkbox beside the rule that you want to delete.
-
- click the Delete Rule button on the top right corner of the screen to delete the rule. Confirm the selection of the rule that you wish to delete by clicking on the Delete Rule button. 
-
-The success message will help us to confirm the successful deletion of the rule.
-
-### Delete Security Group
-
-Let us try to delete the security group from the security group list. 
-
-Select the security group you wish to delete by checking the box adjacent to the security group. 
-
-Click on the button Delete Security Group to delete the security group selected. 
-
-In the screen that has just popped up, confirm the security group name that has to be deleted. Click on the button Delete Security Group to confirm the deletion. 
-
-A success message that will appear on the top right corner of the screen will confirm the successful deletion of the security group.
-
-### Delete an Instance
+## Deleting an Instance
 
 Now let us see how to delete an instance. 
 Choose the instance that you want to delete by checking the box adjacent to the instance that you want to delete.
@@ -257,7 +154,7 @@ The success message that appears on top right corner of the screen confirms the 
 
 Nova is OpenStack’s compute services. The horizon dashboard acts as a user interface that allows easy access and management of instances, flavors, security groups and its rules.
 
-## Reference
+## References
 
 http://blog.flux7.com/blogs/openstack/tutorial-what-is-nova-and-how-to-install-use-it-openstack
 http://docs.openstack.org/admin-guide/cli_set_compute_quotas.html
