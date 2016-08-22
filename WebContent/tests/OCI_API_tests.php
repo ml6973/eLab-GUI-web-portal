@@ -14,7 +14,7 @@ include_once("../models/Messages.class.php");
 set_time_limit(120);
 ?>
 
-<h2>It should grab the course catalog</h2>
+<h2>It should grab the courses user 2 is registered to</h2>
 <?php 
 
 $catalog = OCI_API::getCatalog();
@@ -27,14 +27,15 @@ print_r($catalog);
 
 $validTest = array("userName" => "ghooks", "password" => "test");
 $s1 = new User($validTest);
-$s1->setUserId(4);
+//$s1->setUserId(4);
+$s1->setUserId(2);
 
 $validTest = array("email" => "test@gdail.com",
 		"vmPassword" => "testpassword"
 );
 $s2 = new UserData($validTest);
 
-OCI_API::registerUser($s1, $s2);
+//OCI_API::registerUser($s1, $s2);
 
 ?>
 
@@ -49,8 +50,8 @@ print_r($instances);
 <h2>It should retrieve a a specific instance for a user</h2>
 <?php 
 
-$imageName = "cirros-0.3.4-x86_64-uec-kernel";
-$instance = OCI_API::getInstanceByImageName($s1->getUserId(), $imageName);
+$imageName = "cirros";
+$instance = OCI_API::getInstanceIPByImageName($s1->getUserId(), $imageName);
 print_r($instance);
 
 ?>

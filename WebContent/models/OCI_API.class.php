@@ -67,11 +67,13 @@ class OCI_API {
 		$response = curl_exec($ch);
 	
 		curl_close($ch);
+		
+		$response = json_decode($response, true);
 	
 		return($response);
 	}
 	
-	public static function getInstanceByImageName($userID, $imageName) {
+	public static function getInstanceIPByImageName($userID, $imageName) {
 	
 		$json = array("api_uname" => "webportal",
 				"api_pass" => "greg123",
@@ -112,7 +114,7 @@ class OCI_API {
 }
 
 if (isset($_POST['getInstanceID']) && isset($_POST['getInstanceImage'])) {
-	echo OCI_API::getInstanceByImageName($_POST['getInstanceID'], $_POST['getInstanceImage']);
+	echo OCI_API::getInstanceIPByImageName($_POST['getInstanceID'], $_POST['getInstanceImage']);
 }
 
 ?>
