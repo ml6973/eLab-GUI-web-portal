@@ -31,14 +31,14 @@ example.yaml
 ```
 
 ### 3. Add a topic (if needed) 
-The topic directory defines the topics that'll appear on the main page underneath each course description.  The document must be in YAML format and the name must match the "topicFile:" attribute defined previously.  The file can contain multiple topics. The following is an example:
+The topics directory defines the topics that'll appear on the main page underneath each course description.  The document must be in YAML format and the name must match the "topicFile:" attribute defined previously.  The file can contain multiple topics. The following is an example:
 
 exampleTopic.yml
 ```
 - title: Example Topic Title
   icon: <i class="fa fa-download" aria-hidden="true"></i> (leave this line exactly as it appears)
   description: (leave blank)
-  image:  (leave blank)
+  image:  This must match the image name stored on the cloud.
   link: examplePost (this must match the directory name that is defined in part 4)
 ```
 

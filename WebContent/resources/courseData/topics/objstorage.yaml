@@ -1,13 +1,13 @@
 - title: Ceph - Reliable and Scalable Storage System. 
   icon: <i class="fa fa-code-fork" aria-hidden="true"></i>
   description: 
-  image: bla
+  image: testimg2
   link: ceph_installation
 
 
 - title: Swift - A Way to get your own DropBox.
   icon: <i class="fa fa-download" aria-hidden="true"></i>
   description: 
-  image:  bla
+  image:  testimg2
   link: swift_installation
 
