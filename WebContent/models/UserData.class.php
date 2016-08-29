@@ -113,12 +113,12 @@ class UserData {
 	
 	private function validateMessengerId() {
 		$this->messengerId = $this->extractForm('messengerId');
-		if (empty($this->messengerId)){
-			$this->setError('messengerId', 'MESSENGERID_EMPTY');
-			return;
-		}
-		if (!preg_match("/^[0-9]+$/", $this->messengerId))
-			$this->setError('messengerId', 'MESSENGERID_INVALID');
+		//if (empty($this->messengerId)){
+		//	$this->setError('messengerId', 'MESSENGERID_EMPTY');
+		//	return;
+		//}
+		//if (!preg_match("/^[0-9]+$/", $this->messengerId))
+		//	$this->setError('messengerId', 'MESSENGERID_INVALID');
 	}
 }
 ?>
