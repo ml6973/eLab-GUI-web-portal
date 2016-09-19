@@ -44,7 +44,7 @@ class CoursesView {
 				</div>
 				<div class="col-md-3" ng-include>';
 	  		if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
-	  			vmInfo::show($courseYaml[0]['image']);
+	  			vmInfo::showCustom($courseYaml[0]['image'], $courseYaml[0]['type']);
 	  			echo '</div>
 			</div>';
   		}
