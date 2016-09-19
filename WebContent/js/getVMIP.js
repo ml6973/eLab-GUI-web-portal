@@ -20,6 +20,10 @@ $(document).ready(function(){
     	    		$button.hide();
     	    		if ($vmtype != null && $vmtype === "jupyter") {
     	    			$command.val("http://" + response + ":8888/");
+    	    			//$linkatt = document.createAttribute("onclick");
+    	    			//$linkatt.value = "http://" + response + ":8888/";
+    	    			//$command.setAttributeNode(linkatt);
+    	    			document.getElementById($image + "_command").setAttribute("onclick", "location.href='http://" + response + ":8888/'");
     	    		}else{
     	    			$command.val("ssh " + $name + "@" + response);
     	    		}

@@ -17,7 +17,7 @@ class vmInfo {
 			echo '<p><a class="btn btn-success btn-block btn-lg vmIP" id="'.$imageName.'" data-uname="'.$userName.'" data-uid="'.$userId.'" data-vmtype=jupyter role="button">Get Lab URL</a></p>';
 			echo '<div class="row" id="'.$imageName.'_info" hidden>
 					<p>Use this URL to access your lab: </p>
-					<p><input class="form-control" id="'.$imageName.'_command" type="text" value="" readonly="readonly"></p>
+					<p><input class="btn btn-success btn-block" id="'.$imageName.'_command" type="text" value="" readonly="readonly"></p>
 				 </div>';
 		}else{
 			echo '<p><a class="btn btn-success btn-block btn-lg vmIP" id="'.$imageName.'" data-uname="'.$userName.'" data-uid="'.$userId.'" role="button">Access Lab Machine</a></p>';
@@ -27,5 +27,10 @@ class vmInfo {
 			 </div>';
 		}
 	}
+	
+	public static function showDisabled() {
+		echo '<p><a class="btn btn-success btn-block btn-lg vmIP disabled" role="button">Access Lab Machine</a></p>';
+	}
 }
+//<p><input class="form-control" id="'.$imageName.'_command" type="text" value="" readonly="readonly"></p>
 ?>

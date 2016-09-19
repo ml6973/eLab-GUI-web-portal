@@ -89,6 +89,8 @@ class CoursesView {
 			<div class="col-md-3" ng-include>';
 				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
 					vmInfo::show($courseYaml[0]['image']);
+				else
+					vmInfo::showDisabled();
 			echo '</div>
 		</div>';
   	}
