@@ -23,7 +23,7 @@ $(document).ready(function(){
     	    			//$linkatt = document.createAttribute("onclick");
     	    			//$linkatt.value = "http://" + response + ":8888/";
     	    			//$command.setAttributeNode(linkatt);
-    	    			document.getElementById($image + "_command").setAttribute("onclick", "location.href='http://" + response + ":8888/'");
+    	    			document.getElementById($image + "_command").setAttribute("onclick", "window.open('http://" + response + ":8888/')");
     	    		}else{
     	    			$command.val("ssh " + $name + "@" + response);
     	    		}
