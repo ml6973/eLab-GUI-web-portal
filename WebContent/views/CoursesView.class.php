@@ -36,9 +36,14 @@ class CoursesView {
   		
   		if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances)) {
 	  		echo '<div class="container">
-				<h2 class="text-left">'.$courseYaml[0]['title'].'</h2>
-				<br>
-				<div class="col-md-8">';
+				<h2 class="text-left">'.$courseYaml[0]['title'].'</h2><br>';
+	  			if (is_array($courseYaml[0]["description"])){
+	  				foreach ($courseYaml[0]["description"] as $sentence) {
+	  					echo '<p>'.$sentence.'</p>';
+	  				}
+	  			}else
+	  				echo '<p>'.$courseYaml[0]["description"].'</p>';
+				echo '<br><div class="col-md-8">';
 	  		echo '
 			    <br><br>
 				</div>

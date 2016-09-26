@@ -17,17 +17,15 @@ $(document).ready(function(){
     	    data: { "getInstanceID": $id, "getInstanceImage": $image },
     	    success: function(response) {
     	    	if (response.length) {
-    	    		$button.hide();
     	    		if ($vmtype != null && $vmtype === "jupyter") {
     	    			$command.val("http://" + response + ":8888/");
-    	    			//$linkatt = document.createAttribute("onclick");
-    	    			//$linkatt.value = "http://" + response + ":8888/";
-    	    			//$command.setAttributeNode(linkatt);
     	    			document.getElementById($image + "_command").setAttribute("onclick", "window.open('http://" + response + ":8888/')");
+    	    			document.getElementById($image + "_command").click();
     	    		}else{
+    	    			$button.hide();
     	    			$command.val("ssh " + $name + "@" + response);
+    	    			$info.show();
     	    		}
-    	    		$info.show();
     	    	}else
     	    		$button.text("Lab Machine Not Available");
     	    },
