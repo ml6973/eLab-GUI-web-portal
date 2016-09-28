@@ -10,7 +10,10 @@ $(document).ready(function(){
     	$info = $($info);
     	$command = document.getElementById($image + "_command");
     	$command = $($command);
-    	console.log($command);
+    	var newWindow = null;
+    	if ($vmtype != null && $vmtype === "jupyter") {
+    		newWindow = window.open();
+    	}
     	$.ajax({
     	    url: '/eLab-GUI-web-portal/models/OCI_API.class.php',
     	    type: 'post',
@@ -18,9 +21,7 @@ $(document).ready(function(){
     	    success: function(response) {
     	    	if (response.length) {
     	    		if ($vmtype != null && $vmtype === "jupyter") {
-    	    			$command.val("http://" + response + ":8888/");
-    	    			document.getElementById($image + "_command").setAttribute("onclick", "window.open('http://" + response + ":8888/')");
-    	    			document.getElementById($image + "_command").click();
+    	    			newWindow.location.replace('http://' + response + ':8888/')
     	    		}else{
     	    			$button.hide();
     	    			$command.val("ssh " + $name + "@" + response);
