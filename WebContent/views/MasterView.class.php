@@ -101,8 +101,10 @@ class MasterView {
     		echo '<li> <span class="label label-default alignName">Welcome '.
     				$authenticatedUser->getUserName().'</span></li>';
     	}
-		else
+		else {
+			echo '<li><a href="/'.$base.'/login" id="logout-btn" ng-click=\'/'.$base.'/login\' ng-hide=[[buttonShow]]>Login <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>';
 			echo '<li><a href="/'.$base.'/registration" id="logout-btn" ng-click=\'/'.$base.'/registration\' ng-hide=[[buttonShow]]>Register <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>';
+		}
     	
     	echo '
     	</ul>
