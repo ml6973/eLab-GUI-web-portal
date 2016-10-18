@@ -12,14 +12,54 @@ class MarketPlaceView {
   	$pathDir = dirname(__FILE__);  //Initialize the path directory
   	
   	echo '
+  	<link rel="stylesheet" href="css/marketplace.css">
 	<!--Banner-->
 	<div class="jumbotron">
 	   	<div class="container">
-	       	<h1 id="welcome">Welcome to Open Cloud Marketplace!</h1>
+	       	<div class="title" id="welcome">Welcome to Open Cloud Marketplace!</div>
 	       <!--	<p>Everyone knows about the giant skills gap that is haunting the IT sector worldwide. Powered by Chameleon Cloud, eLab cloud based learning platform helps you achieve certification for today\'s tech job.</p> -->
 	       <!--	<p><a class="btn btn-primary btn-md" href="/#/about" role="button">Learn more &raquo;</a></p> -->
 	    </div>
 	</div>';
+  	
+  	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/marketPlaceData/";
+  	
+  	if (file_exists($fullPath) && is_dir($fullPath)){
+  		$files = scandir($fullPath);
+  		$files = array_diff($files, array('.', '..'));
+  	}
+  	
+	echo '
+
+  	<div class="container">  	
+  		<div class="row">';
+	
+	foreach($files as $file) {
+		if (file_exists($fullPath.$file.DIRECTORY_SEPARATOR."header.yaml") && file_exists($fullPath.$file.DIRECTORY_SEPARATOR."details.md") && file_exists($fullPath.$file.DIRECTORY_SEPARATOR."thumbnail.jpg")) {
+			$marketYaml = Spyc::YAMLLoad($fullPath.$file.DIRECTORY_SEPARATOR."header.yaml");
+			if (array_key_exists('markettitle', $marketYaml[0])) {
+				echo '
+	  			<div class="col-sm-6 col-md-4 col-lg-3">
+					<div class="thumbnail">
+						<img src="/'.$base.'/resources/marketPlaceData/'.$file.'/thumbnail.jpg" alt="Thumbnail">
+						<div class="partner"><span>'.$marketYaml[0]['organization'].'</span></div>
+						<div class="coursetitle">'.$marketYaml[0]['markettitle'].'</div>';
+						if (strcmp($marketYaml[0]['lessoncount'], "1") == 0) {
+						   echo '<div class="footer"><span>1 Lesson</span></div>';
+						}else {
+							echo '<div class="footer"><span>'.$marketYaml[0]['lessoncount'].' Lessons</span></div>';
+						}
+			echo	'</div>
+				</div>';
+				
+			}
+		}
+	}
+			
+  	echo '</div>
+  	</div>
+			
+	';
   	
   /*	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/customCourseData/";
   	 

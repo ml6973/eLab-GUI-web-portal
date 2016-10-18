@@ -1,0 +1,10 @@
+- title: Applied Deep Learning Using Cloud Computing Platform
+  description: ML6973 - Fall 2016
+				<b>By Paul Rad, Ph.D. and Ali Miraftab, Research Fellow, Ph.D. Candidate</b>
+
+				Through a training process, machines can learn to do tasks including but not restricted to human face and object recognition, recommending music and movie, natural language processing, and driving autonomous car and robot. This course covers the theory and practical algorithms for machine learning from a variety of perspectives while focusing on deep learning using advanced neural network algorithms: Convolutional Neural Network, Recuurent Neural Network, Resudual Neural Network, and unsupervised learning methods. This graduate level course instructs students in the terminology, mathematics understanding, algorithms applications, and technologies which are in demand by industry, research institutes, and academics.
+  image: cc-ml6073
+  type: jupyter
+  markettitle: Machine Learning
+  organization: The University of Texas at San Antonio
+  lessoncount: 4
