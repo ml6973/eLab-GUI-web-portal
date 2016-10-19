@@ -98,6 +98,8 @@ class MasterView {
     	
     	if (!is_null($authenticatedUser)){
     		echo '<li class="pull-right"><a href="/'.$base.'/logout" id="logout-btn" ng-click=\'/'.$base.'/logout\' ng-hide=[[buttonShow]]>Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>';
+    		echo '<li class="pull-right"><a href="/'.$base.'/courses" id="courses-btn" ng-click=\'/'.$base.'/courses\' ng-hide=[[buttonShow]]>My Courses <i class="fa" aria-hidden="true"></i></a></li>';
+    		echo '<li class="pull-right"><a href="/'.$base.'/marketplace" id="marketplace-btn" ng-click=\'/'.$base.'/marketplace\' ng-hide=[[buttonShow]]>MarketPlace <i class="fa" aria-hidden="true"></i></a></li>';
     		echo '<li> <span class="label label-default alignName">Welcome '.
     				$authenticatedUser->getUserName().'</span></li>';
     	}

@@ -41,15 +41,17 @@ class MarketPlaceView {
 				echo '
 	  			<div class="col-sm-6 col-md-4 col-lg-3">
 					<div class="thumbnail">
-						<img src="/'.$base.'/resources/marketPlaceData/'.$file.'/thumbnail.jpg" alt="Thumbnail">
-						<div class="partner"><span>'.$marketYaml[0]['organization'].'</span></div>
-						<div class="coursetitle">'.$marketYaml[0]['markettitle'].'</div>';
+						<a href="course_details?'.$file.'" class="">
+							<img src="/'.$base.'/resources/marketPlaceData/'.$file.'/thumbnail.jpg" alt="Thumbnail">
+							<div class="partner"><span>'.$marketYaml[0]['organization'].'</span></div>
+							<div class="coursetitle">'.$marketYaml[0]['markettitle'].'</div>';
 						if (strcmp($marketYaml[0]['lessoncount'], "1") == 0) {
 						   echo '<div class="footer"><span>1 Lesson</span></div>';
 						}else {
 							echo '<div class="footer"><span>'.$marketYaml[0]['lessoncount'].' Lessons</span></div>';
 						}
-			echo	'</div>
+			echo		'</a>
+					 </div>
 				</div>';
 				
 			}
