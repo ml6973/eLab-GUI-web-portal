@@ -46,7 +46,7 @@
 			PostsController::run();
 			break;
 		default:
-			LoginController::run();
+			MarketPlaceController::run();
 	};
 	ob_end_flush();
 ?>

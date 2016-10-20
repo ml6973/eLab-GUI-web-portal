@@ -1,13 +1,13 @@
 <?php
 class CourseDetailsView {
-  public static function show() {
+  public static function show($course) {
 	  MasterView::showHeader();
 	  MasterView::showNavBar();
-	  CourseDetailsView::showDetails();
+	  CourseDetailsView::showDetails($course);
 	  MasterView::showFooter();
   }
 
-  public static function showDetails() {
+  public static function showDetails($course) {
   	$base = $_SESSION['base'];
   	$pathDir = dirname(__FILE__);  //Initialize the path directory
 
