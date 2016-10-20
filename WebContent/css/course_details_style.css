@@ -1,7 +1,7 @@
 .course-banner {
     background: url("/eLab-GUI-web-portal/resources/siteImages/classRoom.jpg");
     width: auto;
-    height: 200px;
+    height: 400px;
 }
 
 .jumbotron {
@@ -18,5 +18,16 @@
 }
 
 .organization {
-    text-align: center;
+    text-align: left;
+    font-size: 25px;
+    margin-left: 32px;
+    margin-top: 32px;
+}
+
+#organizationImage {
+    height: 65px;
+}
+
+.courseDetails {
+    margin-left: 32px;
 }
