@@ -131,11 +131,11 @@ class MasterView {
 			                </ul>
 			                </div>
 			            </div> -->
-			            <div class="footer-left">
+			       <!--     <div class="footer-left">
 			                <div>
 			                <h5>Courses</h5>
 			                <ul class=\'list-unstyled\'>';
-   								$fullPath = dirname(__FILE__) . DIRECTORY_SEPARATOR . "../resources/courseData/topics/";
+   					/*			$fullPath = dirname(__FILE__) . DIRECTORY_SEPARATOR . "../resources/courseData/topics/";
    								$files = scandir($fullPath);
 	  							$files = array_diff($files, array('.', '..'));
 	  							$coursesArray = array();
@@ -149,10 +149,10 @@ class MasterView {
 	  							sort($coursesArray, SORT_REGULAR | SORT_NATURAL);
 	  							foreach ($coursesArray as $course) {
 	  								echo $course;
-	  							}
+	  							} */
 			                echo '</ul>
 			                </div>
-			            </div>
+			            </div> -->
 			          <!--  <div class="footer-right">
 			                <div>
 			                <h5>Service</h5>
