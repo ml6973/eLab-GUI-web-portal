@@ -1,0 +1,22 @@
+.course-banner {
+    background: url("/eLab-GUI-web-portal/resources/siteImages/classRoom.jpg");
+    width: auto;
+    height: 200px;
+}
+
+.jumbotron {
+    padding-top: 32px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.courseTitle {
+    color: white;
+    text-align: center;
+    text-shadow: black 0.1em 0.1em 0.5em;
+}
+
+.organization {
+    text-align: center;
+}

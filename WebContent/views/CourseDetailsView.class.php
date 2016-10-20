@@ -11,15 +11,45 @@ class CourseDetailsView {
   	$base = $_SESSION['base'];
   	$pathDir = dirname(__FILE__);  //Initialize the path directory
 
-  	echo '
-	<!--Banner-->
-	<div class="jumbotron">
-	   	<div class="container">
-	       	<h1 id="welcome">Welcome to this Course\'s detail page!</h1>
-	       <!--	<p>Everyone knows about the giant skills gap that is haunting the IT sector worldwide. Powered by Chameleon Cloud, eLab cloud based learning platform helps you achieve certification for today\'s tech job.</p> -->
-	       <!--	<p><a class="btn btn-primary btn-md" href="/#/about" role="button">Learn more &raquo;</a></p> -->
-	    </div>
-	</div>';
+    $fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/marketPlaceData/";
+
+    // Get the course directory
+  	if (file_exists($fullPath) && is_dir($fullPath)){
+        $courseDir = "/machinelearning-paul_rad";
+  	} else {
+        echo 'invalid course';
+    }
+
+    //Go through the course directory and display course Info
+    if (file_exists($fullPath.$courseDir.DIRECTORY_SEPARATOR."header.yaml") && file_exists($fullPath.$courseDir.DIRECTORY_SEPARATOR."details.md") && file_exists($fullPath.$courseDir.DIRECTORY_SEPARATOR."thumbnail.jpg")) {
+        $courseYaml = Spyc::YAMLLoad($fullPath.$courseDir.DIRECTORY_SEPARATOR."header.yaml");
+        if (array_key_exists(('title'), $courseYaml[0])) {
+          	echo '
+            <head>
+            <!-- CSS -->
+            <link rel="stylesheet" href="css/course_details_style.css">
+            </head>
+
+        	<!--Banner-->
+        	<div class="jumbotron" style="background-image: url(/eLab-GUI-web-portal/resources/siteImages/classRoom.jpg);">
+                <div class="courseTitle"><h1>'.$courseYaml[0]['title'].'</h1></div>
+        	</div>';
+
+            echo '<div class="courseDetails">';
+            $ParseDown = new ParsedownExtra();
+            $courseContents = file_get_contents($fullPath.$courseDir.DIRECTORY_SEPARATOR."details.md");
+            echo $ParseDown->text($courseContents);
+            echo '</div>';
+
+            //Footer
+            echo '
+            <div class="organization">
+                <p>'.$courseYaml[0]['organization'].'</p>
+            </div>
+            ';
+        }
+    }
+
 
   /*	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/customCourseData/";
 
