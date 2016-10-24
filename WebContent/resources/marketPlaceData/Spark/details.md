@@ -18,13 +18,14 @@ This course is designed to give you the main principles needed to understand Apa
 ### Syllabus
 
 - Introduction to Apache Spark
-- Spark fundamentals/Basics
+- Spark fundamentals / basics
 - Using Resilient Distributed Datasets (RDDs)
+- Parallelized Collections
 - RDD Operations
 - Data processing with Spark
 - Spark SQL
 - Spark Streaming
 - MLLib (Mahine Learning Library ) 
 - Using GraphX
-- Simple examples/cases overview
-- Big Data Processing Hands on with Spark
+- Simple examples / cases overview
+- Big Data Processing examples with Spark
