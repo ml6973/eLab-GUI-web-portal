@@ -1,0 +1,10 @@
+- title: Taming Apache Spark with Python
+  description: ML6973 - Fall 2016
+				<b>By Paul Rad, Ph.D. and Nimish Joshi, Research Fellow</b>
+
+				This course is designed to give you the main principles needed to understand Apache Spark and build your confidence through hands-on experience. Through the course, the audience will be guided with a wide range of core Spark concepts using Python source code examples; all of which are desined to give fundamental, working knowledge. These lessons will help to uderstand and exexute the basic programming and data manipulation is Spark. There will be few python examples illustrated and explaind to take you to the next level.
+  image: cc-ml6073
+  type: jupyter
+  markettitle: Spark with Python
+  organization: The University of Texas at San Antonio
+  lessoncount: 
