@@ -7,7 +7,7 @@ class CourseDetailsView {
 	  MasterView::showFooter();
   }
 
-  public static function showDetails($course) {
+  public static function showDetails($courseDir) {
   	$base = $_SESSION['base'];
   	$pathDir = dirname(__FILE__);  //Initialize the path directory
 
@@ -15,10 +15,9 @@ class CourseDetailsView {
 
 
     // Get the course directory
-  	if (file_exists($fullPath) && is_dir($fullPath)){
-        $courseDir = $course;
-  	} else {
+  	if (!(file_exists($fullPath) && is_dir($fullPath))){
         echo 'invalid course';
+        return;
     }
 
     //Go through the course directory and display course Info
@@ -59,7 +58,6 @@ class CourseDetailsView {
             echo $ParseDown->text($courseContents);
             echo '</div>';
 
-            //Footer
         }
     }
 
