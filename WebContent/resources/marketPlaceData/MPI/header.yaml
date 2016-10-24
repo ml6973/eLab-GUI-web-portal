@@ -1,0 +1,10 @@
+- title: Parallel and Distributed Computing Course
+  description: MPI for python programming with a real time environment.
+				<b>By Paul Rad, Ph.D. and Swanand Mhalagi, Research Assistant</b>
+
+				The following cloud-based programming environment will be provided to each student: Python and Python libraries such as OpenMPI, numpy, scipy, ipython. This training process covers technologies which are in demand by industry, research institutes, and academics.
+  image: cc-ml6073
+  type: jupyter
+  markettitle: Distributed Computing
+  organization: The University of Texas at San Antonio
+  lessoncount: 
