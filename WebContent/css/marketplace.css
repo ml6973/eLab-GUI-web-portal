@@ -46,7 +46,14 @@
 }
 
 .title {
-	font-size: 32px;
+	font-size: 52px;
+	line-height: 36px;
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+.slogan {
+	font-size: 28px;
 	line-height: 36px;
 	text-align: center;
 }

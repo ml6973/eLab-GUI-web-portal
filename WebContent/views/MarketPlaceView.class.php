@@ -1,6 +1,6 @@
 <?php
 class MarketPlaceView {
-  public static function show() { 
+  public static function show() {
 	  MasterView::showHeader();
 	  MasterView::showNavBar();
 	  MarketPlaceView::showDetails();
@@ -10,30 +10,31 @@ class MarketPlaceView {
   public static function showDetails() {
   	$base = $_SESSION['base'];
   	$pathDir = dirname(__FILE__);  //Initialize the path directory
-  	
+
   	echo '
   	<link rel="stylesheet" href="css/marketplace.css">
 	<!--Banner-->
 	<div class="jumbotron">
 	   	<div class="container">
-	       	<div class="title" id="welcome">Welcome to Open Cloud Marketplace!</div>
+	       <div class="title" id="welcome">Welcome to Open Cloud Marketplace!</div>
+           <div class="slogan">Hands-on learning powered by personal enviroments.</div>
 	       <!--	<p>Everyone knows about the giant skills gap that is haunting the IT sector worldwide. Powered by Chameleon Cloud, eLab cloud based learning platform helps you achieve certification for today\'s tech job.</p> -->
 	       <!--	<p><a class="btn btn-primary btn-md" href="/#/about" role="button">Learn more &raquo;</a></p> -->
 	    </div>
 	</div>';
-  	
+
   	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/marketPlaceData/";
-  	
+
   	if (file_exists($fullPath) && is_dir($fullPath)){
   		$files = scandir($fullPath);
   		$files = array_diff($files, array('.', '..'));
   	}
-  	
+
 	echo '
 
-  	<div class="container">  	
+  	<div class="container">
   		<div class="row">';
-	
+
 	foreach($files as $file) {
 		if (file_exists($fullPath.$file.DIRECTORY_SEPARATOR."header.yaml") && file_exists($fullPath.$file.DIRECTORY_SEPARATOR."details.md") && file_exists($fullPath.$file.DIRECTORY_SEPARATOR."thumbnail.jpg")) {
 			$marketYaml = Spyc::YAMLLoad($fullPath.$file.DIRECTORY_SEPARATOR."header.yaml");
@@ -53,27 +54,27 @@ class MarketPlaceView {
 			echo		'</a>
 					 </div>
 				</div>';
-				
+
 			}
 		}
 	}
-			
+
   	echo '</div>
   	</div>
-			
+
 	';
-  	
+
   /*	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/customCourseData/";
-  	 
+
   	if (file_exists($fullPath) && is_dir($fullPath)){
   		$files = scandir($fullPath);
   		$files = array_diff($files, array('.', '..'));
   	}
-  	
+
   	foreach($files as $file) {
-  		 
+
   		$courseYaml = Spyc::YAMLLoad($fullPath.$file);
-  		
+
   		if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances)) {
 	  		echo '<div class="container">
 				<h2 class="text-left">'.$courseYaml[0]['title'].'</h2><br>';
@@ -94,19 +95,19 @@ class MarketPlaceView {
 			</div>';
   		}
   	}
-  	
+
   	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/courses/";
-  	 
+
   	if (file_exists($fullPath) && is_dir($fullPath)){
   		$files = scandir($fullPath);
   		$files = array_diff($files, array('.', '..'));
   		sort($files, SORT_REGULAR | SORT_NATURAL);
   	}
-  	
+
   	foreach($files as $file) {
-  	
+
   		$courseYaml = Spyc::YAMLLoad($fullPath.$file);
-  		
+
 	  	echo '<div class="container">
 			<h2 class="text-left">'.$courseYaml[0]['title'].'</h2>
 		  <p>'.$courseYaml[0]['description'].'</p>
