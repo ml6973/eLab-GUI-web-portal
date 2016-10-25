@@ -9,6 +9,8 @@
     padding: 50px 100px;
     margin-top: 80px;
     margin-bottom: -20px;
+    position: absolute;
+    bottom: 0;
 }
 
 .footer-distributed .footer-left,

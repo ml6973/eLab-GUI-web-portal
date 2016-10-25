@@ -233,3 +233,7 @@ a[name=register] {
 .register {
 	position: absolute;
 }
+
+.row {
+	margin-right: 0px;
+}

@@ -19,10 +19,10 @@
 - title: Lab 7 Committing A Bug Fix
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4lXJFM5NCZg" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 9 Document Change Verification 
+- title: Lab 8 Document Change Verification 
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/LDGI_WBoN8Y" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 10 Submitting Your Info to Stackalytics
+- title: Lab 9 Submitting Your Info to Stackalytics
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/xAJwW9SKgj8" frameborder="0" allowfullscreen></iframe></div>
 
 - title: Course 1 Basic design and hardware investigation
@@ -31,26 +31,17 @@
 - title: Course 2 Key pair creation and distribution
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gFjOGYXCYJM" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Course 3 Installing Distributed Shell and other infrastructure host packages
+- title: Course 4 Creating partitions and logical volumes
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/f37E1FAkSmI" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Course 4 Creating partitions and logical volumes
+- title: Course 5 Configuring the Network
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3tSbbJE-P4Y" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Course 5 Configuring the Network
+- title: Course 6 Interface naming and 8021 module
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Bfopx3nqwuU" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Course 6 Interface naming and 8021 module
+- title: Course 7 Configuring bridges, VLANS, and the interfaces thereof
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/250PG9VYIZA" frameborder="0" allowfullscreen></iframe></div>
-
-- title: Course 7 Configuring bridges, VLANS, and interfaces within
-  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Ua8j-SX1Www" frameborder="0" allowfullscreen></iframe></div>
-
-- title: Course 8 Configuring Ansible and running playbooks
-  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ZpIrEw6a0LI" frameborder="0" allowfullscreen></iframe></div>
-
-- title: Course 1 Chameleon Dashboard Overview
-  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://youtu.be/embed/inupiSFM8jc" frameborder="0" allowfullscreen></iframe></div>
 
 - title: Course 1 Basic packages installation
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://youtu.be/embed/inupiSFM8jc" frameborder="0" allowfullscreen></iframe></div>
@@ -100,12 +91,6 @@
 - title: Lab 7 Horizon Dashboard - Neutron as an Admin
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_q03iTNDonE" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 8 Horizon Dashboard - Cinder as an Admin
-  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_q03iTNDonE" frameborder="0" allowfullscreen></iframe></div>
-
-- title: 	Lab 9 Horizon Dashboard - Swift as an Admin
-  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_q03iTNDonE" frameborder="0" allowfullscreen></iframe></div>
-
 - title: Lab 10 Horizon Dashboard - Keystone as a User
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Cppkd99uydc" frameborder="0" allowfullscreen></iframe></div>
 
@@ -119,8 +104,16 @@
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3-chI2t8ef8" frameborder="0" allowfullscreen></iframe></div>
   
 - title: Lab 14 Horizon Dashboard - Cinder as a User
-  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_q03iTNDonE" frameborder="0" allowfullscreen></iframe></div>
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/-4-EsPY2dak" frameborder="0" allowfullscreen></iframe></div>
   
 - title: Lab 15 Horizon Dashboard - Swift as a User
-  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_q03iTNDonE" frameborder="0" allowfullscreen></iframe></div>
-  
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EoUvaDcnSdA" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 16 Command Line Interface - Keystone
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4BoyHhMjTVQ" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 17 Command Line Interface - Glance
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/uaZEjYbt2B4" frameborder="0" allowfullscreen></iframe></div>
+
+- title: Lab 21 Command Line Interface - Swift
+  code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/OInYlWZxdMM" frameborder="0" allowfullscreen></iframe></div>

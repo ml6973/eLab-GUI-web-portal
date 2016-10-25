@@ -58,6 +58,14 @@ class MarketPlaceView {
 			}
 		}
 	}
+	
+	echo '<div class="col-sm-6 col-md-4 col-lg-3">
+					<div class="thumbnail">
+						<img src="/'.$base.'/resources/marketPlaceData/coming_soon/thumbnail.jpg" alt="Thumbnail">
+						<div class="partner"><span> </span></div>
+						<div class="coursetitle">More coming soon...</div>
+					 </div>
+		  </div>';
 
   	echo '</div>
   	</div>

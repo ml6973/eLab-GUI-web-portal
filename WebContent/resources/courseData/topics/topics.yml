@@ -21,10 +21,3 @@
   description: This guide provides detailed instructions on the documentation contribution workflow and conventions to be considered by all contributors. Please follow these guidelines to keep the documentation structure, style, and syntax consistent.
   image: cirros
   link: openstack_contribution
-  
-- title: Cloud Dashboard
-  icon: <i class="fa fa-download" aria-hidden="true"></i>
-  description: 
-  image:  cirros
-  link: cloud_dashboard
-  
