@@ -39,7 +39,8 @@ class TopicView {
 							</style>
 							
 							
-							<h2>Video Lessons</h2>
+							<!-- <h2>Video Lessons</h2> -->
+							<h2>'.TopicView::getTitle($topic).'</h2>
 							<ul class=\'mod\'>';
 								
 								foreach($files as $file) {
@@ -66,6 +67,24 @@ class TopicView {
 		</div>
 	</div>
 </div>';
+  }
+  
+  public static function getTitle($topic) {
+  	$base = $_SESSION['base'];
+  	$pathDir = dirname(__FILE__);  //Initialize the path directory
+  	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/topics/";
+  	if (file_exists($fullPath) && is_dir($fullPath)) {
+  		$files = scandir($fullPath);
+  		$files = array_diff($files, array('.', '..'));
+  	}
+  	foreach ($files as $file){
+  		$courseYaml = Spyc::YAMLLoad($fullPath.$file);
+  		
+  		foreach ($courseYaml as $course) {
+  			if (strcmp($course['link'], $topic) == 0)
+  				return $course['title'];
+  		}
+  	}
   }
 }
 ?>
