@@ -23,7 +23,8 @@ class TopicView {
 <div class=\'row centered\'>
 		<div class="col-md-1"></div> 
 		<div class="col-md-8">
-			<a href=\'/'.$base.'/courses\'><h2>Go back</h2></a>
+			<!-- <a href=\'/'.$base.'/courses\'><h2>Go back</h2></a> -->
+			<a href="/'.$base.'/courses" class="btn btn-info" id="backbutton" ng-click=\'/'.$base.'/courses\' ng-hide=[[buttonShow]] style="font-size:2.5rem;"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Go Back</a>
 			<div>';
 				if (is_null($topic)) {
 					echo '<div><h3>No Topic Selected</h3></div>';

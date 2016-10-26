@@ -21,9 +21,12 @@ class PostView {
 <div class=\'row centered\'>
 		<div class="col-md-1"></div> 
 		<div class="col-md-8">';
-			if (!(is_null($topic) || is_null($post)))
-				echo '<a href=\'/'.$base.'/topics?'.$topic.'\'><h2>Go back to topic</h2></a>';
-			echo '<a href=\'/'.$base.'/courses\'><h2>Go back home</h2></a>
+			if (!(is_null($topic) || is_null($post))){
+				//echo '<a href=\'/'.$base.'/topics?'.$topic.'\'><h2>Go back to topic</h2></a>';
+				echo '<a href=\'/'.$base.'/topics?'.$topic.'\' class="btn btn-info" id="homebutton" ng-click=\'/'.$base.'/topics?'.$topic.'\' ng-hide=[[buttonShow]] style="font-size:2.5rem;"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Go Back</a>';
+			}
+			//echo '<a href=\'/'.$base.'/courses\'><h2>Go back home</h2></a>
+			echo '<a href="/'.$base.'/courses" class="btn btn-info pull-right" id="backbutton" ng-click=\'/'.$base.'/courses\' ng-hide=[[buttonShow]] style="font-size:2.5rem;"><i class="fa fa-home" aria-hidden="true"></i> Go Home</a>
 			<div>';
 				if (is_null($topic) || is_null($post)) {
 					echo '<div><h3>No Post Selected</h3></div>';
