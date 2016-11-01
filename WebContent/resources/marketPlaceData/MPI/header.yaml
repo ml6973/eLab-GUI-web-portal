@@ -2,7 +2,9 @@
   description: MPI for python programming with a real time environment.
 				<b>By Paul Rad, Ph.D. and Swanand Mhalagi, Research Assistant</b>
 
-				The following cloud-based programming environment will be provided to each student: Python and Python libraries such as OpenMPI, numpy, scipy, ipython. This training process covers technologies which are in demand by industry, research institutes, and academics.
+				Over the last years, high performance computing has become an affordable resource to many more researchers in the scientific community than ever before. The conjunction of quality open source software and commodity hardware strongly influenced the now widespread popularity of cluster computing.
+				
+				MPI, the Message Passing Interface, is a standardized and portable message-passing system designed to function on a wide variety of parallel computers. The standard defines the syntax and semantics of library routines and allows users to write portable programs in the main scientific programming languages (Fortran, C, or C++).
   image: pdc-image
   type: jupyter
   markettitle: Distributed Computing
