@@ -5,6 +5,10 @@
 				Over the last years, high performance computing has become an affordable resource to many more researchers in the scientific community than ever before. The conjunction of quality open source software and commodity hardware strongly influenced the now widespread popularity of cluster computing.
 				
 				MPI, the Message Passing Interface, is a standardized and portable message-passing system designed to function on a wide variety of parallel computers. The standard defines the syntax and semantics of library routines and allows users to write portable programs in the main scientific programming languages (Fortran, C, or C++).
+				
+				<a href="https://github.com/cloudandbigdatalab/eLab-GUI-web-portal/blob/development/WebContent/resources/marketPlaceData/MPI/Lessons/Lesson%2B1.ipynb"><h4>Lesson 1</h4></a>
+				<a href="https://github.com/cloudandbigdatalab/eLab-GUI-web-portal/blob/development/WebContent/resources/marketPlaceData/MPI/Lessons/Lesson%2B2.ipynb"><h4>Lesson 2</h4></a>
+				<a href="https://github.com/cloudandbigdatalab/eLab-GUI-web-portal/blob/development/WebContent/resources/marketPlaceData/MPI/Lessons/Lesson%2B3.ipynb"><h4>Lesson 3</h4></a>
   image: pdc-image
   type: jupyter
   markettitle: Distributed Computing
