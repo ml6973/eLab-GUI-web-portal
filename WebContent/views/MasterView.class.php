@@ -169,6 +169,11 @@ class MasterView {
 			
 			        <div class="row">
 			            <div class="footer-bottom-left">
+			                <div class = "row footer-company-name">
+			                	Powered by: 
+			                	<img height="50px" src="https://www.chameleoncloud.org/media/cms_page_media/317/Chameleon-FullColor-lg_4CCULFA.jpg" alt="Chameleon Cloud">
+			                </div>
+			                <br><br>
 			                <div>
 			                <p class="footer-company-name text-muted">2016 © Openstack eLab. All rights reserved. <br>Site built by Gregory Hooks.</p>
 			                </div>
