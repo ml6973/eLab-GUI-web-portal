@@ -1,0 +1,245 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<hr style=\"height:3px;border:none;color:#333;background-color:#333;\" />\n",
+    "<img style=\" float:right; display:inline\" src=\"http://opencloud.utsa.edu/wp-content/themes/utsa-oci/images/logo.png\"/>\n",
+    "\n",
+    "### **University of Texas at San Antonio** \n",
+    "<br/>\n",
+    "<br/>\n",
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 2.5em;\"> **Open Cloud Institute** </span>\n",
+    "\n",
+    "<hr style=\"height:3px;border:none;color:#333;background-color:#333;\" />"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "collapsed": true
+   },
+   "source": [
+    "### Parallel and Distributed Computing Course\n",
+    "\n",
+    "<br/>\n",
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 1.5em;\"> **Paul Rad, Ph.D.** </span>  \n",
+    "\n",
+    "\n",
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 1.5em;\"> **Swanand Mhalagi, Research Assistant** </span>\n",
+    "\n",
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 1.4em;\"> *Open Cloud Institute, University of Texas at San Antonio, San Antonio, Texas, USA* </span>  \n",
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 1.4em;\"> {Swanand.Mhalagi, Paul.Rad}@utsa.edu </span>  \n",
+    "\n",
+    "<hr style=\"height:3px;border:none;color:#333;background-color:#333;\" />"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 1.5em;\"> **Trapezoidal Rule:** </span>\n",
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 1.3em;\"> Now that we understand basic communication in MPI, we will proceed by parallelizing our first algorithm–numerical integration using the “trapezoid rule.” Early on in most calculus classes, students learn to estimate integrals using the trapezoid rule. A range to be integrated is divided into many vertical slivers, and each sliver is approximated with a trapezoid. The area of each trapezoid is computed, and then all their areas are added together. </span>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "%%bash\n",
+    "cat <<'EOF'> trapSerial.py\n",
+    "#In Python, a simple serial formulation of the trapezoidal rule would be as follows:\n",
+    "#trapSerial.py\n",
+    "#example to run: python trapSerial.py 0.0 1.0 10000\n",
+    "\n",
+    "import numpy\n",
+    "import sys\n",
+    "\n",
+    "#takes in command-line arguments [a,b,n]\n",
+    "a = float(sys.argv[1])\n",
+    "b = float(sys.argv[2])\n",
+    "n = int(sys.argv[3])\n",
+    "\n",
+    "def f(x):\n",
+    "        return x*x\n",
+    "\n",
+    "def integrateRange(a, b, n):\n",
+    "        '''Numerically integrate with the trapezoid rule on the interval from\n",
+    "        a to b with n trapezoids.\n",
+    "        '''\n",
+    "        integral = -(f(a) + f(b))/2.0\n",
+    "        # n+1 endpoints, but n trapazoids\n",
+    "        for x in numpy.linspace(a,b,n+1):\n",
+    "                integral = integral + f(x)\n",
+    "        integral = integral* (b-a)/n\n",
+    "        return integral\n",
+    "\n",
+    "integral = integrateRange(a, b, n)\n",
+    "print \"With n =\", n, \"trapezoids, our estimate of the integral from\", a, \"to\", b, \"is\", integral\n",
+    "EOF"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 1.3em;\"> To run the above program and calculate the integral for the limits 0.0 to 1.0 by splitting the trapezoid in to 10000 pices, we will use the command mentioned below</span>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "With n = 10000 trapezoids, our estimate of the integral from 0.0 to 1.0 is 0.333333335\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "!python trapSerial.py 0.0 1.0 10000"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 1.5em;\"> **Parallelizing the Trapezoidal Rule:** </span>\n",
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 1.3em;\"> The most important step in parallelizing an algorithm is finding the independent computations. This is the first step of architecting a parallel algorithm. With the trapezoidal rule, it’s easy to see that the calculation of the area of trapezoid can be performed independently of any other trapezoid, and so dividing the data at the trapezoid level seems natural. The code divides up the interval into the calculation of n trapezoids. To prallelize this process, we will divide the interval into n trapeziods and then divide up those n trapezoids to be calculated among the number of processors, size. Look at the following code: </span>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {
+    "collapsed": true
+   },
+   "outputs": [],
+   "source": [
+    "%%bash\n",
+    "cat <<'EOF'> trapParallel.py\n",
+    "#trapParallel.py\n",
+    "#example to run: mpiexec -n 4 python trapParallel.py 0.0 1.0 10000\n",
+    "import numpy\n",
+    "import sys\n",
+    "from mpi4py import MPI\n",
+    "from mpi4py.MPI import ANY_SOURCE\n",
+    "\n",
+    "comm = MPI.COMM_WORLD\n",
+    "rank = comm.Get_rank()\n",
+    "size = comm.Get_size()\n",
+    "\n",
+    "#takes in command-line arguments [a,b,n]\n",
+    "a = float(sys.argv[1])\n",
+    "b = float(sys.argv[2])\n",
+    "n = int(sys.argv[3])\n",
+    "\n",
+    "#we arbitrarily define a function to integrate\n",
+    "def f(x):\n",
+    "        return x*x\n",
+    "\n",
+    "#this is the serial version of the trapezoidal rule\n",
+    "#parallelization occurs by dividing the range among processes\n",
+    "def integrateRange(a, b, n):\n",
+    "        integral = -(f(a) + f(b))/2.0\n",
+    "        # n+1 endpoints, but n trapazoids\n",
+    "        for x in numpy.linspace(a,b,n+1):\n",
+    "                        integral = integral + f(x)\n",
+    "        integral = integral* (b-a)/n\n",
+    "        return integral\n",
+    "\n",
+    "\n",
+    "#h is the step size. n is the total number of trapezoids\n",
+    "h = (b-a)/n\n",
+    "#local_n is the number of trapezoids each process will calculate\n",
+    "#note that size must divide n\n",
+    "local_n = n/size\n",
+    "\n",
+    "#we calculate the interval that each process handles\n",
+    "#local_a is the starting point and local_b is the endpoint\n",
+    "local_a = a + rank*local_n*h\n",
+    "local_b = local_a + local_n*h\n",
+    "\n",
+    "#initializing variables. mpi4py requires that we pass numpy objects.\n",
+    "integral = numpy.zeros(1)\n",
+    "recv_buffer = numpy.zeros(1)\n",
+    "\n",
+    "# perform local computation. Each process integrates its own interval\n",
+    "integral[0] = integrateRange(local_a, local_b, local_n)\n",
+    "\n",
+    "# communication\n",
+    "# root node receives results from all processes and sums them\n",
+    "if rank == 0:\n",
+    "        total = integral[0]\n",
+    "        for i in range(1, size):\n",
+    "                comm.Recv(recv_buffer, ANY_SOURCE)\n",
+    "                total += recv_buffer[0]\n",
+    "else:\n",
+    "        # all other process send their result\n",
+    "        comm.Send(integral, dest = 0)\n",
+    "\n",
+    "# root process prints results\n",
+    "if comm.rank == 0:\n",
+    "        print \"With n =\", n, \"trapezoids, our estimate of the integral from\", a, \"to\", b, \"is\", total\n",
+    "EOF"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<span style=\"color:#000; font-family: 'Bebas Neue'; font-size: 1.3em;\"> The parallel approach to trapezoidal integral estimation starts by dividing the original range among the processors. Each process will get a group of one or more trapezoids to calculate area over. Now, notice how we decided to implement to division of trapezoids among the processes. The processors individually calculate their own ranges to work on. Although this is a small detail, it is fairly important. We could have written the algorithm such that process 0 divides up the work for the other processors, then each processor calculates its area, and finally a sum is computed. However, this would introduce an unnecessary bottleneck: all processes with rank greater than 0 would be waiting for its data range to arrive. By having each process calculate its own range, we gain a large speedup. To run the above program and calculate the integral for the limits 0.0 to 1.0 by splitting the trapezoid in to 10000 pices, we will use the command mentioned below </span>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {
+    "collapsed": false
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "With n = 10000 trapezoids, our estimate of the integral from 0.0 to 1.0 is 0.333333335\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "!mpiexec -n 4 -mca btl ^openib python trapParallel.py 0.0 1.0 10000"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 2",
+   "language": "python",
+   "name": "python2"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 2
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython2",
+   "version": "2.7.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 1
+}
