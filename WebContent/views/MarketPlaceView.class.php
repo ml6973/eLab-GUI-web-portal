@@ -63,7 +63,7 @@ class MarketPlaceView {
 					<div class="thumbnail">
 						<img src="/'.$base.'/resources/marketPlaceData/coming_soon/thumbnail.jpg" alt="Thumbnail">
 						<div class="partner"><span> </span></div>
-						<div class="coursetitle">More coming soon...</div>
+						<div class="coursetitle">Cyber Security <br> Coming Soon...</div>
 					 </div>
 		  </div>';
 
