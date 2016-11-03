@@ -122,8 +122,6 @@ class MasterView {
    		echo '<link rel="stylesheet" href="css/foot_style.css">
 			<footer id=\'foot\' class=\'footer-distributed\'>
 			<div class="container">
-				<div class="row">
-			    </div>
 
 			    <div class="row">
 		            <div class="footer-bottom-left">
