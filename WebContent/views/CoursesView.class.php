@@ -63,6 +63,14 @@ class CoursesView {
   	}
   	 
   	foreach($files as $file) {
+  		
+  		$lessonPath = $fullPath.$file."/Lessons";
+  		if (file_exists($lessonPath) && is_dir($lessonPath)){
+  			$lessons = scandir($lessonPath);
+  			$lessons = array_diff($lessons, array('.', '..'));
+  		} else {
+  			$lessons = array();
+  		}
   			
   		$courseYaml = Spyc::YAMLLoad($fullPath.$file."/header.yaml");
   	
@@ -76,11 +84,13 @@ class CoursesView {
 	  				}
 	  			}else
 	  				echo '<p>'.$courseYaml[0]["description"].'</p>';
-	  				echo '<br><div class="col-md-8">';
-	  				echo '
-				    <br><br>
-					</div>
-					<div class="col-md-3" ng-include>';
+	  				echo '<br><div class="col-md-3">';
+				    if (count($lessons) > 0) {
+				    	echo '<a class="btn btn-primary btn-block btn-lg" href="https://github.com/ml6973/eLab-GUI-web-portal/tree/master/WebContent/resources/marketPlaceData/'.$file.'/Lessons" role="button">Access Course</a>';
+				    }else
+				    	echo '<br><br>';
+					echo '</div>
+					<div class="col-md-3 pull-right" ng-include>';
 	  				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
 	  					vmInfo::showCustom($courseYaml[0]['image'], $courseYaml[0]['type']);
 	  				else
@@ -127,7 +137,7 @@ class CoursesView {
 				echo '
 		    	<br><br>
 			</div>
-			<div class="col-md-3" ng-include>';
+			<div class="col-md-3 pull-right" ng-include>';
 				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
 					vmInfo::show($courseYaml[0]['image']);
 				else

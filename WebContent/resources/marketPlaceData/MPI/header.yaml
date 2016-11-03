@@ -6,7 +6,6 @@
 				
 				MPI, the Message Passing Interface, is a standardized and portable message-passing system designed to function on a wide variety of parallel computers. The standard defines the syntax and semantics of library routines and allows users to write portable programs in the main scientific programming languages (Fortran, C, or C++).
 				
-				<a href="https://github.com/cloudandbigdatalab/eLab-GUI-web-portal/tree/development/WebContent/resources/marketPlaceData/MPI/Lessons"><h4>Lessons</h4></a>
   image: pdc-image
   type: jupyter
   markettitle: Distributed Computing
