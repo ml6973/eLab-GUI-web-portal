@@ -12,10 +12,10 @@ class MasterView {
 			<meta charset="utf-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
-			
+
 			<link href="css/bootstrap.min.css" rel="stylesheet">
 			<link href="css/custom.css" rel="stylesheet">
-			
+
 			<!--
 			<link rel="stylesheet" href="https://bootswatch.com/cerulean/bootstrap.css" media="screen">
 		    <link rel="stylesheet" href="https://bootswatch.com/assets/css/custom.min.css">
@@ -27,7 +27,7 @@ class MasterView {
 			<link href="css/jumbotron.css" rel="stylesheet">
 				<!-- Font awesome-->
 			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-		
+
 			<!--Vendor javascripts-->
 				<!--AngularJS-->
 			<script src="js/angularJS/angular.min.js"></script>
@@ -41,11 +41,11 @@ class MasterView {
 		    	<!--bootstrap-->
 		    		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 			<script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-			
-		
+
+
 		</head>';
     }
-    
+
     public static function showNavBar() {
     	// Show the navbar
     	$base = (array_key_exists('base', $_SESSION))? $_SESSION['base']: "";
@@ -69,7 +69,7 @@ class MasterView {
     	font-size: 20px;
     	}
     	</style>
-    	
+
     	<div ng-controller=\'headController\'>';
     	echo '<style>.navbar-inverse{background-color: white;} .logo{margin-top: 5px; margin-right: 10px;} .navbar-inverse .navbar-brand{color: rgb(17, 43, 79);} .navbar-inverse .navbar-brand:hover{color: rgb(241, 89, 37);}
     			.navbar-inverse .navbar-nav > li > a{color: rgb(17, 43, 79);} .navbar-inverse .navbar-nav > li > a:hover{color: rgb(241, 89, 37);}</style>';
@@ -94,9 +94,9 @@ class MasterView {
     	echo '</div>
     	<div id="navbar" class="navbar-collapse collapse">
     	<ul id="login" class="nav navbar-nav navbar-right">';
-    	
+
     	echo '<style>.alignName{line-height: 50px;}</style>';
-    	
+
     	if (!is_null($authenticatedUser)){
     		echo '<li class="pull-right"><a href="/'.$base.'/logout" id="logout-btn" ng-click=\'/'.$base.'/logout\' ng-hide=[[buttonShow]]>Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>';
     		echo '<li class="pull-right"><a href="/'.$base.'/courses" id="courses-btn" ng-click=\'/'.$base.'/courses\' ng-hide=[[buttonShow]]>My Courses <i class="fa" aria-hidden="true"></i></a></li>';
@@ -109,7 +109,7 @@ class MasterView {
     		echo '<li><a href="/'.$base.'/login" id="logout-btn" ng-click=\'/'.$base.'/login\' ng-hide=[[buttonShow]]>Login <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>';
 			echo '<li><a href="/'.$base.'/registration" id="logout-btn" ng-click=\'/'.$base.'/registration\' ng-hide=[[buttonShow]]>Register <i class="fa fa-sign-in" aria-hidden="true"></i></a></li>';
 		}
-    	
+
     	echo '
     	</ul>
     	</div><!--/.navbar-collapse -->
@@ -117,72 +117,25 @@ class MasterView {
     	</nav>
     	</div>';
     }
-    	
+
    	public static function showFooter() {
    		echo '<link rel="stylesheet" href="css/foot_style.css">
 			<footer id=\'foot\' class=\'footer-distributed\'>
-			    <div class="container">
-			        <div class="row">
-			       <!--     <div class="footer-left">
-			                <div>
-			                <h5>GitHub</h5>
-			                <ul class=\'list-unstyled\'>   
-			                    <li><a href="https://github.com/cloudandbigdatalab/cloudandbigdatalab.github.io">About us</a></li>
-			                    <li><a href="#/about">Technical Support</a></li>
-			                </ul>
-			                </div>
-			            </div> -->
-			       <!--     <div class="footer-left">
-			                <div>
-			                <h5>Courses</h5>
-			                <ul class=\'list-unstyled\'>';
-   					/*			$fullPath = dirname(__FILE__) . DIRECTORY_SEPARATOR . "../resources/courseData/topics/";
-   								$files = scandir($fullPath);
-	  							$files = array_diff($files, array('.', '..'));
-	  							$coursesArray = array();
-	  							foreach($files as $file) {
-	  								$yaml = Spyc::YAMLLoad($fullPath.$file);
-	  								foreach($yaml as $topic) {
-	  									if (strcasecmp($topic['title'], "Coming soon"))
-	  										array_push($coursesArray, '<li><a href="topics?'.$topic["link"].'">'.$topic['title'].'</a></li>');
-	  								}
-	  							}
-	  							sort($coursesArray, SORT_REGULAR | SORT_NATURAL);
-	  							foreach ($coursesArray as $course) {
-	  								echo $course;
-	  							} */
-			                echo '</ul>
-			                </div>
-			            </div> -->
-			          <!--  <div class="footer-right">
-			                <div>
-			                <h5>Service</h5>
-			                <ul class=\'list-unstyled\'> 
-			                    <li><a href="#/">Instructor</a></li>
-			                    <li><a href="#/">Students</a></li>
-			                    <li><a href="#/">Admin</a></li>
-			                </ul>
-			                </div>
-			            </div> -->
-			        </div>
-			
-			
-			        <div class="row">
-			            <div class="footer-bottom-left">
-			                <div class = "row footer-company-name">
-			                	Powered by: 
-			                	<img height="50px" src="https://www.chameleoncloud.org/media/cms_page_media/317/Chameleon-FullColor-lg_4CCULFA.jpg" alt="Chameleon Cloud">
-			                </div>
-			                <br><br>
-			                <div>
-			                <p class="footer-company-name text-muted">2016 © Openstack eLab. All rights reserved. <br>Site built by Gregory Hooks.</p>
-			                </div>
-			            </div>
-			
-			        </div>
-			
+			<div class="container">
+				<div class="row">
 			    </div>
-			</footer>';
+
+			    <div class="row">
+		            <div class="footer-bottom-left">
+		                <br><br>
+		                <div>
+		                	<p class="footer-company-name text-muted">2016 © Openstack eLab. All rights reserved. <br>Site built by Gregory Hooks.</p>
+		                </div>
+		            </div>
+		        </div>
+
+		    </div>
+		</footer>';
    	}
 }
 ?>

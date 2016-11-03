@@ -57,3 +57,18 @@
 	line-height: 36px;
 	text-align: center;
 }
+
+.footer-company-name {
+	height: 50px;
+	margin-bottom: 50px;
+	margin-top: 20px;
+}
+
+.footer-sponsors img {
+	padding-left: 10px;;
+	margin-left: 2em;
+}
+
+.row {
+	margin-right: 0;
+}
