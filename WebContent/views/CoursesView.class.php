@@ -85,10 +85,10 @@ class CoursesView {
 	  			}else
 	  				echo '<p>'.$courseYaml[0]["description"].'</p>';
 	  				echo '<br><div class="col-md-3">';
-				    if (count($lessons) > 0) {
-				    	echo '<a class="btn btn-primary btn-block btn-lg" href="https://github.com/ml6973/eLab-GUI-web-portal/tree/master/WebContent/resources/marketPlaceData/'.$file.'/Lessons" role="button">Access Course</a>';
-				    }else
-				    	echo '<br><br>';
+				    //if (count($lessons) > 0) {
+				    	echo '<a class="btn btn-primary btn-block btn-lg" href="https://github.com/ml6973/Cloud-Tutorial/tree/master/'.$file.'" role="button">Access Course</a>';
+				    //}else
+				    //	echo '<br><br>';
 					echo '</div>
 					<div class="col-md-3 pull-right" ng-include>';
 	  				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))

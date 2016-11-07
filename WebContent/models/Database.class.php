@@ -2,7 +2,7 @@
 // Responsibility: maintains open DB connection (singleton)
 class Database {
     private static $db;
-	private static $dsn = 'mysql:host=localhost;dbname=';
+	private static $dsn;
 	private static $dbName;
 	private static $username;
 	private static $options = 
@@ -19,6 +19,7 @@ class Database {
 				$passArray = parse_ini_file($configPath);
 				$username = $passArray["username"];
 				$password = $passArray["password"];
+				self::$dsn = 'mysql:host='.$passArray["db_Ip"].';dbname=';
 				self::$dbName = $dbName;
 				$dbspec = self::$dsn.self::$dbName.";charset=utf8";
 				self::$db = new PDO ($dbspec, $username, $password, self::$options);

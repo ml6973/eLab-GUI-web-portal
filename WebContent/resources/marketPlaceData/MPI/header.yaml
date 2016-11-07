@@ -1,6 +1,6 @@
 - title: Parallel and Distributed Computing Course
   description: MPI for python programming with a real time environment.
-				<b>By Paul Rad, Ph.D. and Swanand Mhalagi, Research Assistant</b>
+				<b>By Ryan Evans and Swanand Mhalagi, Research Assistant</b>
 
 				Over the last years, high performance computing has become an affordable resource to many more researchers in the scientific community than ever before. The conjunction of quality open source software and commodity hardware strongly influenced the now widespread popularity of cluster computing.
 				
