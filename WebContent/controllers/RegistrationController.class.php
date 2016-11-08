@@ -45,11 +45,12 @@ class RegistrationController {
 				header('Location: /'.$_SESSION['base'].'/courses');
 			} else  
 				registrationView::show($user, $userData);
-		} else  // Initial link
+		} else {  // Initial link
 			$_SESSION['user'] = null;
 			$_SESSION['userData'] = null;
 			$_SESSION['fb_access_token'] = null;
 			registrationView::show();
+		}
 	}
 	
 	protected function extractForm($formInput, $valueName) {
