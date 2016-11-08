@@ -138,7 +138,9 @@ class CoursesView {
 		    	<br><br>
 			</div>
 			<div class="col-md-3 pull-right" ng-include>';
-				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
+				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances) && array_key_exists('type', $courseYaml[0]))
+					vmInfo::showCustom($courseYaml[0]['image'], $courseYaml[0]['type']);
+				else if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
 					vmInfo::show($courseYaml[0]['image']);
 				else
 					vmInfo::showDisabled();

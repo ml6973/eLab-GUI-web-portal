@@ -1,4 +1,5 @@
 - title: Openstack Developer Certification
-  description: This course is an introduction class covering the core OpenStack projects including Nova, Neutron, Glance, Keystone and Horizon. This course covers lessons that range from community code contribution, understanding the architecture, to installing and configuring. This course is a great primer for anyone interested in OpenStack code development. This course is designed for technical individuals and consists of hands on labs. <br> <a href="https://github.com/ml6973/Cloud-Tutorial/tree/master/OpenStack">OpenStack Lessons</a> <br> <a href="http://129.114.108.71:8888/">Multi-Node Cloud</a>
-  image: cirros
+  description: This course is an introduction class covering the core OpenStack projects including Nova, Neutron, Glance, Keystone and Horizon. This course covers lessons that range from community code contribution, understanding the architecture, to installing and configuring. This course is a great primer for anyone interested in OpenStack code development. This course is designed for technical individuals and consists of hands on labs. <br> <a href="https://github.com/ml6973/Cloud-Tutorial/tree/master/OpenStack">OpenStack Lessons</a>
+  image: openstack-image
+  type: jupyter
   topicFile: topics.yml
