@@ -5,6 +5,7 @@
 				This course is designed to give you the main principles needed to understand Apache Spark and build your confidence through hands-on experience. Through the course, the audience will be guided with a wide range of core Spark concepts using Python source code examples; all of which are desined to give fundamental, working knowledge. These lessons will help to uderstand and exexute the basic programming and data manipulation is Spark. There will be few python examples illustrated and explaind to take you to the next level.
   image: bdas-image
   type: jupyter
+  lessonlink: https://github.com/ml6973/Cloud-Tutorial/tree/master/SparkBD
   markettitle: Big Data Analysis with Spark
   organization: The University of Texas at San Antonio
   lessoncount: 4

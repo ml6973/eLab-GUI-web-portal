@@ -85,10 +85,10 @@ class CoursesView {
 	  			}else
 	  				echo '<p>'.$courseYaml[0]["description"].'</p>';
 	  				echo '<br><div class="col-md-3">';
-				    //if (count($lessons) > 0) {
-				    	echo '<a class="btn btn-primary btn-block btn-lg" href="https://github.com/ml6973/Cloud-Tutorial/tree/master/'.$file.'" role="button">Access Course</a>';
-				    //}else
-				    //	echo '<br><br>';
+				    if (array_key_exists('lessonlink', $courseYaml[0])) {
+				    	echo '<a class="btn btn-primary btn-block btn-lg" href="'.$courseYaml[0]['lessonlink'].'" role="button">Access Course</a>';
+				    }else
+				    	echo '<br><br>';
 					echo '</div>
 					<div class="col-md-3 pull-right" ng-include>';
 	  				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
@@ -115,8 +115,21 @@ class CoursesView {
   		
 	  	echo '<div class="container">
 			<h2 class="text-left">'.$courseYaml[0]['title'].'</h2>
-		  <p>'.$courseYaml[0]['description'].'</p>
-			<br>
+		  <p>'.$courseYaml[0]['description'].'</p>';
+		  	echo '<br><div class="col-md-3">';
+		  	if (array_key_exists('lessonlink', $courseYaml[0])) {
+		  		echo '<a class="btn btn-primary btn-block btn-lg" href="'.$courseYaml[0]['lessonlink'].'" role="button">Access Course</a>';
+		  	}else
+		  		echo '<br><br>';
+		  	echo '</div>
+		  	<div class="col-md-3 pull-right" ng-include>';
+				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances) && array_key_exists('type', $courseYaml[0]))
+					vmInfo::showCustom($courseYaml[0]['image'], $courseYaml[0]['type']);
+				else if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
+					vmInfo::show($courseYaml[0]['image']);
+				else
+					vmInfo::showDisabled();
+			echo '</div><br><br><br>
 			<div class="col-md-8">';
 				$fileName = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/topics/" . $courseYaml[0]['topicFile'];
 				$yaml = Spyc::YAMLLoad($fileName);
@@ -137,14 +150,6 @@ class CoursesView {
 				echo '
 		    	<br><br>
 			</div>
-			<div class="col-md-3 pull-right" ng-include>';
-				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances) && array_key_exists('type', $courseYaml[0]))
-					vmInfo::showCustom($courseYaml[0]['image'], $courseYaml[0]['type']);
-				else if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
-					vmInfo::show($courseYaml[0]['image']);
-				else
-					vmInfo::showDisabled();
-			echo '</div>
 		</div>';
   	}
   }
