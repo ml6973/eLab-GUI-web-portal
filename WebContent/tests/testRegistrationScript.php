@@ -17,7 +17,7 @@ set_time_limit(120);
 <h2>It should run the python script</h2>
 <?php 
 
-$registerCMD = escapeshellcmd('C:\Python27\python ' . dirname(__FILE__) . DIRECTORY_SEPARATOR . '../resources/register.py http://129.114.110.218:12345/register/ testuser test@gdail.com passpass 2 ptest root');
+$registerCMD = escapeshellcmd('C:\Python27\python ' . dirname(__FILE__) . DIRECTORY_SEPARATOR . '../resources/register.py testuser test@gdail.com passpass 2');
 exec($registerCMD, $output, $exit);
 
 print_r($output);

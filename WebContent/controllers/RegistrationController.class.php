@@ -36,9 +36,9 @@ class RegistrationController {
 				$_SESSION['authenticatedUser'] = $user;
 				RegistrationDB::addRegistration($user);
 				if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-					pclose(popen("start \"bla\" \"" . 'C:\Python27\python.exe' . "\" " . escapeshellcmd(dirname(__FILE__) . DIRECTORY_SEPARATOR . '../resources/register.py http://129.114.110.218:12345/register/ '.$user->getUserName().' '.$userData->getEmail().' '.$userData->getVMPassword().' '.$user->getUserId().' oci_eLab root'), "r"));
+					pclose(popen("start \"bla\" \"" . 'C:\Python27\python.exe' . "\" " . escapeshellcmd(dirname(__FILE__) . DIRECTORY_SEPARATOR . '../resources/register.py '.$user->getUserName().' '.$userData->getEmail().' '.$userData->getVMPassword().' '.$user->getUserId()), "r"));
 				}else{
-					$registerCMD = escapeshellcmd('/usr/bin/python ' . dirname(__FILE__) . DIRECTORY_SEPARATOR . '../resources/register.py http://129.114.110.218:12345/register/ '.$user->getUserName().' '.$userData->getEmail().' '.$userData->getVMPassword().' '.$user->getUserId().' oci_eLab root');
+					$registerCMD = escapeshellcmd('/usr/bin/python ' . dirname(__FILE__) . DIRECTORY_SEPARATOR . '../resources/register.py '.$user->getUserName().' '.$userData->getEmail().' '.$userData->getVMPassword().' '.$user->getUserId());
 					$registerCMD .= '> /dev/null 2>&1 &';
 					exec($registerCMD, $output, $exit);
 				}

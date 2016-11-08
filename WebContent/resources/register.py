@@ -1,18 +1,24 @@
+import ConfigParser
 import MySQLdb
 import json
 import requests
+import os
 import sys
 import time
 
-url = sys.argv[1]
+dir_path = os.path.dirname(os.path.realpath(__file__))
+parser = ConfigParser.SafeConfigParser()
+parser.read(dir_path + "/../../../myConfig.ini")
+
+url = "http://" + parser.get("eLab", "api_Ip").strip('"') + "/register/"
 
 body = {
-	"api_uname":"webportal", 
-	"api_pass":"greg123",
-	"username":sys.argv[2],
-	"email":sys.argv[3],
-	"preferred_pass":sys.argv[4],
-	"external_id":sys.argv[5]
+	"api_uname":parser.get("eLab", "api_User").strip('"'), 
+	"api_pass":parser.get("eLab", "api_Pass").strip('"'),
+	"username":sys.argv[1],
+	"email":sys.argv[2],
+	"preferred_pass":sys.argv[3],
+	"external_id":sys.argv[4]
 }
 
 my_headers = {"Content-Type": 'application/json'}
@@ -28,13 +34,10 @@ while True:
 	else:
 		time.sleep(120)
 
-if len(sys.argv) == 9:
-	cnx = MySQLdb.connect(host='127.0.0.1', db=sys.argv[6], user=sys.argv[7], passwd=sys.argv[8])
-else:
-	cnx = MySQLdb.connect(host='127.0.0.1', db=sys.argv[6], user=sys.argv[7])
+cnx = MySQLdb.connect(host=parser.get("eLab", "db_Ip").strip('"'), db='oci_eLab', user=parser.get("eLab", "username").strip('"'), passwd=parser.get("eLab", "password").strip('"'))
 cursor = cnx.cursor()
 
-query = ("UPDATE Registration SET complete = true WHERE userId = " + sys.argv[5])
+query = ("UPDATE Registration SET complete = true WHERE userId = " + sys.argv[4])
 
 cursor.execute(query)
 cnx.commit()
