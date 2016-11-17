@@ -45,6 +45,9 @@
 		case "posts":
 			PostsController::run();
 			break;
+		case "liveVideo":
+			LiveVideoController::run();
+			break;
 		default:
 			MarketPlaceController::run();
 	};

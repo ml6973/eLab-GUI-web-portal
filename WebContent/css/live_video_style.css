@@ -1,0 +1,56 @@
+.pageTitle {
+	text-align: center;
+	text-shadow: white 0.1em 0.1em 0.5em;
+}
+
+.topLevel {
+	margin-left: 25px;
+}
+
+.videoPlayer {
+	width: 65%;
+	display: inline-block;
+	padding-bottom: 36%;
+	margin-right: 10px;
+}
+
+.questions_answers {
+	width: 32%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.previousVideos span:first-child {
+	font-size: x-large;
+    font-weight: bold;
+}
+
+.previousVideos {
+	width: 40%;
+	display: inline-block;
+	vertical-align: top;
+	border-style: groove;
+	border-width: thin;
+	margin-right: 10px;
+	padding: 1em;
+}
+
+.upcomingEvents span:first-child {
+	font-size: x-large;
+    font-weight: bold;
+}
+
+.upcomingEvents {
+	width: 55%;
+	display: inline-block;
+	background-color: lightblue;
+    border: orange;
+    border-width: thin;
+    border-style: groove;
+    padding: 1em;
+}
+
+.secondLevel {
+	margin-left: 25px;
+	margin-top: 35px;
+}
