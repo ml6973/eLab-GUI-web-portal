@@ -21,29 +21,24 @@ class LiveVideoView {
   			<div class="pageTitle"><h1> ShowCase </h1></div>
   			';
   	
-  	//Top level of the page. Video player and Q&A (or whatever chat feature) will exist here
-  	/*
+  	//Top level of the page. Video player and Q&A will exist here
   	echo '
   			<div class="topLevel">
-	  			<!-- Embedded Video Player -->
-	  			<div class="videoPlayer">
-	  				<iframe src="https://www.youtube.com/embed/UGPuEDyAsU8" style="margin-right: 5px;" width="65%" height="400px" frameborder="1" allowfullscreen> </iframe>
-	  			
-	  				<!-- Q&A -->
-	  				<div class="questions_answers">
-	  					<iframe src="https://www.youtube.com/live_chat?v=UGPuEDyAsU8" frameborder="1" width="100%" height="400px" allowfullscreen> </iframe>
-	  				</div>
-  				</div>
-  			</div>
-  			';
-  	*/
-  	echo '
-  			<div class="topLevel">
+  				<!-- Embedded Video Player -->
 	  			<div class="videoPlayer embed-responsive">
 	  				<iframe class="embed-responsive" src="https://www.youtube.com/embed/UGPuEDyAsU8" frameborder="1" allowfullscreen> </iframe>
 	  			</div>
-	  			<div class="questions_answers">
-		  			<iframe src="https://www.youtube.com/live_chat?v=UGPuEDyAsU8" frameborder="1" allowfullscreen> </iframe>
+  			
+  				<!-- Q&A -->
+	  			<div class="questionsAnswers">
+		  			<span> Q&A </span>
+  					<form>
+  						<input type="text" name="question" placeholder="Type a question here!">
+  						<input type="submit" value="Submit">
+  					</form>
+  					<br>
+  					<blockquote name="reply_answer">
+  					</blockquote>
 		  		</div>
   			</div>
   			';
