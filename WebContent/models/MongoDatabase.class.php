@@ -11,7 +11,7 @@ class MongoDatabase {
     private static $courseDBName;
     private static $passArray;
 	
-	public static function getConnection($courseDBName = 'oci_eLab_courses', $configPath = null) {
+	public static function getConnection($courseDBName = 'oci_eLab', $configPath = null) {
 		
 		if (!isset (self::$connection) || self::$connection == null) {
 			try {
@@ -34,7 +34,7 @@ class MongoDatabase {
 				echo "Failed to open connection to ".self::$courseDBName. $e->getMessage();
 			}
 		}
-		return self::$connection;
+		return self::$courseDBName;
 	}
 	
 	public static function clearDB() {
