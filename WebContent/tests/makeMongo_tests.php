@@ -12,6 +12,8 @@ include_once("../models/MongoDatabase.class.php");
 include_once("../models/Messages.class.php");
 include_once("./makeMongo.php");
 include_once("../libraries/Spyc.class.php");
+include_once ("../libraries/Parsedown.class.php");
+include_once ("../libraries/ParsedownExtra.class.php");
 ?>
 
 <h1>Builds Mongo database using prepared mongo documents</h1>
