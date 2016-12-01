@@ -24,40 +24,31 @@ class MarketPlaceView {
 	    </div>
 	</div>';
 
-  	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/marketPlaceData/";
-
-  	if (file_exists($fullPath) && is_dir($fullPath)){
-  		$files = scandir($fullPath);
-  		$files = array_diff($files, array('.', '..'));
-  	}
-
 	echo '
 
   	<div class="container">
   		<div class="row">';
-
-	foreach($files as $file) {
-		if (file_exists($fullPath.$file.DIRECTORY_SEPARATOR."header.yaml") && file_exists($fullPath.$file.DIRECTORY_SEPARATOR."details.md") && file_exists($fullPath.$file.DIRECTORY_SEPARATOR."thumbnail.jpg")) {
-			$marketYaml = Spyc::YAMLLoad($fullPath.$file.DIRECTORY_SEPARATOR."header.yaml");
-			if (array_key_exists('markettitle', $marketYaml[0])) {
-				echo '
-	  			<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="thumbnail">
-						<a href="course_details?'.$file.'" class="">
-							<img src="/'.$base.'/resources/marketPlaceData/'.$file.'/thumbnail.jpg" alt="Thumbnail">
-							<div class="partner"><span>'.$marketYaml[0]['organization'].'</span></div>
-							<div class="coursetitle">'.$marketYaml[0]['markettitle'].'</div>';
-						if (strcmp($marketYaml[0]['lessoncount'], "1") == 0) {
+	$db = MongoDatabase::getConnection();
+	$courses = $db->selectCollection('courseData');
+	$gridFS = $db->getGridFS();
+	$results = $courses->find( array("identifier" => "marketPlaceObject") );
+	
+	foreach($results as $course) {
+		echo '
+  			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="thumbnail">
+					<a href="course_details?'.$course['_id'].'" class="">
+						<img src="data:image/jpg;base64,'.base64_encode($gridFS->findOne(array("_id" => $course['thumbnail']))->getBytes()).'" alt="Thumbnail">
+						<div class="partner"><span>'.$course['organization'].'</span></div>
+						<div class="coursetitle">'.$course['mtitle'].'</div>';
+						if (strcmp($course['lessoncount'], "1") == 0) {
 						   echo '<div class="footer"><span>1 Lesson</span></div>';
 						}else {
-							echo '<div class="footer"><span>'.$marketYaml[0]['lessoncount'].' Lessons</span></div>';
+							echo '<div class="footer"><span>'.$course['lessoncount'].' Lessons</span></div>';
 						}
 			echo		'</a>
 					 </div>
 				</div>';
-
-			}
-		}
 	}
 
 	echo '<div class="col-sm-6 col-md-4 col-lg-3">
