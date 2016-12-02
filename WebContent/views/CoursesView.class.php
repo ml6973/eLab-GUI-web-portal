@@ -116,7 +116,7 @@ class CoursesView {
 	  	echo '<div class="container">
 			<h2 class="text-left">'.$courseYaml[0]['title'].'</h2>
 		  <p>'.$courseYaml[0]['description'].'</p>';
-		  	echo '<br><div class="col-md-3">';
+		  	echo '<br><div class="col-md-3 pull-left">';
 		  	if (array_key_exists('lessonlink', $courseYaml[0])) {
 		  		echo '<a class="btn btn-primary btn-block btn-lg" href="'.$courseYaml[0]['lessonlink'].'" role="button">Access Course</a>';
 		  	}else
