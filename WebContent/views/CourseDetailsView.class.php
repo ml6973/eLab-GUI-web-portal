@@ -12,7 +12,12 @@ class CourseDetailsView {
   	$pathDir = dirname(__FILE__);  //Initialize the path directory
   	
   	//Build Object ID from parameter
-  	$object = new MongoId($courseDir);
+  	$object = null;
+  	try {
+  		$object = new MongoId($courseDir);
+  	} catch (MongoException $e) {
+  		$object = null;
+  	}
   	
   	//Get connection and select the collection we will store the course data
   	$db = MongoDatabase::getConnection();
@@ -26,7 +31,12 @@ class CourseDetailsView {
    <link rel="stylesheet" href="css/course_details_style.css">
    </head>
 
-   <!--Banner-->
+   <!--Banner-->';
+   if (is_null($course) || is_null($object) || strcmp($course['identifier'], "marketPlaceObject") != 0) {
+   	echo '<div class="error" style="text-align: center;"><h1>Invalid Course</h1></div>';
+   	return;
+   }
+   echo '
    <div class="jumbotron" style="background-image: url(data:image/jpg;base64,'.base64_encode($gridFS->findOne(array("_id" => $course['thumbnail']))->getBytes()).')">
    <div class="courseTitle"><h1>'.$course['title'].'</h1></div>
    </div>';
