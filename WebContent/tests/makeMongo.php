@@ -57,6 +57,8 @@ function makeMongo() {
     	$files = array_diff($files, array('.', '..'));
     	sort($files, SORT_REGULAR | SORT_NATURAL);
     }
+    $videoFile = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/videos/videos.yaml";
+    $videoyaml = Spyc::YAMLLoad($videoFile);
     foreach($files as $file) {
     	$courseYaml = Spyc::YAMLLoad($fullPath.$file);
     	if (!array_key_exists("type", $courseYaml[0])) {
@@ -85,12 +87,24 @@ function makeMongo() {
 					else
 						$number = 3;
 					
+					$videoLink = "";
+					foreach($videoyaml as $video) {
+						if (strcmp($video['title'], $postAttributes[$number]) == 0){
+							$videoLink = $video['code'];
+							$videoContents = preg_split('/ /', $videoLink);
+							$videoLink = $videoContents[4];
+							$videoLink = preg_replace('/src=/', "", $videoLink);
+							$videoLink = preg_replace('/"/', "", $videoLink);
+						}
+					}
+					
 					$postID = $gridFS->storeBytes($postContents[2]);
 					$postObject = array(
 							'identifier' => "postObject",
 							'title' => $postAttributes[$number],
 							'description' => $postAttributes[$number+6],
 							'author' => $postAttributes[$number+4],
+							'video' => $videoLink,
 							'post' => $postID
 					);
 					$courses->save($postObject);
