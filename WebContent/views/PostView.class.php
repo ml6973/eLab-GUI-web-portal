@@ -29,6 +29,14 @@ class PostView {
   	
   	$topicObject = $courses->findOne( array("_id" => $topicObjectId) );
   	$postObject = $courses->findOne( array("_id" => $postObjectId) );
+  	
+  	//Identifier checks
+  	if (strcmp($topicObject['identifier'], "topicObject") != 0 ) {
+  		$topicObject = null;
+  	}
+  	if (strcmp($postObject['identifier'], "postObject") != 0) {
+  		$postObject = null;
+  	}
  
 	echo '<div class=\'container\'>
 <div class=\'row centered\'>
