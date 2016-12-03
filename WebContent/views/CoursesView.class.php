@@ -54,91 +54,70 @@ class CoursesView {
 			</div>';
   		}
   	}*/
+	  		
+  	//Get connection and select the collection
+  	$db = MongoDatabase::getConnection();
+  	$courses = $db->selectCollection('courseData');
+  	$gridFS = $db->getGridFS();
   	
-  	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/marketPlaceData/";
+  	$courseObjects = $courses->find( array("identifier" => "marketPlaceObject") );
+  	foreach($courseObjects as $course) {
   	
-  	if (file_exists($fullPath) && is_dir($fullPath)){
-  		$files = scandir($fullPath);
-  		$files = array_diff($files, array('.', '..'));
+  		if (!is_null($instances)) {
+  			echo '<div class="container">
+				<h2 class="text-left">'.$course['title'].'</h2><br>';
+  			if (is_array($course["description"])){
+  				foreach ($course["description"] as $sentence) {
+  					echo '<p>'.$sentence.'</p>';
+  				}
+  			}else
+  				echo '<p>'.$course["description"].'</p>';
+  				echo '<br><div class="col-md-3 pull-left">';
+  				if (array_key_exists('link', $course)) {
+  					echo '<a class="btn btn-primary btn-block btn-lg" href="'.$course['link'].'" role="button">Access Course</a>';
+  				}else
+  					echo '<br><br>';
+  					echo '</div>
+				<div class="col-md-3 pull-right" ng-include>';
+  					if (!is_null($instances) && array_key_exists($course['image'], $instances))
+  						vmInfo::showCustom($course['image'], $course['type']);
+  						else
+  							vmInfo::showDisabled();
+  							echo '</div>
+			</div>';
+  		}
+  	
   	}
   	 
-  	foreach($files as $file) {
-  		
-  		$lessonPath = $fullPath.$file."/Lessons";
-  		if (file_exists($lessonPath) && is_dir($lessonPath)){
-  			$lessons = scandir($lessonPath);
-  			$lessons = array_diff($lessons, array('.', '..'));
-  		} else {
-  			$lessons = array();
-  		}
-  			
-  		$courseYaml = Spyc::YAMLLoad($fullPath.$file."/header.yaml");
-  	
-  		if (is_array($courseYaml[0]) && array_key_exists('image', $courseYaml[0])) {
-	  		if (!is_null($instances)) {
-	  			echo '<div class="container">
-					<h2 class="text-left">'.$courseYaml[0]['title'].'</h2><br>';
-	  			if (is_array($courseYaml[0]["description"])){
-	  				foreach ($courseYaml[0]["description"] as $sentence) {
-	  					echo '<p>'.$sentence.'</p>';
-	  				}
-	  			}else
-	  				echo '<p>'.$courseYaml[0]["description"].'</p>';
-	  				echo '<br><div class="col-md-3 pull-left">';
-				    if (array_key_exists('lessonlink', $courseYaml[0])) {
-				    	echo '<a class="btn btn-primary btn-block btn-lg" href="'.$courseYaml[0]['lessonlink'].'" role="button">Access Course</a>';
-				    }else
-				    	echo '<br><br>';
-					echo '</div>
-					<div class="col-md-3 pull-right" ng-include>';
-	  				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
-	  					vmInfo::showCustom($courseYaml[0]['image'], $courseYaml[0]['type']);
-	  				else
-	  					vmInfo::showDisabled();
-	  				echo '</div>
-				</div>';
-	  		}
-  		}
-  	}
-  	
-  	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/courses/";
-  	 
-  	if (file_exists($fullPath) && is_dir($fullPath)){
-  		$files = scandir($fullPath);
-  		$files = array_diff($files, array('.', '..'));
-  		sort($files, SORT_REGULAR | SORT_NATURAL);
-  	}
-  	
-  	foreach($files as $file) {
-  	
-  		$courseYaml = Spyc::YAMLLoad($fullPath.$file);
+  	$courseObjects = $courses->find( array("identifier" => "courseObject") );
+  	foreach($courseObjects as $course) {
   		
 	  	echo '<div class="container">
-			<h2 class="text-left">'.$courseYaml[0]['title'].'</h2>
-		  <p>'.$courseYaml[0]['description'].'</p>';
+			<h2 class="text-left">'.$course['title'].'</h2>
+		  <p>'.$course['description'].'</p>';
 		  	echo '<br><div class="col-md-3 pull-left">';
-		  	if (array_key_exists('lessonlink', $courseYaml[0])) {
-		  		echo '<a class="btn btn-primary btn-block btn-lg" href="'.$courseYaml[0]['lessonlink'].'" role="button">Access Course</a>';
+		  	if (array_key_exists('link', $course)) {
+		  		echo '<a class="btn btn-primary btn-block btn-lg" href="'.$course['link'].'" role="button">Access Course</a>';
 		  	}else
 		  		echo '<br><br>';
 		  	echo '</div>
 		  	<div class="col-md-3 pull-right" ng-include>';
-				if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances) && array_key_exists('type', $courseYaml[0]))
-					vmInfo::showCustom($courseYaml[0]['image'], $courseYaml[0]['type']);
-				else if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
-					vmInfo::show($courseYaml[0]['image']);
+				if (!is_null($instances) && array_key_exists($course['image'], $instances) && array_key_exists('type', $course))
+					vmInfo::showCustom($course['image'], $course['type']);
+				else if (!is_null($instances) && array_key_exists($course['image'], $instances))
+					vmInfo::show($course['image']);
 				else
 					vmInfo::showDisabled();
 			echo '</div><br><br><br>
 			<div class="col-md-8">';
-				$fileName = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/topics/" . $courseYaml[0]['topicFile'];
-				$yaml = Spyc::YAMLLoad($fileName);
-				foreach($yaml as $topic) {
+			
+				foreach($course["topics"] as $topicObject) {
+					$topic = $courses->findOne( array("_id" => $topicObject));
 					echo '
 		           <ul>
 			        	<div>';
-					if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
-				    		echo '<a href="topics?'.$topic["link"].'" >  <h3> - '.$topic["title"].'</h3></a>';
+					if (!is_null($instances) && array_key_exists($course['image'], $instances))
+				    		echo '<a href="topics?'.$topic["_id"].'" >  <h3> - '.$topic["title"].'</h3></a>';
 					else
 							echo '<h3> - '.$topic["title"].'</h3>';
 				    echo '<!--description
@@ -152,6 +131,7 @@ class CoursesView {
 			</div>
 		</div>';
   	}
+  	
   }
 }
 ?>
