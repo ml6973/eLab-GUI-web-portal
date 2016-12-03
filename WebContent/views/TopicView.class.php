@@ -9,16 +9,21 @@ class TopicView {
 
   public static function showDetails($topic) {
   	$base = $_SESSION['base'];
-  	$pathDir = dirname(__FILE__);  //Initialize the path directory
-  	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/posts/" . $topic . "/";
-  	if (file_exists($fullPath) && is_dir($fullPath) && !preg_match("/^[\\\\\/]+$/", $topic)) {
-	  	$files = scandir($fullPath);
-	  	$files = array_diff($files, array('.', '..'));
-	  	sort($files, SORT_REGULAR | SORT_NATURAL);
-  	}else{
-  		$topic = null;
-  	}
- 
+  	
+  	//Get connection and select the collection
+  	$db = MongoDatabase::getConnection();
+  	$courses = $db->selectCollection('courseData');
+  	$gridFS = $db->getGridFS();
+  	
+	//Build Object ID from parameter
+	$object = null;
+	try {
+	  $object = new MongoId($topic);
+	} catch (MongoException $e) {
+	  $object = null;
+	}
+  	$topicObject = $courses->findOne( array("_id" => $object) );
+  	
 	echo '<div class=\'container\'>
 <div class=\'row centered\'>
 		<div class="col-md-1"></div> 
@@ -26,11 +31,10 @@ class TopicView {
 			<!-- <a href=\'/'.$base.'/courses\'><h2>Go back</h2></a> -->
 			<a href="/'.$base.'/courses" class="btn btn-info" id="backbutton" ng-click=\'/'.$base.'/courses\' ng-hide=[[buttonShow]] style="font-size:2.5rem;"><i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i> Go Back</a>
 			<div>';
-				if (is_null($topic)) {
+				if (is_null($topicObject) || is_null($object) || strcmp($topicObject['identifier'], "topicObject") != 0) {
 					echo '<div><h3>No Topic Selected</h3></div>';
 				}else {
 					echo '<div>';
-					//echo file_get_contents($pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/topics/" . $topic . ".md");
 					echo '
 							<style>
 							ul.mod {
@@ -40,24 +44,19 @@ class TopicView {
 							
 							
 							<!-- <h2>Video Lessons</h2> -->
-							<h2>'.TopicView::getTitle($topic).'</h2>
+							<h2>'.$topicObject['title'].'</h2>
 							<ul class=\'mod\'>';
 								
-								foreach($files as $file) {
-									if (preg_match('/\.md$/', $file)) {
-										$postContents = preg_split('/---/', file_get_contents($fullPath.$file));
-										$postAttributes = preg_replace('/:[\s\t]/', ':', $postContents[1]);
-										$postAttributes = preg_replace('/[\n\r]+/', "\n", $postAttributes);
-										$postAttributes = preg_split('/[:\n\r]/', $postAttributes);
-										echo '
-										<li>
-											<h4>
-												<a href="/'.$base.'/posts?'.$topic."&".$file.'"><i class="fa fa-flask" aria-hidden="true"></i> '.$postAttributes[4].'</a>
-											</h4>
-											<p class=\'text-primary\'>'.$postAttributes[8].'</p>
-											<p class=\'text-muted\'> '.$postAttributes[10].'</p>
-										</li>';
-									}
+								foreach($topicObject['posts'] as $post) {
+									$postObject = $courses->findOne( array('_id' => $post) );
+									echo '
+									<li>
+										<h4>
+											<a href="/'.$base.'/posts?'.$topicObject['_id']."&".$postObject['_id'].'"><i class="fa fa-flask" aria-hidden="true"></i> '.$postObject['title'].'</a>
+										</h4>
+										<p class=\'text-primary\'>'.$postObject['author'].'</p>
+										<p class=\'text-muted\'> '.$postObject['description'].'</p>
+									</li>';
 								}
 							echo '
 							</ul>';
@@ -67,24 +66,6 @@ class TopicView {
 		</div>
 	</div>
 </div>';
-  }
-  
-  public static function getTitle($topic) {
-  	$base = $_SESSION['base'];
-  	$pathDir = dirname(__FILE__);  //Initialize the path directory
-  	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/courseData/topics/";
-  	if (file_exists($fullPath) && is_dir($fullPath)) {
-  		$files = scandir($fullPath);
-  		$files = array_diff($files, array('.', '..'));
-  	}
-  	foreach ($files as $file){
-  		$courseYaml = Spyc::YAMLLoad($fullPath.$file);
-  		
-  		foreach ($courseYaml as $course) {
-  			if (strcmp($course['link'], $topic) == 0)
-  				return $course['title'];
-  		}
-  	}
   }
 }
 ?>
