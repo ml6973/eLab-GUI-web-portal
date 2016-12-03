@@ -73,7 +73,7 @@ class CoursesView {
   			}else
   				echo '<p>'.$course["description"].'</p>';
   				echo '<br><div class="col-md-3 pull-left">';
-  				if (array_key_exists('link', $course)) {
+  				if (array_key_exists('link', $course) && !empty($course["link"])) {
   					echo '<a class="btn btn-primary btn-block btn-lg" href="'.$course['link'].'" role="button">Access Course</a>';
   				}else
   					echo '<br><br>';
@@ -96,7 +96,7 @@ class CoursesView {
 			<h2 class="text-left">'.$course['title'].'</h2>
 		  <p>'.$course['description'].'</p>';
 		  	echo '<br><div class="col-md-3 pull-left">';
-		  	if (array_key_exists('link', $course)) {
+		  	if (array_key_exists('link', $course) && !empty($course["link"])) {
 		  		echo '<a class="btn btn-primary btn-block btn-lg" href="'.$course['link'].'" role="button">Access Course</a>';
 		  	}else
 		  		echo '<br><br>';
