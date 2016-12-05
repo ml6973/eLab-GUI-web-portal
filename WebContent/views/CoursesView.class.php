@@ -22,38 +22,6 @@ class CoursesView {
 	       <!--	<p><a class="btn btn-primary btn-md" href="/#/about" role="button">Learn more &raquo;</a></p> -->
 	    </div>
 	</div>';
-  	
-  /*	$fullPath = $pathDir . DIRECTORY_SEPARATOR . "../resources/customCourseData/";
-  	 
-  	if (file_exists($fullPath) && is_dir($fullPath)){
-  		$files = scandir($fullPath);
-  		$files = array_diff($files, array('.', '..'));
-  	}
-  	
-  	foreach($files as $file) {
-  		 
-  		$courseYaml = Spyc::YAMLLoad($fullPath.$file);
-  		
-  		if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances)) {
-	  		echo '<div class="container">
-				<h2 class="text-left">'.$courseYaml[0]['title'].'</h2><br>';
-	  			if (is_array($courseYaml[0]["description"])){
-	  				foreach ($courseYaml[0]["description"] as $sentence) {
-	  					echo '<p>'.$sentence.'</p>';
-	  				}
-	  			}else
-	  				echo '<p>'.$courseYaml[0]["description"].'</p>';
-				echo '<br><div class="col-md-8">';
-	  		echo '
-			    <br><br>
-				</div>
-				<div class="col-md-3" ng-include>';
-	  		if (!is_null($instances) && array_key_exists($courseYaml[0]['image'], $instances))
-	  			vmInfo::showCustom($courseYaml[0]['image'], $courseYaml[0]['type']);
-	  			echo '</div>
-			</div>';
-  		}
-  	}*/
 	  		
   	//Get connection and select the collection
   	$db = MongoDatabase::getConnection();
