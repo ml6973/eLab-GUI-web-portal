@@ -1,6 +1,7 @@
 # eLab Web Portal
 
 Requires Xampp (PHP version 5.6.xx)
+Requires MongoDB (version 3.4)
 
 Install Python 2.6 Dependencies:
 ```
