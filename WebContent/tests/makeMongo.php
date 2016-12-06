@@ -8,8 +8,13 @@ function makeMongo() {
 		$files = array_diff($files, array('.', '..'));
 	}
 	
-	//Get connection and select the collection we will store the course data
+	//Get connection and 
 	$db = MongoDatabase::getConnection();
+	
+	//Clear database for re-initialization
+	$db->drop();
+	
+	//Select the collection we will store the course data
 	$courses = $db->selectCollection('courseData');
 	$gridFS = $db->getGridFS();
 	
