@@ -47,6 +47,26 @@ class UsersDB {
 		return $userRowSets;
 	}
 	
+	public static function updateUser($user) {
+		// Updates user by
+		$query = "UPDATE Users SET passwordHash= :passwordHash WHERE userId = :userId";
+		$returnId = 0;
+		try {
+			if (is_null($user) || $user->getErrorCount() > 0)
+				throw new PDOException("Invalid Userdata object can't be inserted");
+				$db = Database::getDB ();
+				$statement = $db->prepare ($query);
+				$statement->bindValue(":passwordHash", $user->getPasswordHash());
+				$statement->bindValue(":userId", $user->getUserId());
+				$statement->execute ();
+				$statement->closeCursor();
+		} catch (Exception $e) { // Not permanent error handling
+			echo "<p>Error adding user to Users ".$e->getMessage()."</p>";
+		}
+		$returnId = $user->getUserId();
+		return $returnId;
+	}
+	
 	public static function getUsersArray($rowSets) {
 		// Returns an array of User objects extracted from $rowSets
 		$users = array();

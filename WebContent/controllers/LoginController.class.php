@@ -22,6 +22,11 @@ class LoginController {
 			else if (!empty($users[0]->getFacebookId())) {
 				$user->setError('userName', 'USER_SIGN_IN_FACEBOOK');
 			} else {
+				if (is_null($users[0]->getPasswordHash()) && is_null($users[0]->getFacebookId())) {
+					$_SESSION['user'] = $users[0];
+					$_SESSION['userData'] = UserDataDB::getUserDataBy('userId', $users[0]->getUserId())[0];
+					header('Location: /'.$_SESSION['base'].'/finishRegistration');
+				}
 				if (strcmp($user->getPasswordHash(), $users[0]->getPasswordHash()) != 0)
 				if (!$user->verifyPassword($users[0]->getPasswordHash()))
 					$user->setError('password', 'PASSWORD_INCORRECT');
