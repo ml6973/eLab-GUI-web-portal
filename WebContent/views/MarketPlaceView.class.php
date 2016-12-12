@@ -17,7 +17,7 @@ class MarketPlaceView {
 	<!--Banner-->
 	<div class="jumbotron">
 	   	<div class="container">
-	       <div class="title" id="welcome">Welcome to Open Cloud Marketplace!</div>
+	       <div class="title" id="welcome">Welcome to Open A.I. Cloud Marketplace!</div>
            <div class="slogan">Hands-on learning powered by personal environments.</div>
 	       <!--	<p>Everyone knows about the giant skills gap that is haunting the IT sector worldwide. Powered by Chameleon Cloud, eLab cloud based learning platform helps you achieve certification for today\'s tech job.</p> -->
 	       <!--	<p><a class="btn btn-primary btn-md" href="/#/about" role="button">Learn more &raquo;</a></p> -->
@@ -41,11 +41,13 @@ class MarketPlaceView {
 						<img src="data:image/jpg;base64,'.base64_encode($gridFS->findOne(array("_id" => $course['thumbnail']))->getBytes()).'" alt="Thumbnail">
 						<div class="partner"><span>'.$course['organization'].'</span></div>
 						<div class="coursetitle">'.$course['mtitle'].'</div>';
-						if (strcmp($course['lessoncount'], "1") == 0) {
-						   echo '<div class="footer"><span>1 Lesson</span></div>';
-						}else {
-							echo '<div class="footer"><span>'.$course['lessoncount'].' Lessons</span></div>';
-						}
+		                if (strcmp($course['contentType'], "course") == 0) {
+							if (strcmp($course['lessoncount'], "1") == 0) {
+							   echo '<div class="footer"><span>1 Lesson</span></div>';
+							}else {
+								echo '<div class="footer"><span>'.$course['lessoncount'].' Lessons</span></div>';
+							}
+		                }
 			echo		'</a>
 					 </div>
 				</div>';
