@@ -61,9 +61,14 @@ class CoursesView {
 	  							echo '</div>
 				</div>';
   			} elseif (strcmp($course['contentType'], "application") == 0) {
+  				$courseCat = preg_replace("/[_]/s", " ", $course['category']);
+  				$courseSubtitle = ucwords($courseCat." ".$course['contentType']);
   				echo '<div class="container">
-				<h2 class="text-left" style="display: inline-block;">'.$course['title'].'</h2>
-				<div class="col-md-3 pull-right" style="padding-top: 14px;" ng-include>';
+					  <div class="row">
+						<h2 class="text-left pull-left" style="padding-left: 20px;">'.$course['title'].'</h2>
+						<h5 class="pull-right" style="color: grey; padding-left: 20px; padding-right: 15px; padding-top: 18px">'.$courseSubtitle.'</h2><br>
+	  				  </div>
+				      <div class="col-md-3 pull-right" style="" ng-include>';
   						if (!is_null($instances) && array_key_exists($course['image'], $instances))
   							vmInfo::showCustomApplication($course['image'], $course['type']);
   							else
