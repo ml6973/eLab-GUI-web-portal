@@ -33,8 +33,14 @@ class CoursesView {
   	
   		if (!is_null($instances)) {
   			if (strcmp($course['contentType'], "course") == 0) {
-	  			echo '<div class="container">
-					<h2 class="text-left">'.$course['title'].'</h2><br>';
+	  			echo '<div class="container">';
+  				$courseCat = preg_replace("/[_]/s", " ", $course['category']);
+  				$courseSubtitle = ucwords($courseCat." ".$course['contentType']);
+	  			echo '
+	  				<div class="row">
+						<h2 class="text-left pull-left" style="padding-left: 20px;">'.$course['title'].'</h2>
+						<h5 class="pull-right" style="color: grey; padding-left: 20px; padding-right: 15px; padding-top: 18px">'.$courseSubtitle.'</h2><br>
+	  				</div>';
 	  			if (is_array($course["description"])){
 	  				foreach ($course["description"] as $sentence) {
 	  					echo '<p>'.$sentence.'</p>';
@@ -67,7 +73,7 @@ class CoursesView {
   			}
   		}
   	
-  	}
+  	} 	
   	 
   	$courseObjects = $courses->find( array("identifier" => "courseObject") );
   	foreach($courseObjects as $course) {
