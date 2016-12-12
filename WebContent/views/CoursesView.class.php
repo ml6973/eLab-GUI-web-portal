@@ -32,30 +32,48 @@ class CoursesView {
   	foreach($courseObjects as $course) {
   	
   		if (!is_null($instances)) {
-  			echo '<div class="container">
-				<h2 class="text-left">'.$course['title'].'</h2><br>';
-  			if (is_array($course["description"])){
-  				foreach ($course["description"] as $sentence) {
-  					echo '<p>'.$sentence.'</p>';
-  				}
-  			}else
-  				echo '<p>'.$course["description"].'</p>';
-  				echo '<br><div class="col-md-3 pull-left">';
-  				if (array_key_exists('link', $course) && !empty($course["link"])) {
-  					echo '<a class="btn btn-primary btn-block btn-lg" href="'.$course['link'].'" role="button">Access Course</a>';
-  				}else
-  					echo '<br><br>';
-  					echo '</div>
-				<div class="col-md-3 pull-right" ng-include>';
-  					if (!is_null($instances) && array_key_exists($course['image'], $instances))
-  						vmInfo::showCustom($course['image'], $course['type']);
-  						else
-  							vmInfo::showDisabled();
-  							echo '</div>
+  			echo '<div class="container">';
+  			//Check if course or app
+  			if ($course['contentType'] == "course") {
+  				$courseCat = preg_replace("/[_]/s", " ", $course['category']);
+  				$courseSubtitle = ucwords($courseCat." ".$course['contentType']);
+	  			echo '
+	  				<div class="row">
+						<h2 class="text-left pull-left" style="padding-left: 20px;">'.$course['title'].'</h2>
+						<h5 class="pull-right" style="color: grey; padding-left: 20px; padding-right: 15px; padding-top: 18px">'.$courseSubtitle.'</h2><br>
+	  				</div>';
+	  			if (is_array($course["description"])){
+	  				foreach ($course["description"] as $sentence) {
+	  					echo '<p>'.$sentence.'</p>';
+	  				}
+	  			}else
+	  				echo '<p>'.$course["description"].'</p>';
+	  				echo '<br><div class="col-md-3 pull-left">';
+	  				if (array_key_exists('link', $course) && !empty($course["link"])) {
+	  					echo '<a class="btn btn-primary btn-block btn-lg" href="'.$course['link'].'" role="button">Access Course</a>';
+	  				}else
+	  					echo '<br><br>';
+	  					echo '</div>
+					<div class="col-md-3 pull-right" ng-include>';
+	  					if (!is_null($instances) && array_key_exists($course['image'], $instances))
+	  						vmInfo::showCustom($course['image'], $course['type']);
+	  						else
+	  							vmInfo::showDisabled();
+	  							echo '</div>';
+  			}
+  			else if ($course["contentType"] == "app") {
+  				echo '<div class="row">
+	  				<h2 class="text-left pull-left">'.$course['title'].'</h2>
+	  				<div class="col-md-3 pull-right">
+	  					<a class="btn btn-primary btn-block btn-lg" href="" role="button">Access App</a>
+	  				</div>
+  				</div>';
+  			}
+  			echo '
 			</div>';
   		}
   	
-  	}
+  	} 	
   	 
   	$courseObjects = $courses->find( array("identifier" => "courseObject") );
   	foreach($courseObjects as $course) {
