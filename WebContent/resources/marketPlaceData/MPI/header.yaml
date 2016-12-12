@@ -8,6 +8,8 @@
 				
   image: pdc-image
   type: jupyter
+  category: machine_learning
+  contentType: course
   lessonlink: https://github.com/ml6973/Cloud-Tutorial/tree/master/MPI
   markettitle: Distributed Computing
   organization: The University of Texas at San Antonio

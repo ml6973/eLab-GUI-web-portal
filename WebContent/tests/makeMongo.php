@@ -32,6 +32,8 @@ function makeMongo() {
 		    		                   'description' => $marketYaml[0]['description'],
 		    		                   'image' => $marketYaml[0]['image'],
 		    		                   'type' => $marketYaml[0]['type'],
+							    	   'category' => $marketYaml[0]['category'],
+							    	   'contentType' => $marketYaml[0]['contentType'],
 		    		                   'link' => $marketYaml[0]['lessonlink'],
 		    		                   'mtitle' => $marketYaml[0]['markettitle'],
 		    		                   'organization' => $marketYaml[0]['organization'],
@@ -133,6 +135,8 @@ function makeMongo() {
     			'description' => $courseYaml[0]['description'],
     			'image' => $courseYaml[0]['image'],
     			'type' => $courseYaml[0]['type'],
+    			'category' => $courseYaml[0]['category'],
+    			'contentType' => $courseYaml[0]['contentType'],
     			'link' => $courseYaml[0]['lessonlink'],
     			'topics' => $topicsArray
     	);
