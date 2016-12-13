@@ -11,8 +11,3 @@ Bliss
 ### About the Application
 
 Clearly a placeholder.
-
-
-### Syllabus
-
-- This is an application, not a course.

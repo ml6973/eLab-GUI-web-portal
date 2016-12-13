@@ -31,7 +31,8 @@ class MarketPlaceView {
 	$db = MongoDatabase::getConnection();
 	$courses = $db->selectCollection('courseData');
 	$gridFS = $db->getGridFS();
-	$results = $courses->find( array("identifier" => "marketPlaceObject") );
+	$results = iterator_to_array($courses->find( array("identifier" => "marketPlaceObject") ));
+	$results = array_merge($results, iterator_to_array($courses->find( array("identifier" => "applicationObject") )));
 	
 	foreach($results as $course) {
 		echo '

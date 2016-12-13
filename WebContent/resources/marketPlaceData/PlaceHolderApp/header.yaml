@@ -1,10 +1,8 @@
 - title: Place Holder Application
-  description:
-  image: ph_image
+  ip: http://129.114.110.208:7778
   type: jupyter
   category: machine_learning
   contentType: application
-  lessonlink:
+  parentimage: cc-ml6073
   markettitle: Place Holder Application
   organization: The University of Texas at San Antonio
-  lessoncount:
