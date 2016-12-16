@@ -1,5 +1,5 @@
 - title: Speaker Recognition using SVM and Deep Neural Networks
-  ip: http://129.114.32.165:8888/notebooks/Demo/code/train.ipynb
+  ip: http://129.114.32.165:8888/notebooks/code/Speaker_Recognition.ipynb
   type: jupyter
   category: machine_learning
   contentType: application

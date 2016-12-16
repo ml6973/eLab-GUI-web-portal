@@ -1,5 +1,5 @@
 - title: Image Captioning
-  ip: http://129.114.111.69:8888/notebooks/Image_Captioning.ipynb
+  ip: http://129.114.111.69:8888/notebooks/Image_Captioning_prediction.ipynb
   type: jupyter
   category: machine_learning
   contentType: application
