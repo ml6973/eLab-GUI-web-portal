@@ -1,8 +1,8 @@
-- title: Place Holder Application
+- title: Understanding the Context of Complex Images
   ip: http://129.114.110.208:7778
   type: jupyter
   category: machine_learning
   contentType: application
   parentimage: cc-ml6073
-  markettitle: Place Holder Application
+  markettitle: Complex Image Sensing
   organization: The University of Texas at San Antonio

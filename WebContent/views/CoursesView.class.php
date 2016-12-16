@@ -99,12 +99,12 @@ class CoursesView {
 	  							echo '</div>';
 	  					if (strcmp($course['identifier'], "courseObject") == 0) {
 					  		echo '<br><br><br>
-							<div class="col-md-8"><ul>';
+							<div class="col-md-8">';
 							
 								foreach($course["topics"] as $topicObject) {
 									$topic = $courses->findOne( array("_id" => $topicObject));
 									echo '
-						           <h3><li>
+						           <h3><ul>
 							        	<div>';
 									if (!is_null($instances) && array_key_exists($course['image'], $instances))
 								    		echo '<a href="topics?'.$topic["_id"].'" >   <i class="fa fa-flask" aria-hidden="true"></i> '.$topic["title"].'</a>';
@@ -114,9 +114,9 @@ class CoursesView {
 						            <p>'.$topic["description"].'</p>
 						            -->
 								    	</div>
-						          </li></h3>';
+						          </ul></h3>';
 								}
-								echo '</ul>
+								echo '
 						    	<br><br>';
 						}elseif (strcmp($course['identifier'], "marketPlaceObject" == 0)){
 							$children = iterator_to_array($courses->find( array("identifier" => "applicationObject", "parent" => $course['image']) ));
@@ -124,21 +124,24 @@ class CoursesView {
 							<div class="col-md-8">';
 							
 							if (!empty($children)){
+								//Sort the applications by name
+								foreach ($children as $key => $row) {
+									$child[$key] = $row['title'];
+								}
+								array_multisort($child , SORT_NATURAL, $children);
 								echo '<h4>Applications crafted from this course:</h4>';
-								echo '<ul>';
 							//	<a href="/'.$base.'/posts?'.$topicObject['_id']."&".$postObject['_id'].'"><i class="fa fa-flask" aria-hidden="true"></i> '.$postObject['title'].'</a>
 								foreach($children as $app) {
 									echo '
-							           <h3><li>
+							           <h3><ul>
 								        	<div>';
 									if (!is_null($instances) && array_key_exists($course['image'], $instances))
 										echo '<a href="'.$app["ip"].'" >   <i class="fa fa-play" aria-hidden="true"></i> '.$app["title"].'</a>';
 										else
 											echo ' '.$app["title"].'';
 											echo '</div>
-							          </li></h3>';
+							          </ul></h3>';
 								}
-								echo '</ul>';
 							}
 							echo '
 						    	<br><br>';
