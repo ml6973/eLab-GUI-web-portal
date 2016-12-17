@@ -1,8 +1,8 @@
-- title: Understanding the Context of Complex Images
-  ip: http://129.114.110.208:7778
+- title: Image Classification with Deep Convolution Neural Network
+  ip: http://129.114.110.208:8888/notebooks/Notebook/Image_Classification_Prediction.ipynb
   type: jupyter
   category: machine_learning
   contentType: application
   parentimage: cc-ml6073
-  markettitle: Complex Image Sensing
+  markettitle: Image Classification
   organization: The University of Texas at San Antonio

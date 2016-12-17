@@ -1,5 +1,5 @@
 - title: Face Verification
-  ip: http://129.114.110.179:7778/
+  ip: http://129.114.110.179:7788/notebooks/facenet/src_demo/Demo.ipynb
   type: jupyter
   category: machine_learning
   contentType: application
