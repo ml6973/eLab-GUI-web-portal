@@ -17,7 +17,7 @@ class MarketPlaceView {
 	<!--Banner-->
 	<div class="jumbotron">
 	   	<div class="container">
-	       <div class="title" id="welcome">Welcome to Open A.I. Cloud Marketplace!</div>
+	       <div class="title" id="welcome">Welcome to Open Cloud AI Marketplace!</div>
            <div class="slogan">Hands-on learning powered by personal environments.</div>
 	       <!--	<p>Everyone knows about the giant skills gap that is haunting the IT sector worldwide. Powered by Chameleon Cloud, eLab cloud based learning platform helps you achieve certification for today\'s tech job.</p> -->
 	       <!--	<p><a class="btn btn-primary btn-md" href="/#/about" role="button">Learn more &raquo;</a></p> -->
