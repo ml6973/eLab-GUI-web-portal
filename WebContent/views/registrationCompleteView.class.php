@@ -37,8 +37,8 @@ class registrationCompleteView {
 		                        	<div class="form-top">
 										<i class="fa fa-check"></i>
 		                        		<div class="form-top-left">
-		                        			<h1><strong>eLab</strong> Registration Complete!</h1>
-		                            		<p>We will notify you via Messenger when your account is ready.</p>
+		                        			<h1><strong>eLab</strong> Registration Accepted!</h1>
+		                            		<p>We will notify you via email when your account is ready.</p>
 		                        		</div>
 		                  	     		<!--<div class="form-top-right">
 		                        			<i class="fa fa-check"></i>

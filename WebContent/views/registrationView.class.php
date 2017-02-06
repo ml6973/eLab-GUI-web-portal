@@ -95,7 +95,7 @@ class registrationView {
 					                        </div>
 					            <div class="form-group">
 					                        	<label class="sr-only" for="form-messenger-id">Messenger ID</label>
-					                        	<input type="text" name="messengerId" placeholder="Messenger ID..." class="form-messenger-id form-control" id="form-messenger-id" ng-model=\'messenger_id\' tabindex="6" ';
+					                        	<input type="hidden" name="messengerId" placeholder="Messenger ID..." class="form-messenger-id form-control" id="form-messenger-id" ng-model=\'messenger_id\' tabindex="6" ';
 					                        	if (!is_null($userData)) { echo 'value = "'.$userData->getMessengerId().'"'; }		
 					                        	//echo ' required>
 					                        	echo ' >

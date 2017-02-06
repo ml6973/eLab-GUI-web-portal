@@ -9,7 +9,7 @@ class LogoutController {
 		$_SESSION['authenticatedUser'] = null;
 		$_SESSION['registered'] = null;
 		$_SESSION['fb_access_token'] = null;
-		header("Location: /$base");
+		header("Location: /$base/login");
 	}
 }
 

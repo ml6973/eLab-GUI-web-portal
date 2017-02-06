@@ -87,37 +87,40 @@ class CoursesView {
 		  			}
 	  				echo '<br><div class="col-md-3 pull-left">';
 	  				if (array_key_exists('link', $course) && !empty($course["link"])) {
-	  					echo '<a class="btn btn-primary btn-block btn-lg" href="'.$course['link'].'" role="button">Access Course</a>';
+	  					if (!is_null($instances) && array_key_exists($course['image'], $instances))
+	  					   echo '<a class="btn btn-primary btn-block btn-lg" href="'.$course['link'].'" role="button">Access Course</a>';
+	  					else
+	  					   echo '<a class="btn btn-primary btn-block btn-lg disabled" role="button">Access Course</a>';
 	  				}else
 	  					echo '<br><br>';
-	  					echo '</div>
-					<div class="col-md-3 pull-right" ng-include>';
-	  					if (!is_null($instances) && array_key_exists($course['image'], $instances))
-	  						vmInfo::showCustom($course['image'], $course['type']);
-	  						else
-	  							vmInfo::showDisabled();
-	  							echo '</div>';
-	  					if (strcmp($course['identifier'], "courseObject") == 0) {
-					  		echo '<br><br><br>
-							<div class="col-md-8">';
-							
-								foreach($course["topics"] as $topicObject) {
-									$topic = $courses->findOne( array("_id" => $topicObject));
-									echo '
-						           <h3><ul>
-							        	<div>';
-									if (!is_null($instances) && array_key_exists($course['image'], $instances))
-								    		echo '<a href="topics?'.$topic["_id"].'" >   <i class="fa fa-flask" aria-hidden="true"></i> '.$topic["title"].'</a>';
-									else
-											echo ' '.$topic["title"].'';
-								    echo '<!--description
-						            <p>'.$topic["description"].'</p>
-						            -->
-								    	</div>
-						          </ul></h3>';
-								}
+  					echo '</div>
+				<div class="col-md-3 pull-right" ng-include>';
+  					if (!is_null($instances) && array_key_exists($course['image'], $instances))
+  						vmInfo::showCustom($course['image'], $course['type']);
+  					else
+  						vmInfo::showDisabled();
+  					echo '</div>';
+  					if (strcmp($course['identifier'], "courseObject") == 0) {
+				  		echo '<br><br><br>
+						<div class="col-md-8">';
+						
+							foreach($course["topics"] as $topicObject) {
+								$topic = $courses->findOne( array("_id" => $topicObject));
 								echo '
-						    	<br><br>';
+					           <h3><ul>
+						        	<div>';
+								if (!is_null($instances) && array_key_exists($course['image'], $instances))
+							    		echo '<a href="topics?'.$topic["_id"].'" >   <i class="fa fa-flask" aria-hidden="true"></i> '.$topic["title"].'</a>';
+								else
+										echo ' '.$topic["title"].'';
+							    echo '<!--description
+					            <p>'.$topic["description"].'</p>
+					            -->
+							    	</div>
+					          </ul></h3>';
+							}
+							echo '
+					    	<br><br>';
 						}elseif (strcmp($course['identifier'], "marketPlaceObject" == 0)){
 							$children = iterator_to_array($courses->find( array("identifier" => "applicationObject", "parent" => $course['image']) ));
 							echo '<br><br><br>
