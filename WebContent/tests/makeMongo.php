@@ -155,6 +155,7 @@ function makeMongo() {
 							'title' => $postAttributes[$number],
 							'description' => $postAttributes[$number+6],
 							'author' => $postAttributes[$number+4],
+							'layout' => $postAttributes[$number-2],
 							'video' => $videoLink,
 							'post' => $postID
 					);
