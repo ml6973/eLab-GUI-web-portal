@@ -1,7 +1,7 @@
 - title: Openstack Developer Certification
   description: This course is an introduction class covering the core OpenStack projects including Nova, Neutron, Glance, Keystone and Horizon. This course covers lessons that range from community code contribution, understanding the architecture, to installing and configuring. This course is a great primer for anyone interested in OpenStack code development. This course is designed for technical individuals and consists of hands on labs.
   image: CC-Ubuntu-14-04-DevStack-Mitaka-Stable-8-11-2016
-  type: jupyter
+  type: ssh
   category: cloud
   contentType: course
   topicFile: topics.yml
