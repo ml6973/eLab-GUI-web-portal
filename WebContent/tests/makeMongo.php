@@ -167,6 +167,7 @@ function makeMongo() {
     		$topicObject = array(
     				'identifier' => "topicObject",
     				'title' => $topic['title'],
+    				'image' => $topic['image'],
     				'description' => $topic['description'],
     				'posts' => $postsArray
     		);

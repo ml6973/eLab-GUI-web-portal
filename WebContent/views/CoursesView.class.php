@@ -68,11 +68,19 @@ class CoursesView {
   	}*/
   	
   	foreach($categoriedObjects as $objects){
+  		//Check if the user has any instances, if not error then break out
+  		if (!is_null($instances) && empty($instances)){
+  			echo '<div class="container">';
+  			echo '<br><br><h2>You are currently not enrolled into any courses.</h2>';
+  			echo '</div>';
+  			break;
+  		}
   		//foreach ($types as $objects){
 	  	foreach($objects as $course) {
 	  	
 	  		if (!is_null($instances)) {
-	  			if (strcmp($course['contentType'], "course") == 0) {
+	  			//  Check if the object is a course, then ensure the user has an instance for this course, otherwise do not display
+	  			if (strcmp($course['contentType'], "course") == 0 && !is_null($instances) && array_key_exists($course['image'], $instances)) {
 		  			echo '<div class="container">';
 	  				$courseCat = preg_replace("/[_]/s", " ", $course['category']);
 	  				$courseSubtitle = ucwords($courseCat." ".$course['contentType']);
@@ -109,10 +117,10 @@ class CoursesView {
 								echo '
 					           <h3><ul>
 						        	<div>';
-								if (!is_null($instances) && array_key_exists($course['image'], $instances))
+								if (!is_null($instances) && array_key_exists($course['image'], $instances) && !(strcmp($topic['image'], "hidden") == 0))
 							    		echo '<a href="topics?'.$topic["_id"].'" >   <i class="fa fa-flask" aria-hidden="true"></i> '.$topic["title"].'</a>';
 								else
-										echo ' '.$topic["title"].'';
+										echo '<i class="fa fa-flask" aria-hidden="true"></i> '.$topic["title"].'';
 							    echo '<!--description
 					            <p>'.$topic["description"].'</p>
 					            -->
@@ -167,6 +175,8 @@ class CoursesView {
 	  								echo '</div>
 					</div><br><br>';
 	  			}*/
+	  		}else{
+	  			echo '<h2>You are currently not enrolled into any courses.</h2>';
 	  		}
 	  	
 	  	}
