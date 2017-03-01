@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Lab 20 Command Line Interface - Swift
+title: Lab 19 Command Line Interface - Swift
 categories: core_services
 author: 
 description: Swift Command Line Interface
 ---
 * * *
-#### Lab 20: Command Line Interface - Swift 
+#### Lab 19: Command Line Interface - Swift 
 * * *
 
 # Table of Contents
