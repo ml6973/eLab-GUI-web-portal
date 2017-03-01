@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 14 Horizon Dashboard - Swift as a User
+title: Lab 13 Horizon Dashboard - Swift as a User
 categories: core_services
 author: 
 description: Horizon Dashboard - Swift as a User
@@ -9,7 +9,7 @@ description: Horizon Dashboard - Swift as a User
 
 * * *
 
-#### Lab 14: Horizon Dashboard - Swift as a User #
+#### Lab 13: Horizon Dashboard - Swift as a User #
 
 * * *
 
