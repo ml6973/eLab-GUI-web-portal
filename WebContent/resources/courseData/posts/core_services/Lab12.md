@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 13 Horizon Dashboard - Cinder as a User
+title: Lab 12 Horizon Dashboard - Cinder as a User
 categories: core_services
 author: 
 description: Horizon Dashboard - Cinder as a User
@@ -8,7 +8,7 @@ description: Horizon Dashboard - Cinder as a User
 
 * * *
 
-#### Lab 13: Horizon Dashboard - Cinder as a User #
+#### Lab 12: Horizon Dashboard - Cinder as a User #
 
 * * *
 
