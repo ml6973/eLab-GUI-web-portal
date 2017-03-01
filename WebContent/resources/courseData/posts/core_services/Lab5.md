@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Lab 6 Horizon Dashboard - Nova as an Admin
+title: Lab 5 Horizon Dashboard - Nova as an Admin
 categories: core_services
 author: 
 description: Horizon Dashboard - Nova as an Admin
 ---
 
 * * *
-#### Lab 6: Horizon Dashboard - Nova as an Admin #
+#### Lab 5: Horizon Dashboard - Nova as an Admin #
 * * *
 
 # Table of Contents
