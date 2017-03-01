@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Lab 3 Installing OpenStack (AIO) using DevStack
+title: Lab 2 Installing OpenStack (AIO) using DevStack
 categories: core_services
 author: 
 description: Installing OpenStack (AIO) using DevStack
 ---
 * * *
-#### Lab 3: Installing OpenStack (AIO) using DevStack #
+#### Lab 2: Installing OpenStack (AIO) using DevStack #
 * * *
 
 ## Table of Contents
