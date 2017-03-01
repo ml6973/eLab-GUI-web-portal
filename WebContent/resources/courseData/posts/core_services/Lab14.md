@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Lab 15 Command Line Interface - Keystone
+title: Lab 14 Command Line Interface - Keystone
 categories: core_services
 author: 
 description: Keystone Command Line Interface
 ---
 * * *
-#### Lab 15: Command Line Interface - Keystone 
+#### Lab 14: Command Line Interface - Keystone 
 * * *
 
 # Table of Contents
