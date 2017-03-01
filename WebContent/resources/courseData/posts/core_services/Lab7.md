@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 8 Horizon Dashboard - Cinder as an Admin
+title: Lab 7 Horizon Dashboard - Cinder as an Admin
 categories: core_services
 author: 
 description: Horizon Dashboard - Cinder as an Admin
@@ -8,7 +8,7 @@ description: Horizon Dashboard - Cinder as an Admin
 
 * * *
 
-#### Lab 8: Horizon Dashboard - Cinder as an Admin #
+#### Lab 7: Horizon Dashboard - Cinder as an Admin #
 
 * * *
 
