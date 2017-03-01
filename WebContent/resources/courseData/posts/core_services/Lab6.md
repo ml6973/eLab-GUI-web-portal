@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 7 Horizon Dashboard - Neutron as an Admin
+title: Lab 6 Horizon Dashboard - Neutron as an Admin
 categories: core_services
 author: 
 description: Horizon Dashboard - Neutron as an Admin
@@ -10,7 +10,7 @@ description: Horizon Dashboard - Neutron as an Admin
 
 * * *
 
-#### Lab 7: Horizon Dashboard - Neutron as an Admin #
+#### Lab 6: Horizon Dashboard - Neutron as an Admin #
 
 * * *
 
