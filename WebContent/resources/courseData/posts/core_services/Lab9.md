@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Lab 10 Horizon Dashboard - Keystone as a User
+title: Lab 9 Horizon Dashboard - Keystone as a User
 categories: core_services
 author: 
 description: Horizon Dashboard - Keystone as a User
 ---
 
 * * *
-#### Lab 10: Horizon Dashboard - Keystone as a User #
+#### Lab 9: Horizon Dashboard - Keystone as a User #
 * * *
 
 ## Table of Contents
