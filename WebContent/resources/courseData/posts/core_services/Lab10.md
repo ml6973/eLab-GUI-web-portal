@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 11 Horizon Dashboard - Glance as a User
+title: Lab 10 Horizon Dashboard - Glance as a User
 categories: core_services
 author: 
 description: Horizon Dashboard - Glance as a User
@@ -9,7 +9,7 @@ description: Horizon Dashboard - Glance as a User
 
 * * *
 
-#### Lab 11: Horizon Dashboard - Glance as a User #
+#### Lab 10: Horizon Dashboard - Glance as a User #
 
 * * *
 
