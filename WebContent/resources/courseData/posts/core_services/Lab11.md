@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 12 Horizon Dashboard - Neutron as a User
+title: Lab 11 Horizon Dashboard - Neutron as a User
 categories: core_services
 author: 
 description: Horizon Dashboard - Neutron as a User
@@ -9,7 +9,7 @@ description: Horizon Dashboard - Neutron as a User
 
 * * *
 
-#### Lab 12: Horizon Dashboard - Neutron as a User #
+#### Lab 11: Horizon Dashboard - Neutron as a User #
 
 * * *
 
