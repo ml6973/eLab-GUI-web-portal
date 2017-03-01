@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Lab 5 Horizon Dashboard - Glance as an Admin
+title: Lab 4 Horizon Dashboard - Glance as an Admin
 categories: core_services
 author: 
 description: Horizon Dashboard - Glance as an Admin
 ---
 
 * * *
-#### Lab 5: Horizon Dashboard - Glance as an Admin #
+#### Lab 4: Horizon Dashboard - Glance as an Admin #
 * * *
 
 # Table of Contents
