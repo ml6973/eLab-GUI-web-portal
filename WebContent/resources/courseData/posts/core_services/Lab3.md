@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Lab 4 Horizon Dashboard - Keystone as an Admin
+title: Lab 3 Horizon Dashboard - Keystone as an Admin
 categories: core_services
 author: 
 description: Horizon Dashboard - Keystone as an Admin
 ---
 * * *
-#### Lab 4: Horizon Dashboard - Keystone as an Admin #
+#### Lab 3: Horizon Dashboard - Keystone as an Admin #
 * * *
 
 # Table of Contents
