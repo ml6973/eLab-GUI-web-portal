@@ -82,44 +82,44 @@
 - title: Lab 1 Introduction to Cloud Computing
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/XUpfyOlJfBU" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 4 Horizon Dashboard - Keystone as an Admin
+- title: Lab 3 Horizon Dashboard - Keystone as an Admin
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/pKmMCsG1bWk" frameborder="0" allowfullscreen></iframe></div>
   
-- title: Lab 5 Horizon Dashboard - Glance as an Admin
+- title: Lab 4 Horizon Dashboard - Glance as an Admin
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/6GNIjzKcwNo" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 6 Horizon Dashboard - Nova as an Admin
+- title: Lab 5 Horizon Dashboard - Nova as an Admin
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/RiYwxRvGyBI" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 7 Horizon Dashboard - Neutron as an Admin
+- title: Lab 6 Horizon Dashboard - Neutron as an Admin
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/_q03iTNDonE" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 8 Horizon Dashboard - Cinder as an Admin
+- title: Lab 7 Horizon Dashboard - Cinder as an Admin
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gdYRMWfbwaA" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 10 Horizon Dashboard - Keystone as a User
+- title: Lab 8 Horizon Dashboard - Keystone as a User
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Cppkd99uydc" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 11 Horizon Dashboard - Glance as a User
+- title: Lab 9 Horizon Dashboard - Glance as a User
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/sGTgZD3u630" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 12 Horizon Dashboard - Nova as a User
+- title: Lab 10 Horizon Dashboard - Nova as a User
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/7oYkyQMiARc" frameborder="0" allowfullscreen></iframe></div>
   
-- title: Lab 13 Horizon Dashboard - Neutron as a User
+- title: Lab 11 Horizon Dashboard - Neutron as a User
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/3-chI2t8ef8" frameborder="0" allowfullscreen></iframe></div>
   
-- title: Lab 14 Horizon Dashboard - Cinder as a User
+- title: Lab 12 Horizon Dashboard - Cinder as a User
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/-4-EsPY2dak" frameborder="0" allowfullscreen></iframe></div>
   
-- title: Lab 15 Horizon Dashboard - Swift as a User
+- title: Lab 13 Horizon Dashboard - Swift as a User
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EoUvaDcnSdA" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 16 Command Line Interface - Keystone
+- title: Lab 14 Command Line Interface - Keystone
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/4BoyHhMjTVQ" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 17 Command Line Interface - Glance
+- title: Lab 15 Command Line Interface - Glance
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/uaZEjYbt2B4" frameborder="0" allowfullscreen></iframe></div>
 
-- title: Lab 21 Command Line Interface - Swift
+- title: Lab 19 Command Line Interface - Swift
   code: <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="https://www.youtube.com/embed/OInYlWZxdMM" frameborder="0" allowfullscreen></iframe></div>
