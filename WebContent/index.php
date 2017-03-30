@@ -30,6 +30,9 @@
 		case "registrationComplete":
 			RegistrationCompleteController::run();
 			break;
+		case "finishRegistration":
+			FinishRegistrationController::run();
+			break;
 		case "marketplace":
 			MarketPlaceController::run();
 			break;

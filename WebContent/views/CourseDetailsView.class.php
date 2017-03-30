@@ -32,7 +32,7 @@ class CourseDetailsView {
    </head>
 
    <!--Banner-->';
-   if (is_null($course) || is_null($object) || strcmp($course['identifier'], "marketPlaceObject") != 0) {
+   if (is_null($course) || is_null($object) || !((strcmp($course['identifier'], "marketPlaceObject") == 0) || (strcmp($course['identifier'], "applicationObject") == 0))) {
    	echo '<div class="error" style="text-align: center;"><h1>Invalid Course</h1></div>';
    	return;
    }

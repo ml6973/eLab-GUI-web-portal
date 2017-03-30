@@ -50,11 +50,17 @@ class TopicView {
 								foreach($topicObject['posts'] as $post) {
 									$postObject = $courses->findOne( array('_id' => $post) );
 									echo '
-									<li>
-										<h4>
+									<li>';
+									if (array_key_exists("layout", $postObject) && (strcmp($postObject['layout'],"post") == 0)) {
+										echo '<h4>
 											<a href="/'.$base.'/posts?'.$topicObject['_id']."&".$postObject['_id'].'"><i class="fa fa-flask" aria-hidden="true"></i> '.$postObject['title'].'</a>
-										</h4>
-										<p class=\'text-primary\'>'.$postObject['author'].'</p>
+										</h4>';
+									} else {
+										echo '<h4>
+											<i class="fa fa-flask" aria-hidden="true"></i> '.$postObject['title'].'
+										</h4>';
+									}
+										echo '<p class=\'text-primary\'>'.$postObject['author'].'</p>
 										<p class=\'text-muted\'> '.$postObject['description'].'</p>
 									</li>';
 								}

@@ -1,100 +1,199 @@
 ---
 layout: post
-title: Lab 15 Horizon Dashboard - Swift as a User
+title: Lab 15 Command Line Interface - Glance
 categories: core_services
 author: 
-description: Horizon Dashboard - Swift as a User
+description: Glance Command Line Interface
 ---
-  
-
 * * *
-
-#### Lab 15: Horizon Dashboard - Swift as a User #
-
+#### Lab 15: Command Line Interface - Glance 
 * * *
 
 # Table of Contents
 
-* Introduction
-* Creating a Container
-* Uploading Objects in the Container
-* Create a Pseudo Folder
-* Download Objects from the Container
-* Copy a Object
-* Delete the Objects and Container
+* Available images
+* Getting Images
+* Create an Image
+* Image Deactivate
+* Reactivate Image
+* Updating an Image
+* Tags
+* Image Delete
 * Summary
-* References
-
-## Introduction
-Recently, the widespread use of smart mobile devices, such as iPhone, iPad, Android phones and Windows family devices, has led to a great demand for cloud computing. 
-Meanwhile, the local storages of these devices are limited, and the security of the files is not guaranteed. Therefore, there is a need to handle a massive amount of data kept on cloud storage efficiently
-
-The OpenStack Swift distributed file system, stores files into different storage devices in the cluster instead of an exclusive or single server. To guarantee the quality of service (QoS), the distributed file system can also use the load balance scheduler to make every storage device handle the equal data access requirement
+* Glance Commands
+* Sources
 
 
-## Creating a Container
-As you have already created an instance, now we will create a swift object storage container. A container is a storage compartment for your data and provides a way for you to organize your data. You can think of a container as a folder in Windows ® or a directory in UNIX ®. It will be attached to your instance like a external hard drive or a flash drive.
-
-We will go to object storage section under project tab. Now click on containers. 
-As we haven’t created any container. We will create one using “Create Container” option.
-
-Let’s create a container named “OCI”. We will keep the container “Private”.  A Public Container will allow anyone with the Public URL to gain access to your objects in the container
-
-Now we have created a container. 
-However, you can create an unlimited number of containers within your account. Data must be stored in a container so you must have at least one container defined in your account prior to uploading data.
-
-## Uploading Objects in the Container
- In order to upload objects to the container, we need to select the container. As I have clicked on “OCI”, we can see several options like “Create Pseudo-folder” and “Upload Objects” coming up on the screen. Now we will upload an object using “Upload Object” option.
  
-As the description says, an object is the basic storage entity that represents a file you store in the OpenStack Object Storage system. 
-When you upload data to OpenStack Object Storage, the data is stored without any compression or encryption and it consists of a location, the object's name, and any metadata consisting of key/value pairs. 
+Welcome to the Glance Command Line Interface eLab. 
 
-And we can always create a pseudo-folder within a container so that you can group your objects into pseudo-folders, which behave similarly to folders in your desktop operating system. We will create the pseudo-folder later. Let’s upload an object to the OCI container 1st. 
+We assume you have the basic knowledge about openstack and its services. 
 
-You can choose any file from your host machine. I have selected a text file.
+## Introduction 
 
-Hit the “Upload Object” Button. 
+The Glance project provides a service where you can upload and discover data assets that are meant to be used with other services. This currently includes images and metadata definitions. Glance image services include discovering, registering, and retrieving virtual machine images. Let us see how we can proceed with performing these tasks.
+First you will need to access your openstack environment and source your credentials as admin user and admin tenant. You have already done this in the keystone tutorial.
 
-So we have successfully uploaded the object to the container.
+In your terminal type 
+
+```sh
+$ ssh -i ~/.ssh/oci-openstack.pem cc@129.114.110.61
+```
+```sh
+$ cd ~/devstack
+```
+```sh
+$ source openrc admin admin
+```
+
+Now that you are in the Openstack environment, we can proceed with using the glance command line interface. Glance is the reference implementation of the OpenStack Images API. As such, Glance fully implements versions 1 and 2 of the Images API.
+
+Currently Nova uses the Images v1 API, but work is in progress to convert Nova (and other OpenStack services that consume images) to using the Images v2 API. Once that occurs, it will be possible to deploy OpenStack without deploying the Images v1 API. At that point, the Images v1 API will be deprecated, following the standard OpenStack deprecation policy. The glance command line utility interacts with OpenStack Images Service (Glance).
+
+## Available images
+To view the existing images you can use the command:
+
+```sh
+$ glance image-list
+```
+
+You will now see a list of images that are already present in a tabular form with the attributes of the image name and the image ID.
+
+Running this command displays the list of images with their names and unique ID. If you run this same command using a version 1 image API, you can use: 
+
+```sh
+$ glance --os-image-api-version 1 image-list
+```
+
+As you can see in the version 1 API you can see some extra attributes about the image like Disk format, Container format, Size and Status.
+
+## Getting Images
+There are many images that you can use for instance like CentOS, CirrOS, Ubuntu, Debian etc. Each of these have their own resource from which you can download them. For example, to view the current cloud images for Ubuntu you could browse:
+
+```sh
+https://cloud-images.ubuntu.com/trusty/current/
+```
+
+```sh
+$ glance --os-image-api-version 1 image-list
+```
+Let us download a few Ubuntu images. First we create a directory to save these downloaded images on our instance.
+
+Now we get the image into the directory. You can use
+
+```sh
+$ wget https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img
+```
+
+## Create an Image
+
+Let us now use this downloaded image to create a new glance image. The following command shows you how to create a glance image using version 2 API
+
+```sh
+$ glance --os-image-api-version 2 image-create --protected False --name ubuntu-14-04-V2 --min-disk 2 --visibility private --tags ubuntu --disk-format qcow2 --min-ram 1024 --container-format bare --file ~/downloaded_images/trusty-server-cloudimg-amd64-disk1.img --progress
+```
+
+As you can see we have set many of the parameters of this image like –protected, --name, --visibility, --tags, --disk-format, --min-ram, --container-format, --file, --progress. Let us look at one more way of creating an image with version 1 image API and using a location url. Here you find that you can directly specify the “location” parameter which is a url from which the image can directly be downloaded. If you take a look at the displayed table, you can see that there is a “Property column” and a “Value” column. The properties are all the optional arguments that you can modify or set for the image that you created. This parameter was not available when you used the same command with image version 1 API.  You can use the command:
+
+```sh
+$ glance --os-image-api-version 1 image-create --name "ubuntu-14-04" --disk-format qcow2 --container-format bare --is-public False --location
+```
+
+To see the optional parameters you can always use the command
+```sh
+$ glance help image-create
+```
+You can also see the parameters for the glance command by typing 
+```sh
+$ glance (return key)
+```
+
+This command will give you an error but it will also give you a list of parameters that you can use with the glance command.
+
+Now that you have created two glance images using two different methods, let us take a look at our list of images. You can use the command:
+
+```sh
+$ glance image-list
+```
+Now that we have uploaded images, if you want to download one of these images on your instance so that you can reuse them,you could use the command:
+
+```sh
+$ glance image-download 257520b3-22cd-49f0-bf8d-b958292941e3 > cirros-0.3.4-x86_64-uec.ami 
+```
+
+## Image Deactivate
+You can deactivate an image by using the command. 
+
+```sh
+$ glance image-deactivate <image id>
+```
+To check the status of this image and verify that it has been deactivated you can use the command
+
+```sh
+$ glance image-show <image id>
+```
+This command gives a detailed description of the image that you have referenced with you’re the image ID
 
 
-## Create a Pseudo Folder
-Now we will look how to create a pseudo-folder inside “OCI” container.
+## Reactivate Image
+Now that you have deactivated this image if you wish to reactivate it you could use the command
 
-Let’s create “UTSA” as a pseudo-folder.
+```sh
+$ glance image-reactivate <image id>
+```
 
-Now you can see a pseudo folder named “UTSA” got created.
+## Updating an Image
+You can update any of the attributes of the image for example here we are going to change the name from cirros-0.3.4-x86_64-uec to XYZ that has been created by using the command:
 
-You can create as many nested pseudo folders you want.
+```sh
+$ glance image-update <image ID> --name XYZ
+```
 
-Let’s upload some files in UTSA folder. Click on UTSA.
+You can see that the image name has been changed. Likewise, you can change other attributes too.
 
-There are no objects as of now in this folder, lets upload some. We will upload a PDF this time. You can upload any file type.
+## Tags
+You can also add tags as metadata to the images that you create. You can use the command:
 
-So now you can see the PDF in UTSA folder.
+```sh
+$ glance image-tag-update <image ID> --name XYZ
+```
+You can also delete the tag that you have created using the command
 
+```sh
+$  glance image-tag-delete <image id> ABCtag
+```
 
-## Download Objects from the Container
-You can always delete or download as many number of objects you want. 
-Let’s download the txt file we just uploaded.  Simply click on download button to download the object.
+## Image Delete
+You can delete the image you created by using the command glance image-delete and specifying the image id:
 
-
-## Copy a Object
-Before going to delete option, we will see how to copy a file from a container to another container or to a pseudo folder or within the same container.
-
-If you want to select a different container, you can do it using the drop down list of destination container.
-
-For now we will copy the file into UTSA pseudo folder. Hit “Copy Object”
-
-Now let’s go the UTSA folder to check whether we have successfully copied the file or not.
- 
-Now here you can see the copy of the txt file.
-
-
-## Delete the Objects and Container
-Similarly you can delete the object using drop down list. Before you delete a container you need to delete all the objects and pseudo folders in the container.
+```sh
+$ glance image-delete <image id>
+```
+So now when you do a glance image-list you can see that the image you created has been deleted
 
 ## Summary
+In this tutorial we have seen the two versions of the image API and how to use the glance CLI to:
+
+* List available images
+* Download and Upload images
+* Create an Image
+* Delete an image
+* Deactivate and Reactivate an Image
+* Update an Image
+* Add Tags to an image
+
+## Glance Commands Summary
+
+* glance --os-image-api-version 1 image-list
+* glance image-create <parameters>
+* glance image-deactivate <image-id>
+* glance image-show <image-id>
+* glance image-reactiactivate <image-id>
+* glance image-update <image-id> <parameter to be updated>
+* glance image-delete <image-id>
 
 ## References
-* http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html
+* [Openstack Doc](http://docs.openstack.org/icehouse/training-guides/content/operator-getting-started.html)
+* [Deploying OPenstack](https://www.safaribooksonline.com/library/view/deploying-openstack/9781449311223/ch03.html)
+* [Architecture](http://docs.openstack.org/developer/glance/architecture.html)
+

@@ -1,193 +1,81 @@
 ---
 layout: post
-title: Lab 12 Horizon Dashboard - Nova as a User
+title: Lab 12 Horizon Dashboard - Cinder as a User
 categories: core_services
 author: 
-description: Horizon Dashboard - Nova as a User
+description: Horizon Dashboard - Cinder as a User
 ---
-  
 
 * * *
 
-#### Lab 12: Horizon Dashboard - Nova as a User #
+#### Lab 12: Horizon Dashboard - Cinder as a User #
 
 * * *
 
-## Table of Contents
-
+# Table of Contents
 * Introduction
-* Accessing Horizon Dashboard
-* List Instances
-* Create an Instance
-* Edit Instance
-* Flavors & Quota
-* Security Group
-* Delete an Instance
-* Summary
-* Reference
-
-Welcome to the tutorial on Horizon Dashboard Nova as a user. 
-
-We assume that you have a basic knowledge on OpenStack and its services. 
-
-Let us begin the tutorial with a brief introduction on Nova.
-
+* Creating a cinder volume.
+* Editing the volume.
+* Resizing the volume
+* Snapshot of the volume
+* Volume transfer
+* Attaching volume
+* Deleting the volume
 
 ## Introduction
-The openstack cloud operating system uses Nova to offer on-demand computing resources. It is OpenStack’s compute service project which is used for managing and hosting cloud computing systems. 
+Block storage is a type of data storage typically where data is stored in volumes, also referred to as blocks. Each block acts as an individual hard drive. Because the volumes are treated as individual hard disks, block storage works well for storing a variety of applications such as file systems and databases. While block storage devices tend to be more complex and expensive than file storage, they also tend to be more flexible and provide better performance.
 
-Nova is built using a component based architecture and it enables additions of new features with ease. When it comes to small deliveries/deployments, Nova along with its components share a centralized SQL based database. Whereas for bigger deployments, a system that aggregates data across the multiple stores needs to be used. 
+## Creating a Cinder Volume
+As you have already created an instance, now we will create a cinder block storage volume. It will be attached to your instance like a external hard drive or a flash drive. We will go to volumes section under compute tab.  Here you will see the options like create volume and accept transfer.We will look into this options one by one. 
 
-There are 8 components which makes up Nova. They are:
+Let’s create a volume 1st. Click on create volume. Now a pop up window will open. We just need to fill in the blanks. Very easy.
 
-Database: which uses SQL database for data storage
+Let’s type in the volume name as OCI. You can put any description as per your choice. 
 
-The API: This component is used to receive http requests and also communicate with other components. 
+Volume source ---
 
-Then we have Web based Dashboard: which is as an external interface component - used to communicate with API 
+We will select the default type lvmdriver-1. Select the size as per your requirement. You can always extend the volume size. And the default availability zone is Nova in our project. 
+Now click on create volume. And the volume will get created within few secs. 
 
-The Auth Manager is responsible for projects/tenants, users and roles. This python class allows you to communicate with the backend DB
+## Editing the Volume
+Now we will take a look into options such as edit volume for the OCI volume is just created.
+Click on Edit Volume, a pop up window will open. 
+Here you can change the name and description of the volume we just created.
 
-The Object store component allows you to store and retrieve images
+## Resizing the Volume
+If you click on the down arrow near edit instance, you will see other options such extend volume, manage attachments, create snapshots, change volume type, upload image, create transfer and delete volume. We will look into these one by one.
 
-The scheduler allocates to hosts to virtual machines
-The Network component is responsible for vlans, bridges and IP forwarding.
+If you click on extend volume you will get another popup window. We will extend the volume  to 10GB. 
+Now the volume size is changed to 10GB. 
 
-Compute component takes care of the communication between hypervisor and virtual machine 
+## Snapshot of the Volume
+Before going to 2nd option we will check the 3rd option of creating a snapshot. Volume snapshot saves all the data with your current settings so that you can create similar volume in future. 
+We will give some name and description to this snapshot
+Now it’s creating a volume snapshot for us.
 
-Nova has the following features of being fault tolerant service, recoverable and also it provides API compatibility with Amazon services.
+Change volume type ---   
+Upload to image ---
 
+## Volume Transfer
+You can always transfer your volume to someone else in another project. This can be done using create volume transfer option. We will give the transfer name as OCI volume transfer. Hit create volume transfer button. 
+We have successfully created a transfer, acceptor needs the transfer ID and Authentication key in order to accept of this volume. You can send this key using email or any other method. 
+Now the volume is waiting for transfer, you can anytime cancel the transfer.
 
-Let us now familiarize with the Nova Service for a user in the Horizon Dashboard:
+Now let’s consider someone have sent you the transfer and authentication ID and if you want to accept the transfer you can simply click on accept transfer button. So for now I have canceled the the transfer.
 
-## Accessing Horizon Dashboard
-To access the horizon dashboard, type the IP address on your browser bar. Provide the credentials to the login page:
+## Attaching Volume
+Now let’s go to the 2nd option in drop down menu i.e Manage attachments. Here you can attach the cinder volume we just created to an instance. 
+Now select the name of the instance from the dropdown list to which you want to attach the volume. Hit the attach volume button.
 
-Username: demo
-Password: secrete
+Now you can check the updated window of volumes tab, and the “Attached To” column shows the name of the instance it attached to.  
 
-Afterwards, click connect button. 
+Now if you check the dropdown menu near edit instance, you will see lasser options as you have attached the volume to the instance. Now you can not extend the volume as you have attached it to an instance neither transfer it to other projects either. You can always dis-attach the volume and then extend it and transfer to some other projects.
 
-## List Instances
-Once you are in horizon dashboard, Follow the navigation:
+## Deleting Volume
+Now let’s see how to delete a volume.
 
-Project → Compute → Instances
+## Summary 
 
-The Instances screen will have the list of instances that are available currently. The table has Instance details: Project, Host, Name, Image name, IP Address, Size, Status of the instance, task, power state, time since created and also an action field that provides you an option to edit/create snapshot of the instance. 
+## References
 
-Now let us see the procedure to create an instance. 
-
-## Create an Instance
-Follow the navigation  
-
-Project →  Compute → Instances
-
-to reach the instance screen. 
-
-To create an instance, click on the ‘Launch Instance’ button to launch an instance. 
-
-
-In the screen that pops up, provide the details of the instance that you wish to create. Give a name for your instance. 
-
-A flavor represents the hardware configuration of server. In the next field, choose a flavor from the drop down. 
-
-The instance boot source is chosen as boot from image. And then choose the image in the next field from the drop down.
-
-The Network tab is auto populated with the available network. 
-
-Click on Launch button to launch an instance.
- 
-Once created, the success message that appears on the top right corner confirms the successful creation of the instance.
-
-
-## Edit Instance
-To edit a created instance, we can use the drop down icon on the create snapshot button at the right side of the screen. Choose the option ‘Edit Instance’ to edit the instance. 
-
-It allows you to edit the name of the instance, and also the security groups. To save the changes, click on save button.
-
-To view the end points, follow the navigation: 
-
-Compute → Access & Security → API Access tab 
-
-The access & security screen has the service name and its corresponding end point specified in here.
-
-The hypervisor list can be accessed only by Admin user. The demo user do not have access to hypervisor details.
-
-
-## Flavors & Quota
-A demo user do not have access to flavors and quota. An admin user has the permission to  create, edit, delete a flavor and access quotas. 
-
-## Security Group
-To see the security groups that are available in the horizon dashboard, let us follow the navigation:
-
-Project → Compute → Access & Security
-
-It is the security group that defines which of the incoming network traffic sources can be trusted and are forwarded to instances. It acts as a cloud firewall. If there are no security groups available, then a default one is assigned to the instances. 
-
-### Create Security Group
-Let us now see how to create a new security group. 
-
-Click on the create security group button on top right corner of the screen. 
-
-
-In the screen that has popped up, provide the name and description of the security group that you wish to create. 
-
-If the creation of the security group was successful, then the success message will be displayed on the top right corner of the screen.
-
-### Manage Security Rules
-The security rules can be accessed by using the button Manage Rules at the right hand side of the screen. 
-
-Let us click on the button Manage Rules now. The rules available for the chosen security group can be seen here. 
-
-
-### Add Rule
-We can add a new rule to the security group by clicking on the button Add rule at the top right corner of the screen.
-
-In the screen that just popped up, frame the rule that you wish to have for the security group. 
-A rule decides on the traffic that is allowed towards the instances that uses the security group.
-
-To create the rule, click on the Add button. 
-
-To confirm the creation of the Rule, we need to wait for the success message that appears on the top right corner of the screen. 
-
-
-### Delete Rule
-Now we will see how to delete a rule for a security group.  
-
-Click on the checkbox beside the rule that you want to delete.
-
- click the Delete Rule button on the top right corner of the screen to delete the rule. Confirm the selection of the rule that you wish to delete by clicking on the Delete Rule button. 
-
-The success message will help us to confirm the successful deletion of the rule.
-
-
-### Delete Security Group
-Let us try to delete the security group from the security group list. 
-
-Select the security group you wish to delete by checking the box adjacent to the security group. 
-
-Click on the button Delete Security Group to delete the security group selected. 
-
-In the screen that has just popped up, confirm the security group name that has to be deleted. Click on the button Delete Security Group to confirm the deletion. 
-
-A success message that will appear on the top right corner of the screen will confirm the successful deletion of the security group.
-
-
-## Delete an Instance
-Now let us see how to delete an instance. 
-Choose the instance that you want to delete by checking the box adjacent to the instance that you want to delete.
-
-And then click the terminate instance button on the top right corner of the screen to terminate the instance. 
-
-The success message that appears on top right corner of the screen confirms the deletion of the instance. 
-
-
-## Summary
-Nova is OpenStack’s compute services. The horizon dashboard acts as a user interface that allows easy access and management of instances, security groups and its rules.
-
-
-## Reference
-* http://blog.flux7.com/blogs/openstack/tutorial-what-is-nova-and-how-to-install-use-it-openstack
-* http://docs.openstack.org/admin-guide/cli_set_compute_quotas.html
-
-
+* http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html

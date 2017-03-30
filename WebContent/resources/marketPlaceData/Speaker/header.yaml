@@ -1,0 +1,8 @@
+- title: Speaker Recognition using SVM and Deep Neural Networks
+  ip: http://129.114.32.165:8888/notebooks/code/Speaker_Recognition.ipynb
+  type: jupyter
+  category: machine_learning
+  contentType: application
+  parentimage: cc-ml6073
+  markettitle: Speaker Recognition
+  organization: The University of Texas at San Antonio

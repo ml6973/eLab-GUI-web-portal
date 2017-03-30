@@ -1,0 +1,8 @@
+- title: Face Verification
+  ip: http://129.114.110.179:7788/notebooks/facenet/src_demo/Demo.ipynb
+  type: jupyter
+  category: machine_learning
+  contentType: application
+  parentimage: cc-ml6073
+  markettitle: Face Verification
+  organization: The University of Texas at San Antonio

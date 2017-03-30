@@ -20,7 +20,7 @@ CREATE TABLE UserData (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE Registration (
-  userId             int(11) NOT NULL COLLATE utf8_unicode_ci,
+  userId             int(11) NOT NULL COLLATE utf8_unicode_ci UNIQUE,
   complete			 boolean DEFAULT false,
   FOREIGN KEY (userId) REFERENCES Users(userId)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

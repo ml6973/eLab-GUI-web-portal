@@ -1,81 +1,189 @@
 ---
 layout: post
-title: Lab 14 Horizon Dashboard - Cinder as a User
+title: Lab 14 Command Line Interface - Keystone
 categories: core_services
 author: 
-description: Horizon Dashboard - Cinder as a User
+description: Keystone Command Line Interface
 ---
-
 * * *
-
-#### Lab 14: Horizon Dashboard - Cinder as a User #
-
+#### Lab 14: Command Line Interface - Keystone 
 * * *
 
 # Table of Contents
+
 * Introduction
-* Creating a cinder volume.
-* Editing the volume.
-* Resizing the volume
-* Snapshot of the volume
-* Volume transfer
-* Attaching volume
-* Deleting the volume
+* Accessing your OpenStack environment
+* Authentication
+* Tenants
+* Roles
+* Users
+* Summary
+* Summary of Commands
+* References
 
 ## Introduction
-Block storage is a type of data storage typically where data is stored in volumes, also referred to as blocks. Each block acts as an individual hard drive. Because the volumes are treated as individual hard disks, block storage works well for storing a variety of applications such as file systems and databases. While block storage devices tend to be more complex and expensive than file storage, they also tend to be more flexible and provide better performance.
+Welcome to the command Line Interface - keystone Lab. 
 
-## Creating a Cinder Volume
-As you have already created an instance, now we will create a cinder block storage volume. It will be attached to your instance like a external hard drive or a flash drive. We will go to volumes section under compute tab.  Here you will see the options like create volume and accept transfer.We will look into this options one by one. 
+## Accessing your OpenStack environment
+Let us first open a terminal window to connect to our OpenStack environment. In this case we have proceeded to install OpenStack using devstack in an all-in-one node. The three things you will require to connect to your environment are:  
+User  
+IP address of your OpenStack environment  
+Private key corresponding to the public key provided during instance creation
 
-Let’s create a volume 1st. Click on create volume. Now a pop up window will open. We just need to fill in the blanks. Very easy.
+In your terminal you can access your OpenStack environment by typing:
+``` sh
+$ ssh ~/.ssh/cloud.key cc@129.114.110.19
+```
 
-Let’s type in the volume name as OCI. You can put any description as per your choice. 
+## Authentication
+Now that we have accessed our OpenStack environment, the first thing we need to do is to authenticate our OpenStack user credentials. To do so, lets change to the Devstack directory. In my case, I cloned this directory into my home folder:
+```sh
+$ cd ~/devstack  
+```
+Source credentials as an admin user and admin tenant by typing:  
+```sh
+$ source openrc admin admin
+```
+When you source your credentials, you are requesting keystone to provide you with a token that will allow you to work with the OpenStack Services Clients. These clients give you the ability to operate the command line interface for each one of these. In this case, let us use the keystone CLI to obtain information on the token being used for the admin user and admin tenant. Let us type:
+```sh
+$ keystone token-get
+```
+As we can observe on the output, the current used token has an expiration date, an ID, and is specific to a particular tenant and user. In this case admin and admin.
 
-Volume source ---
+## Tenants
+By default, whenever installing OpenStack using devstack, a series of default tenants will be created. Within those, the admin tenant and demo tenant. We will focus our exercises on using the admin tenant to manipulate, create or delete other tenants. To get a list of tenants using keystone, we can use the command:
+```sh
+$ keystone tenant-list
+```
+In the output we will be able to obtain information for each tenant such as the tenant ID, tenant name, and information on whether the tenant is enabled or disabled for usage.
 
-We will select the default type lvmdriver-1. Select the size as per your requirement. You can always extend the volume size. And the default availability zone is Nova in our project. 
-Now click on create volume. And the volume will get created within few secs. 
+Let us say that we would like to obtain more information on the admin tenant. We can use the command:
+``` sh
+$ keystone tenant-get <tenant ID>
+```
+You can also provide the <tenant name> instead of <tenant ID>.
 
-## Editing the Volume
-Now we will take a look into options such as edit volume for the OCI volume is just created.
-Click on Edit Volume, a pop up window will open. 
-Here you can change the name and description of the volume we just created.
+This command will provide you with additional properties information of this tenant. As an example, whenever we requested a list of tenants, the description property was not displayed as it is in this case. This property is filled out by the admin during the creation of a tenant or while editing.
 
-## Resizing the Volume
-If you click on the down arrow near edit instance, you will see other options such extend volume, manage attachments, create snapshots, change volume type, upload image, create transfer and delete volume. We will look into these one by one.
+To create a new tenant (also known as project or account) you can use the command:
+``` sh
+$ keystone tenant-create --name<tenant name>
+```
+The keystone tenant-create command only requires a tenant-name of your liking to create it; nevertheless, you can pass to this command additional parameters like description of the tenant or define to enable (or not) the tenant to be created by giving the options of true or false. As an example:
+```sh
+$ keystone tenant-create --name OCI2 --description “OCI tenant” --enabled true
+```
+If by any reason you would like to update the information on any tenant you can use the command:
+```sh
+$ keystone tenant-update <tenant ID>
+```
+There are different parameters that can be used to update the tenant such as the tenant’s name, the tenant’s description, or set the enabled flag to true or false. As an example let us update our recently created tenant
+```sh
+$ keystone tenant-update --name my-new-tenant --description "" --enabled false <tenant ID>
+```
+## Roles
+By default, whenever installing OpenStack using devstack, a series of default roles will be created. Within those, the admin role, user role, and service role. To get a list of tenants using keystone, we use the command:
+```sh
+$ keystone role-list
+```
+The keystone service has its own role access policies. These policies determine which user can access which objects in which way, and are defined in the service's policy.json file.
+Whenever an API call to an OpenStack service is made, the service's policy engine uses the appropriate policy definitions to determine if the call can be accepted. Any changes to policy.json are effective immediately, which allows new policies to be implemented while the service is running.
 
-If you click on extend volume you will get another popup window. We will extend the volume  to 10GB. 
-Now the volume size is changed to 10GB. 
+The keystone policy file can be found in:
+``` sh
+$ /etc/keystone/policy.json
+```
+Let’s say that we would like to create a new role. We can use the command:
+```sh
+$ keystone role-create --name my-role
+```
+If we want to get detailed information about the role we just created, we can use the command:
+```sh
+$ keystone role-get <role ID>
+```
+This information is the same one that is displayed when you just created the role.
+To delete the role we can use the command:
+```sh
+$ keystone role-delete <role ID>
+```
+## Users
+In this section you will learn how to manage operations on users which include listing users, creating users, getting user information, deleting users, change a user’s password, list user’s roles, add a role to a user, remove a role from the user, and update a user’s information.
 
-## Snapshot of the Volume
-Before going to 2nd option we will check the 3rd option of creating a snapshot. Volume snapshot saves all the data with your current settings so that you can create similar volume in future. 
-We will give some name and description to this snapshot
-Now it’s creating a volume snapshot for us.
+To obtain a list of current users we can use the command:
+```sh
+$ keystone user-list
+```
+In a default OpenStack installation using devstack, multiple users will be created such as an admin user, demo user, and users for the installed OpenStack services.
+Let's see how you can create a new user. To create a new user let us type the command:
+```sh
+$ keystone user-create
+```
+You will notice that this command will give us an error since it requires us to pass additional arguments. The only required argument this keystone command requests is the --name. Arguments such as tenant, pass, email, enabled are optional. Lets us look a little bit deeper into this commands and see how they work.
 
-Change volume type ---   
-Upload to image ---
+Let us assume that we want to create a new user that is assigned to the demo tenant, give the password of mypassword and we want this user to be enabled immediately. To perform such action we need to use the command:
+```sh
+$ keystone user-create --name new-user --tenant demo --pass mypassword --enabled true
+```
+By pressing enter, a box containing different information properties of the new user will be shown. These properties are email, enabled, user ID, user name, tenant ID and the name of the user. If we wanted to get this same information for any other user we could use the command:
+```sh
+$ keystone user-get 006c14e6546e4cdc91d1ed9be45a7a7e
+```
+To give a new password to the user we can use:
+```sh
+$ keystone user-password-update --pass newpassword 006c14e6546e4cdc91d1ed9be45a7a7e
+```
+To list the roles assigned to a particular user we can use the command:
+```sh
+$ keystone user-role-list
+```
+To add a new role to a user we can type the command:   
+```sh
+$ keystone user-role-add --user new-user --role Member --tenant demo
+```
+To remove a role from a user, we can use:    
+```sh
+$ keystone user-role-remove --user new-user --role Member --tenant demo
+```
+To update a user’s information, you can use:    
+```sh
+$ keystone user-update --name super-user --email new_email@oci.com --enabled false 006c14e6546e4cdc91d1ed9be45a7a7e
+```
+To validate the update of this information, we can use:  
+```sh
+$ keystone user-get 006c14e6546e4cdc91d1ed9be45a7a7e
+```
+Finally, to delete a user, we can use the command:   
+```sh
+$ keystone user-delete 006c14e6546e4cdc91d1ed9be45a7a7e
+```
+To validate that the user has been deleted we can use the command:   
+```sh
+$ keystone user-list
+```
+We can observe that super-user is no longer listed
 
-## Volume Transfer
-You can always transfer your volume to someone else in another project. This can be done using create volume transfer option. We will give the transfer name as OCI volume transfer. Hit create volume transfer button. 
-We have successfully created a transfer, acceptor needs the transfer ID and Authentication key in order to accept of this volume. You can send this key using email or any other method. 
-Now the volume is waiting for transfer, you can anytime cancel the transfer.
+## Summary
+In this lab, we covered how to use Keystone’s command line interface to list, update, create and delete tenants, roles and users.
 
-Now let’s consider someone have sent you the transfer and authentication ID and if you want to accept the transfer you can simply click on accept transfer button. So for now I have canceled the the transfer.
-
-## Attaching Volume
-Now let’s go to the 2nd option in drop down menu i.e Manage attachments. Here you can attach the cinder volume we just created to an instance. 
-Now select the name of the instance from the dropdown list to which you want to attach the volume. Hit the attach volume button.
-
-Now you can check the updated window of volumes tab, and the “Attached To” column shows the name of the instance it attached to.  
-
-Now if you check the dropdown menu near edit instance, you will see lasser options as you have attached the volume to the instance. Now you can not extend the volume as you have attached it to an instance neither transfer it to other projects either. You can always dis-attach the volume and then extend it and transfer to some other projects.
-
-## Deleting Volume
-Now let’s see how to delete a volume.
-
-## Summary 
+## Summary of Commands    
+$ keystone token-get   
+$ keystone tenant-list   
+$ keystone tenant-create   
+$ keystone tenant-update   
+$ keystone role-list   
+$ keystone role-create   
+$ keystone role-get   
+$ keystone role-delete   
+$ keystone user-list   
+$ keystone user-create   
+$ keystone user-get   
+$ keystone user-password-update   
+$ keystone user-role-list   
+$ keystone user-role-add   
+$ keystone user-role-remove   
+$ keystone user-update   
+$ keystone user-delete   
 
 ## References
-
-* http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html
+* [Openstack Document](http://docs.openstack.org/ops-guide/ops_users.html#customizing-authorization)  
+* [Openstack Config file](http://docs.openstack.org/kilo/config-reference/content/policy-json-file.html)

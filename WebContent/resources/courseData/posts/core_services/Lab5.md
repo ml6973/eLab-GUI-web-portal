@@ -1,33 +1,30 @@
 ---
 layout: post
-title: Lab 5 Horizon Dashboard - Glance as an Admin
+title: Lab 5 Horizon Dashboard - Nova as an Admin
 categories: core_services
 author: 
-description: Horizon Dashboard - Glance as an Admin
+description: Horizon Dashboard - Nova as an Admin
 ---
 
 * * *
-#### Lab 5: Horizon Dashboard - Glance as an Admin #
+#### Lab 5: Horizon Dashboard - Nova as an Admin #
 * * *
 
 # Table of Contents
-
 * Introduction
-* Accessing Horizon Dashboard
-* List Images
-* Create Image
-* Edit Image
-* Delete Image
+* Accessing the Horizon Dashboard
+* Creating and Managing Instances
+* Creating and Managing Flavors
+* Quota
+* Deleting an Instance
 * Summary
 * References
 
+## Introduction
 
-## Introduction 
-Glance is OpenStack’s Image Service. It imparts discovery, registration and delivery services for server and disk images. It is the core openstack service which allows the creation of virtual disk images and storing them. The images that are stored can be used as templates which the clients can use to get a new server up and running easily. The virtual machine images can be stored in backends, local file systems, or even in the openstack object storage - Swift. 
+Welcome to the tutorial on Horizon Dashboard Nova. The openstack cloud operating system uses Nova to offer on-demand computing resources. It is OpenStack’s compute service project which is used for managing and hosting cloud computing systems. Nova is built using a component based architecture and it enables additions of new features with ease. When it comes to small deliveries/deployments, Nova along with its components share a centralized SQL based database. Whereas for bigger deployments, a system that aggregates data across the multiple stores needs to be used. 
 
-Glance image services uses a client-server architecture which allows you to have a REST API. It can be used to respond to the requests to the server.
-
-Let us now familiarize with the Glance Service in the Horizon Dashboard: 
+Let us now familiarize with the Nova Service in the Horizon Dashboard:
 
 ## Accessing Horizon Dashboard
 To access the horizon dashboard, type the IP address on your browser bar. Provide the credentials to the login page:
@@ -37,50 +34,127 @@ Password: secrete
 
 Afterwards, click connect button. 
 
-## List Images
-Once you are in the horizon dashboard, follow the navigation: 
-Within admin, Admin→ System → Images
+## Creating and Managing Instances
+List Instances
+Once you are in horizon dashboard, Follow the navigation:
+Admin → System → Instances
 
-The Image screen shows the list of images that are available currently. The table has Image details: Project, Image name, Type, Status of the image, whether the image is Public or  Protected, the format of the image, the size of the image and also an action field that provides you an option to edit image. 
+The Instances screen will have the list of instances that are available currently. The table has Instance details: Project, Host, Name, Image name, IP Address, Size, Status of the instance, task, power state, time since created and also an action field that provides you an option to edit. 
 
-## Create Image
+Here the instance screen doesn't have any entry which means the instances are yet to be created. 
 
-Let us now show you the procedure to create an Image: 
-To create an image, Click on the button ‘Create Image’ on the top right corner of the screen. 
+Now let us see the procedure to create an instance. 
 
-In this screen that has popped up, provide a name for your image, a description-describing the image that you are going to create, in the next field - choose an image source as Image File( If you have the image saved in the local machine) or Image Location ( If you have an external HTTP URL from which the image can be loaded from). For example, the ubuntu cloud image for trusty server is available at :[images](https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img)
+### Create an Instance
+Follow the navigation  
 
-The kernel field is meant for AMI style image. It denotes the ID of the image stored in glance.
-Minimum Disk denotes the minimum disk size required to boot the image and Minimum RAM denotes the minimum memory size. 
+Project →  Compute → Instances
 
-Public checkbox is checked only if the image can be shared with all other tenants. By default, the access is provided ONLY for Admin.
+to reach the instance screen. 
 
-If you have checked Protected,  the image will be prevented from getting deleted. 
+To create an instance, click on the ‘Launch Instance’ button to launch an instance. 
 
-Once the image details are provided, click on Create Image button to create an image.  
+In the screen that pops up, provide the details of the instance that you wish to create. Give a name for your instance. 
 
-After clicking on the create image button, check if you get the success message on the top right corner for the image created. Now you will get to see the image created among the list of other images. 
+A flavor represents the hardware configuration of server. In the next field, choose a flavor from the drop down. 
+
+The instance boot source is chosen as boot from image. And then choose the image in the next field from the drop down.
+
+The Network tab is auto populated with the available network. 
+
+Click on Launch button to launch an instance.
+
+Once created, the success message that appears on the top right corner confirms the successful creation of the instance. 
+
+### Edit Instance
+
+To edit a created instance, we can use the Edit Instance button at the right side of the screen. 
+
+It allows you to edit the name of the instance, and also the security groups. To save the changes, click on save button.
 
 
-## Edit Image
-Now let us see the procedure to edit an image. An image can be edited using the Edit Image button available at the right side of the screen. In the resulting screen that pops up, you can edit/update name, format, minimum disk, minimum RAM, and also specify/ update if image is public or protected. 
+To view the end points, follow the navigation: 
 
-Once updated, you need to click on Update Image to save your changes.In order to confirm that the changes are saved, check for the “Success: Image was updated successfully” message towards the top right corner of the screen. 
+Compute → Access & Security → API Access tab 
 
-## Delete Image
-Now let us see the steps to delete an image.
-In order to delete an image, select the image you wish to delete by checking on the box adjacent to project names on the screen. 
+The access & security screen has the service name and its corresponding end point specified in here.
 
-Once selected, click on the Delete Image button on top right corner of the screen. The pop up screen will now ask you to cross check the name of the image to be deleted. If you have selected the right one, proceed by clicking on Delete image button. 
+The hypervisor list can be found by navigating to :
 
-You need to check for the success message which appears on the top right corner to confirm the deletion of the image. 
+Admin → System → Hypervisor
+
+## Creating and Managing Flavors
+ Flavor denotes the size of the instance to be launched. Server compute, memory and storage capacity of computing instances are defined using flavor. 
+Follow the navigation: 
+
+Admin → System → Flavor
+
+
+### Create Flavor
+To create a flavor, click on the button create flavor available at the top right corner of screen. 
+
+Now let us provide the flavor name and other fields that are required to describe a flavor in the screen that has popped up. 
+
+Click on create flavor button to create a flavor. 
+
+### Delete Flavor
+
+To delete a flavor, Click on the check box beside the flavor name. 
+
+Click on the Delete Flavor button towards the top right corner of the screen. 
+
+In the resulting pop up screen, confirm the name of the flavor that you need to delete. Click on the Delete Flavor button to delete the flavor. 
+
+With the success deletion message , we can confirm that the flavor was deleted successfully.
+
+## Quota
+OpenStack services helps limit the resources for a tenant/project or even for a user. To access the Quotas for admin, follow the navigation: 
+
+Identity → Projects -->Click Manage Members button for a particular project or you can click create project button on top right corner. 
+
+Once clicked select the tab Quota from the new screen that has popped up. 
+
+Let us take a look at the default quota fields:
+
+
+**cores**: This represents the number of instance cores (VCPUs) allowed per project/ tenant.
+
+**fixed-ips**: Fixed IPs are the number of fixed IP addresses allowed per project/tenant. Fixed IP number should be always equal to or greater than the number of  instances that are allowed per project/tenant.
+
+**floating-ips**: This is the number of floating IP addresses per project/tenant.
+
+**injected-file-content-bytes**: Is the number of content bytes allowed per injected file.
+
+**injected-file-path-bytes**: Represents the injected file path length.
+
+**injected-files**: This is the number of injected files per project.
+
+**instances**: This is the number of instances allowed for a tenant.
+
+**key-pairs**: Key- Pairs is associated with user. It denotes the number of key pairs allowed for a single user.
+
+**metadata-items**: It is the number of metadata items for a single  instance.
+
+**ram**: It represents the Megabytes of instance ram allowed per project / tenant.
+
+**security-groups**: This is the number of security groups per tenant.
+
+**security-group-rules**: Security group rules is the number of rules given for a single security group. 
+
+## Deleting an Instance
+
+Now let us see how to delete an instance. 
+Choose the instance that you want to delete by checking the box adjacent to the instance that you want to delete.
+
+And then click the terminate instance button on the top right corner of the screen to terminate the instance. 
+
+The success message that appears on top right corner of the screen confirms the deletion of the instance. 
 
 ## Summary
-To summarise, Glance is the only image service for openstack. 
-Within Admin project, go to admin and then glance can be accessed within the System tab. The Horizon Dashboard manages images using the functionalities that allows you to list, create, edit and delete images of the virtual disks and servers. 
+
+Nova is OpenStack’s compute services. The horizon dashboard acts as a user interface that allows easy access and management of instances, flavors, security groups and its rules.
 
 ## References
-* [Openstack Doc](http://docs.openstack.org/icehouse/training-guides/content/operator-getting-started.html)
-* [Deploying OPenstack](https://www.safaribooksonline.com/library/view/deploying-openstack/9781449311223/ch03.html)
-* [Architecture](http://docs.openstack.org/developer/glance/architecture.html)
 
+http://blog.flux7.com/blogs/openstack/tutorial-what-is-nova-and-how-to-install-use-it-openstack
+http://docs.openstack.org/admin-guide/cli_set_compute_quotas.html

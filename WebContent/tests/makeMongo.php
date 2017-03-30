@@ -26,20 +26,66 @@ function makeMongo() {
 			$id = $gridFS->storeFile($fullPath.$file.DIRECTORY_SEPARATOR."thumbnail.jpg");
 			$detailsID = $gridFS->storeFile($fullPath.$file.DIRECTORY_SEPARATOR."details.md");
 	
-		    $marketPlaceObject = array(
-		    		                   'identifier' => "marketPlaceObject",
-		    		                   'title' => $marketYaml[0]['title'],
-		    		                   'description' => $marketYaml[0]['description'],
-		    		                   'image' => $marketYaml[0]['image'],
-		    		                   'type' => $marketYaml[0]['type'],
-		    		                   'link' => $marketYaml[0]['lessonlink'],
-		    		                   'mtitle' => $marketYaml[0]['markettitle'],
-		    		                   'organization' => $marketYaml[0]['organization'],
-		    		                   'lessoncount' => $marketYaml[0]['lessoncount'],
-		    		                   'thumbnail' => $id,
-		    		                   'details' => $detailsID
-		    );
-		    $courses->save($marketPlaceObject);
+			if (strcmp($marketYaml[0]['contentType'], "course") == 0) {
+				$description = "";
+				if (is_array($marketYaml[0]["description"])){
+					foreach ($marketYaml[0]["description"] as $sentence) {
+						$description = $description.$sentence."\n";
+					}
+				}else{
+					$description = $marketYaml[0]["description"];
+				}
+				
+			    $marketPlaceObject = array(
+			    		                   'identifier' => "marketPlaceObject",
+			    		                   'title' => $marketYaml[0]['title'],
+			    		                   'description' => $description,
+			    		                   'image' => $marketYaml[0]['image'],
+			    		                   'type' => $marketYaml[0]['type'],
+								    	   'category' => $marketYaml[0]['category'],
+								    	   'contentType' => $marketYaml[0]['contentType'],
+			    						   'applications' => array(),
+			    		                   'link' => $marketYaml[0]['lessonlink'],
+			    		                   'mtitle' => $marketYaml[0]['markettitle'],
+			    		                   'organization' => $marketYaml[0]['organization'],
+			    		                   'lessoncount' => $marketYaml[0]['lessoncount'],
+			    		                   'thumbnail' => $id,
+			    		                   'details' => $detailsID
+			    );
+			    $courses->save($marketPlaceObject);
+			}
+		}
+	}
+	
+	//Go through each marketplace file and check for applications and associate with their parents
+	foreach($files as $file) {
+		if (file_exists($fullPath.$file.DIRECTORY_SEPARATOR."header.yaml") && file_exists($fullPath.$file.DIRECTORY_SEPARATOR."details.md") && file_exists($fullPath.$file.DIRECTORY_SEPARATOR."thumbnail.jpg")) {
+			$marketYaml = Spyc::YAMLLoad($fullPath.$file.DIRECTORY_SEPARATOR."header.yaml");
+				
+			$id = $gridFS->storeFile($fullPath.$file.DIRECTORY_SEPARATOR."thumbnail.jpg");
+			$detailsID = $gridFS->storeFile($fullPath.$file.DIRECTORY_SEPARATOR."details.md");
+	
+			if (strcmp($marketYaml[0]['contentType'], "application") == 0) {
+				$applicationObject = array(
+						'identifier' => "applicationObject",
+						'title' => $marketYaml[0]['title'],
+						'ip' => $marketYaml[0]['ip'],
+						'type' => $marketYaml[0]['type'],
+						'category' => $marketYaml[0]['category'],
+						'contentType' => $marketYaml[0]['contentType'],
+						'parent' => $marketYaml[0]['parentimage'],
+						'mtitle' => $marketYaml[0]['markettitle'],
+						'organization' => $marketYaml[0]['organization'],
+						'thumbnail' => $id,
+						'details' => $detailsID
+				);
+				$courses->save($applicationObject);
+				
+				//Associate the application with its parent
+				$parent = $courses->findOne( array("identifier" => "marketPlaceObject", "image" => $applicationObject['parent']) );
+				$parent["applications"][] = $applicationObject['_id'];
+				$courses->save($parent);
+			}
 		}
 	}
     
@@ -109,6 +155,7 @@ function makeMongo() {
 							'title' => $postAttributes[$number],
 							'description' => $postAttributes[$number+6],
 							'author' => $postAttributes[$number+4],
+							'layout' => $postAttributes[$number-2],
 							'video' => $videoLink,
 							'post' => $postID
 					);
@@ -120,6 +167,7 @@ function makeMongo() {
     		$topicObject = array(
     				'identifier' => "topicObject",
     				'title' => $topic['title'],
+    				'image' => $topic['image'],
     				'description' => $topic['description'],
     				'posts' => $postsArray
     		);
@@ -133,6 +181,8 @@ function makeMongo() {
     			'description' => $courseYaml[0]['description'],
     			'image' => $courseYaml[0]['image'],
     			'type' => $courseYaml[0]['type'],
+    			'category' => $courseYaml[0]['category'],
+    			'contentType' => $courseYaml[0]['contentType'],
     			'link' => $courseYaml[0]['lessonlink'],
     			'topics' => $topicsArray
     	);

@@ -1,197 +1,149 @@
 ---
 layout: post
-title: Lab 3 Installing OpenStack (AIO) using DevStack
+title: Lab 3 Horizon Dashboard - Keystone as an Admin
 categories: core_services
 author: 
-description: Installing OpenStack (AIO) using DevStack
+description: Horizon Dashboard - Keystone as an Admin
 ---
 * * *
-#### Lab 3: Installing OpenStack (AIO) using DevStack #
+#### Lab 3: Horizon Dashboard - Keystone as an Admin #
 * * *
 
-## Table of Contents
+# Table of Contents
 
-* Updating the Environment
-* Cloning the Devstack Repository
-* Creating the Devstack Configuration File
-* Validating the OpenStack Installation
+* Introduction
+* Accessing the Horizon Dashboard
+* Services
+* Creating and Managing Tenants
+* Creating and Managing Users and Roles
 * Summary
-* Summary of Commands
 * References
 
-## Updating the Environment
-Once you accessed your instance, the first thing to do is to update our environment. To do so in an Ubuntu OS use:
-```sh
-$ sudo apt-get update
-```
-This procedure might take a while depending on the amount of packages to be be updated. After the update has been finished, proceed to install git, python-pip and vim by using the command:
-```sh
-$ sudo apt-get install -y git python-pip vim
-```
-Explain why should local.conf be created on devstack directory
-Starting the OpenStack Liberty release, OpenStack requires Python 3 to properly install the cloud system since many services started targeting for Python 3. Once the installation process finishes, we need to upgrade python with the command:
-```sh
-$ sudo apt-get upgrade -y python
-```
-Now that we have upgraded python we are ready to clone DevStack’s repository. DevStack is a set of scripts and utilities to quickly deploy an dev OpenStack cloud. As an example let us clone the devstack repository from the liberty release using git by typing:
+## Introduction
+Keystone is the identity service in charge of providing authentication and authorization to access the openstack services. Horizon, which is the OpenStack dashboard project, it is a canonical representation that allows you to access the openstack services like Nova, Neutron, Swift, Keystone through a web based user interface. It allows the admin and other users to access and manage the functional components using just a web browser.
 
-## Cloning the Devstack Repository
-```sh
-$ git clone https://github.com/openstack-dev/devstack.git -b stable/liberty
-```
-After cloning , access the cloned directory. In this case I have cloned the repository into ``` /home/cc/```. In order to access the directory, we can type the following command:
-```sh
-$ cd /home/cc/devstack
-```
-## Creating the Devstack Configuration File
-In this directory we need to create the Devstack configuration file for the Devstack installer. To create it, we can use the command:
-```sh
-$ touch local.conf
-```
-The ``` local.conf``` file is a modified INI format file that introduces a meta-section header to carry additional information regarding the configuration files to be changed.
-The header is similar to a normal INI section header but with double brackets ([[ ... ]]) and two internal fields separated by a pipe (|). Example:
-```sh
-'[[' <phase> '|' <config-file-name> ']]'
-```
-The <phase> can be one of a set of phase names defined by stack.sh. On the other hand the <config-file-name> is the configuration filename. The filename is evaluated in the stack.sh context so all environment variables are available and may be used. Using the project config file variables in the header is strongly suggested. If the path of the config file does not exist it is skipped.
+The Horizon dashboard supports 3 types of central dashboards. These are:            
 
-The defined phases are:
+User Dashboard           
+System Dashboard        
+Settings Dashboard 
 
-local - extracts localrc from local.conf before stackrc is sourced   
-post-config - runs after the layer 2 services are configured and before they are started   
-extra - runs after services are started and before any files in extra.d are executed   
-post-extra - runs after files in extra.d are executed   
+of all the core openstack projects. Using these, the core openstack projects are supported and delivered.
 
-The file is processed strictly in sequence; meta-sections may be specified more than once but if any settings are duplicated the last to appear in the file will be used.
-Now that we have created our DevStack configuration file, let us proceed edit it and define the configuration of our OpenStack environment. To do so, let us start by accessing the file with our prefered editor. In this case I will use vi:
-```sh
-$ vi local.conf
-```
-Now we will start our configuration file with our header. In this case we will use the local phase and the localrc configuration file name:
-```
-[[local|localrc]]
-```
-Next we need to define the passwords for the admin tenant, database, rabbitmq, openstack services and a random service token. To define these we can input them by:
+It has an Extensible feature as the user can customize the dashboard with new components that are related to the projects. The code base is simple, easy to navigate as every file is programmed  with the required logic and arranged in a modular manner such that the files are easily correlated with navigation, making it a lot Manageable.
+There is Consistency across the application with respect to the visual paradigm and interaction paradigm by accessing a solid set of reusable templates, the required core classes on which the changes are made and also additional tools such as base widget classes, form classes, etc)
+The Horizon Dashboard is also Stable. The use of core classes and reusable templates creates an implicit requirement that there has to be backward compatibility in case of a change.
 
-ADMIN_PASSWORD=secrete   
-DATABASE_PASSWORD=secrete   
-RABBIT_PASSWORD=secrete   
-SERVICE_PASSWORD=secrete   
-SERVICE_TOKEN=a682f596-76f3-11e3-b3b2-e716f9080d50
-  
-We define the base for the repositories:
+## Accessing the Horizon Dashboard
 
-GIT_BASE=https://git.openstack.org
+Now let us get familiarised with Horizon Dashboard:
 
-Finally we define which services we want to enable or disable on our environment:
+As we have discussed before,  keystone OpenStack’s identity service. The authentication and authorization can be done using a combination of users, roles, tenants or projects and domain.
 
-### Disable Nova Networks
-disable_service n-net
-### Enable Horizon Dashboard
-enable_service horizon
-### Enable Neutron
-enable_service q-svc      
-enable_service q-agt      
-enable_service q-dhcp     
-enable_service q-l3    
-enable_service q-meta   
-enable_service neutron   
-### Enable Swift
-enable_service s-proxy      
-enable_service s-object   
-enable_service s-container   
-enable_service s-account   
-SWIFT_HASH=8213897fads879789asdf789  
-### Define the number of Swift Replicas
-SWIFT_REPLICAS=3
-### Enable Load Balancer as a Service
-enable_service q-lbaas
-### Enable Firewall as a Service
-enable_service q-fwaas
-### Enable VPN as a Service
-enable_service q-vpn
-### Use linux bridge as our Neutron Agent
-Q_AGENT=linuxbridge
+The default OpenStack users are admin and demo. Also, the default tenants are admin and demo. Since admin user has an admin role, it can have control over admin tenant and demo tenant; on the other hand, demo user can only have access to demo tenant. In addition to the default user and tenants names, the default password that we have given to both of these users is secrete.
 
-We save the changes we have made to our file and exit.
+Let us start our hand-on activities by showing you how to access the Horizon Dashboard.
 
-Back on the devtsack directory located at:
-```sh
-$ /home/<user_name>/devstack
-```
-We now list the files contained in this directory by using:
-```sh
-$ ls
-```
-You will be able to see the file named stack.sh. Let us start the installation of OpenStack using DevStack by running this file:
-```sh
-./devstack/stack.sh
-```
-This might take a few minutes depending on the instance or server you are using. At the end of the installation you will be able to see a message stating the host IP address, the horizon dashboard endpoint, the keystone service endpoint, the default users, the access password and the time it took to complete the installation:
+## Accessing the Horizon Dashboard
+To access the horizon dashboard, type the IP address on your browser bar. Provide the credentials to the login page:
 
-This is your host IP address: 10.40.1.117   
-This is your host IPv6 address: ::1   
-Horizon is now available at http://10.40.1.117/dashboard   
-Keystone is serving at http://10.40.1.117:5000/   
-The default users are: admin and demo   
-The password: secrete   
-2016-07-21 20:40:39.758 | stack.sh completed in 1237 seconds.  
+Username: admin
+Password: secrete and then click connect button.
 
-## Validating the OpenStack Installation
 
-To verify if your openstack environment is working properly we will once again access the devstack folder and source the credentials for one of the default users and one of the default tenants.
+ 
+Now let us begin familiarizing with Horizon Dashboard. 
 
-As it was stated previously, the default users are admin and demo. Also, the default tenants are admin and demo. Since admin user has an admin role, it can have control over admin tenant and demo tenant; on the other hand, demo user can only have access to demo tenant.
+We will start with Services.
 
-To source the credentials for a particular user and tenant, you need to use the openrc file by using the source command:
-``` sh
-$ source openrc <user name> <tenant name>
-```
-An example to source the credentials for the admin user so it can perform actions in the demo tenant we can use:
-```sh
-$ source openrc admin demo
-```
-If we wanted to source the credentials for the admin user so it can perform actions in the admin tenant we would use:
-```sh
-$ source openrc admin admin
-```
-Let’s source the credentials for admin user and admin tenant.
-Afterwards we will use the openstack client to obtain a catalog of openstack services available in this deployment. To do so, we can type the command:
-``` sh
-$ openstack catalog list
-```
-With this, we will obtain a list of services, the type of service and the endpoints of each one of these.
+## Services
+Within the horizon dashboard, the service list can be found in system information. The navigation is: 
+
+Admin → System→ System Information  
+
+The system information table has the information like service Name, the openstack service to which it is associated with, host address and the status -  whether it is enabled or disabled.
+
+## Creating and Managing Tenants
+
+A Tenant is another term for a project. It represents a group of users who have dedicated access to their compute resources. 
+
+### List Tenant
+List tenant will provide you with a list of the currently available tenants / projects.
+You can find the list of tenants within the admin project. The navigation is: 
+
+In Admin→ Identity → Projects→ the list of tenants can be found here.
+
+Let us now see the procedure to create a tenant.
+### Create Tenant	
+
+To create a tenant, click on the Create Project button on top right corner of the screen. 
+
+In the project information tab, provide project name, description. In the project members tab, click on the + sign located next to each user to provide users access to this new tenant. In the Quota tab, check  if the default values are the ones that you require and click on Create project button. 
+
+The  ‘Success: Created new project <project name>’ message confirms the successful creation of your project. Now you will get to see the newly created project among the project list. 
+
+### Delete Tenant
+
+To delete a tenant, you need to first check the box next to the project name that you wish to delete. Click on Delete Project button to delete the project that you checked in the previous step.
+
+The pop up box that appears will now ask you to confirm the name of the tenant/project that you wish to delete. Confirm the deletion of the tenant by clicking on the Delete Project option. 
+
+Let us see the procedure to edit a tenant now.
+
+### Edit Tenant
+
+To edit a tenant, click on the drop down icon towards the right side of the screen. Click on ‘Edit Project’ to edit the project details.
+
+There are 3 tabs available within Edit Tenant: Project Information, Project Members and Quota that can be edited. 
+In project information, the project name, description and the enabled property can be edited.  
+In Project Members, you can add members using the + icon beside every user. The save button beneath the dialog box can be used to save the changes. 
+
+In Quota tab, the related fields can be edited and saved using the save button. 
+
+
+## Creating and Managing Users and Roles
+### Create User
+
+Click on the Create User button available on the top right corner of the screen. 
+Fill in the required details like username, email, password, confirm password, primary project with which the user is going to be attached to and also the role in order  to create the user. 
+
+Roles represent duties / functionalities  assigned to users. The Roles can be modified using a set of command line interface commands. The Roles that are available can be found in the dropdown list. Select a role from the list to assign it to the user. 
+
+Once the details are filled in, click on Create User button.
+
+To confirm the user creation, see for the ‘Success: <user> was created successfully’ message on the top right corner of the screen . Now you can find the user among the list of others users in the screen
+
+### Delete User
+To delete a user from the list, select the user to be deleted from the list in the User
+Screen by clicking on the check box. Click on the Delete User button on the top right corner of the screen to delete the selected user. 
+The resulting pop up screen will ask you to confirm the user name that you wish to delete. Click on the Delete User button to confirm it. 
+
+Once deleted, the action can be confirmed by checking for the success message that appears on the top right corner. 
+ 
+### Get User
+In this section we will see how to see the details of a particular user. 
+
+Follow the navigation : In Identity→ Users 
+
+This screen shows the list of users. So here if you notice, all the users have a hyperlink to their details screen. The details screen will provide with the information of the users.
+ To see the details of a particular user, keep cursor on the user name you wish to view.Using the hand symbol, click on the user name. The following screen will show the details of the user (demoUser).
+
+
+### List User
+List user screen will provide you with the list of currently available users. 
+You can get to the list of users by following the navigation: 
+
+Within demo project; Identity → Users 
+	
+The list user screen has information like User Name which is the name of the user, and then Email of the user, a unique User ID, it has information whether the user is Enabled or disabled and it also have an Action field with options for you to edit the user.
+
+Now let us see how to edit a user.
+### Edit User
+To update/edit the user details, click on the edit button on the action column of the user name. The Edit button allows you to edit the username, email, and primary project.
+The drop down can be accessed to edit the status of the user, the password for the user and also Delete a user. 
 
 ## Summary
-Now that you have your own OpenStack testing environment you can start exploring different things such as:  
-The functionality of a Cloud System   
-Explore the functionality of each of the OpenStack services   
-Experiment with the CLI   
-Experiment with API calls   
-Debug the system   
-Change the code and submit bug fixes   
-
-## Summary of Commands
-Some of the commands we used in this lab were:
-Edit your devstack configuration file
-```sh
-$ vi local.conf
-```
-
-Start installation
-```sh
-$ ./devstack/stack.sh
-```
-
-Source credentials
-```sh
-$ source openrc <user name> <tenant name>
-```
-
-Obtain the openstack catalog information
-```sh
-$ openstack catalog list
-```
+The keystone dashboard provides a web based user interface for openstack services. It provides with an interface that provides access information on the most important components of keystone, that are required for the management of users, roles, tenants and services.
 
 ## References
-http://docs.openstack.org/developer/devstack/
+http://docs.openstack.org

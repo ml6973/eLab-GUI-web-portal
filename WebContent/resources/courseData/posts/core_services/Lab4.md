@@ -1,149 +1,86 @@
 ---
 layout: post
-title: Lab 4 Horizon Dashboard - Keystone as an Admin
+title: Lab 4 Horizon Dashboard - Glance as an Admin
 categories: core_services
 author: 
-description: Horizon Dashboard - Keystone as an Admin
+description: Horizon Dashboard - Glance as an Admin
 ---
+
 * * *
-#### Lab 4: Horizon Dashboard - Keystone as an Admin #
+#### Lab 4: Horizon Dashboard - Glance as an Admin #
 * * *
 
 # Table of Contents
 
 * Introduction
-* Accessing the Horizon Dashboard
-* Services
-* Creating and Managing Tenants
-* Creating and Managing Users and Roles
+* Accessing Horizon Dashboard
+* List Images
+* Create Image
+* Edit Image
+* Delete Image
 * Summary
 * References
 
-## Introduction
-Keystone is the identity service in charge of providing authentication and authorization to access the openstack services. Horizon, which is the OpenStack dashboard project, it is a canonical representation that allows you to access the openstack services like Nova, Neutron, Swift, Keystone through a web based user interface. It allows the admin and other users to access and manage the functional components using just a web browser.
 
-The Horizon dashboard supports 3 types of central dashboards. These are:            
+## Introduction 
+Glance is OpenStack’s Image Service. It imparts discovery, registration and delivery services for server and disk images. It is the core openstack service which allows the creation of virtual disk images and storing them. The images that are stored can be used as templates which the clients can use to get a new server up and running easily. The virtual machine images can be stored in backends, local file systems, or even in the openstack object storage - Swift. 
 
-User Dashboard           
-System Dashboard        
-Settings Dashboard 
+Glance image services uses a client-server architecture which allows you to have a REST API. It can be used to respond to the requests to the server.
 
-of all the core openstack projects. Using these, the core openstack projects are supported and delivered.
+Let us now familiarize with the Glance Service in the Horizon Dashboard: 
 
-It has an Extensible feature as the user can customize the dashboard with new components that are related to the projects. The code base is simple, easy to navigate as every file is programmed  with the required logic and arranged in a modular manner such that the files are easily correlated with navigation, making it a lot Manageable.
-There is Consistency across the application with respect to the visual paradigm and interaction paradigm by accessing a solid set of reusable templates, the required core classes on which the changes are made and also additional tools such as base widget classes, form classes, etc)
-The Horizon Dashboard is also Stable. The use of core classes and reusable templates creates an implicit requirement that there has to be backward compatibility in case of a change.
-
-## Accessing the Horizon Dashboard
-
-Now let us get familiarised with Horizon Dashboard:
-
-As we have discussed before,  keystone OpenStack’s identity service. The authentication and authorization can be done using a combination of users, roles, tenants or projects and domain.
-
-The default OpenStack users are admin and demo. Also, the default tenants are admin and demo. Since admin user has an admin role, it can have control over admin tenant and demo tenant; on the other hand, demo user can only have access to demo tenant. In addition to the default user and tenants names, the default password that we have given to both of these users is secrete.
-
-Let us start our hand-on activities by showing you how to access the Horizon Dashboard.
-
-## Accessing the Horizon Dashboard
+## Accessing Horizon Dashboard
 To access the horizon dashboard, type the IP address on your browser bar. Provide the credentials to the login page:
 
 Username: admin
-Password: secrete and then click connect button.
+Password: secrete
+
+Afterwards, click connect button. 
+
+## List Images
+Once you are in the horizon dashboard, follow the navigation: 
+Within admin, Admin→ System → Images
+
+The Image screen shows the list of images that are available currently. The table has Image details: Project, Image name, Type, Status of the image, whether the image is Public or  Protected, the format of the image, the size of the image and also an action field that provides you an option to edit image. 
+
+## Create Image
+
+Let us now show you the procedure to create an Image: 
+To create an image, Click on the button ‘Create Image’ on the top right corner of the screen. 
+
+In this screen that has popped up, provide a name for your image, a description-describing the image that you are going to create, in the next field - choose an image source as Image File( If you have the image saved in the local machine) or Image Location ( If you have an external HTTP URL from which the image can be loaded from). For example, the ubuntu cloud image for trusty server is available at :[images](https://cloud-images.ubuntu.com/trusty/current/trusty-server-cloudimg-amd64-disk1.img)
+
+The kernel field is meant for AMI style image. It denotes the ID of the image stored in glance.
+Minimum Disk denotes the minimum disk size required to boot the image and Minimum RAM denotes the minimum memory size. 
+
+Public checkbox is checked only if the image can be shared with all other tenants. By default, the access is provided ONLY for Admin.
+
+If you have checked Protected,  the image will be prevented from getting deleted. 
+
+Once the image details are provided, click on Create Image button to create an image.  
+
+After clicking on the create image button, check if you get the success message on the top right corner for the image created. Now you will get to see the image created among the list of other images. 
 
 
- 
-Now let us begin familiarizing with Horizon Dashboard. 
+## Edit Image
+Now let us see the procedure to edit an image. An image can be edited using the Edit Image button available at the right side of the screen. In the resulting screen that pops up, you can edit/update name, format, minimum disk, minimum RAM, and also specify/ update if image is public or protected. 
 
-We will start with Services.
+Once updated, you need to click on Update Image to save your changes.In order to confirm that the changes are saved, check for the “Success: Image was updated successfully” message towards the top right corner of the screen. 
 
-## Services
-Within the horizon dashboard, the service list can be found in system information. The navigation is: 
+## Delete Image
+Now let us see the steps to delete an image.
+In order to delete an image, select the image you wish to delete by checking on the box adjacent to project names on the screen. 
 
-Admin → System→ System Information  
+Once selected, click on the Delete Image button on top right corner of the screen. The pop up screen will now ask you to cross check the name of the image to be deleted. If you have selected the right one, proceed by clicking on Delete image button. 
 
-The system information table has the information like service Name, the openstack service to which it is associated with, host address and the status -  whether it is enabled or disabled.
-
-## Creating and Managing Tenants
-
-A Tenant is another term for a project. It represents a group of users who have dedicated access to their compute resources. 
-
-### List Tenant
-List tenant will provide you with a list of the currently available tenants / projects.
-You can find the list of tenants within the admin project. The navigation is: 
-
-In Admin→ Identity → Projects→ the list of tenants can be found here.
-
-Let us now see the procedure to create a tenant.
-### Create Tenant	
-
-To create a tenant, click on the Create Project button on top right corner of the screen. 
-
-In the project information tab, provide project name, description. In the project members tab, click on the + sign located next to each user to provide users access to this new tenant. In the Quota tab, check  if the default values are the ones that you require and click on Create project button. 
-
-The  ‘Success: Created new project <project name>’ message confirms the successful creation of your project. Now you will get to see the newly created project among the project list. 
-
-### Delete Tenant
-
-To delete a tenant, you need to first check the box next to the project name that you wish to delete. Click on Delete Project button to delete the project that you checked in the previous step.
-
-The pop up box that appears will now ask you to confirm the name of the tenant/project that you wish to delete. Confirm the deletion of the tenant by clicking on the Delete Project option. 
-
-Let us see the procedure to edit a tenant now.
-
-### Edit Tenant
-
-To edit a tenant, click on the drop down icon towards the right side of the screen. Click on ‘Edit Project’ to edit the project details.
-
-There are 3 tabs available within Edit Tenant: Project Information, Project Members and Quota that can be edited. 
-In project information, the project name, description and the enabled property can be edited.  
-In Project Members, you can add members using the + icon beside every user. The save button beneath the dialog box can be used to save the changes. 
-
-In Quota tab, the related fields can be edited and saved using the save button. 
-
-
-## Creating and Managing Users and Roles
-### Create User
-
-Click on the Create User button available on the top right corner of the screen. 
-Fill in the required details like username, email, password, confirm password, primary project with which the user is going to be attached to and also the role in order  to create the user. 
-
-Roles represent duties / functionalities  assigned to users. The Roles can be modified using a set of command line interface commands. The Roles that are available can be found in the dropdown list. Select a role from the list to assign it to the user. 
-
-Once the details are filled in, click on Create User button.
-
-To confirm the user creation, see for the ‘Success: <user> was created successfully’ message on the top right corner of the screen . Now you can find the user among the list of others users in the screen
-
-### Delete User
-To delete a user from the list, select the user to be deleted from the list in the User
-Screen by clicking on the check box. Click on the Delete User button on the top right corner of the screen to delete the selected user. 
-The resulting pop up screen will ask you to confirm the user name that you wish to delete. Click on the Delete User button to confirm it. 
-
-Once deleted, the action can be confirmed by checking for the success message that appears on the top right corner. 
- 
-### Get User
-In this section we will see how to see the details of a particular user. 
-
-Follow the navigation : In Identity→ Users 
-
-This screen shows the list of users. So here if you notice, all the users have a hyperlink to their details screen. The details screen will provide with the information of the users.
- To see the details of a particular user, keep cursor on the user name you wish to view.Using the hand symbol, click on the user name. The following screen will show the details of the user (demoUser).
-
-
-### List User
-List user screen will provide you with the list of currently available users. 
-You can get to the list of users by following the navigation: 
-
-Within demo project; Identity → Users 
-	
-The list user screen has information like User Name which is the name of the user, and then Email of the user, a unique User ID, it has information whether the user is Enabled or disabled and it also have an Action field with options for you to edit the user.
-
-Now let us see how to edit a user.
-### Edit User
-To update/edit the user details, click on the edit button on the action column of the user name. The Edit button allows you to edit the username, email, and primary project.
-The drop down can be accessed to edit the status of the user, the password for the user and also Delete a user. 
+You need to check for the success message which appears on the top right corner to confirm the deletion of the image. 
 
 ## Summary
-The keystone dashboard provides a web based user interface for openstack services. It provides with an interface that provides access information on the most important components of keystone, that are required for the management of users, roles, tenants and services.
+To summarise, Glance is the only image service for openstack. 
+Within Admin project, go to admin and then glance can be accessed within the System tab. The Horizon Dashboard manages images using the functionalities that allows you to list, create, edit and delete images of the virtual disks and servers. 
 
 ## References
-http://docs.openstack.org
+* [Openstack Doc](http://docs.openstack.org/icehouse/training-guides/content/operator-getting-started.html)
+* [Deploying OPenstack](https://www.safaribooksonline.com/library/view/deploying-openstack/9781449311223/ch03.html)
+* [Architecture](http://docs.openstack.org/developer/glance/architecture.html)
+

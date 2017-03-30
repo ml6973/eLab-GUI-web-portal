@@ -1,160 +1,100 @@
 ---
 layout: post
-title: Lab 13 Horizon Dashboard - Neutron as a User
+title: Lab 13 Horizon Dashboard - Swift as a User
 categories: core_services
 author: 
-description: Horizon Dashboard - Neutron as a User
+description: Horizon Dashboard - Swift as a User
 ---
   
 
 * * *
 
-#### Lab 13: Horizon Dashboard - Neutron as a User #
+#### Lab 13: Horizon Dashboard - Swift as a User #
 
 * * *
 
 # Table of Contents
 
-* Prerequisites
-* Overview
-* Accessing Horizon Dashboard
-* Networks
-* Conclusion
-* Reference
+* Introduction
+* Creating a Container
+* Uploading Objects in the Container
+* Create a Pseudo Folder
+* Download Objects from the Container
+* Copy a Object
+* Delete the Objects and Container
+* Summary
+* References
 
-## Prerequisites
-You will need a basic understanding of Openstack terminology and concepts. 
+## Introduction
+Recently, the widespread use of smart mobile devices, such as iPhone, iPad, Android phones and Windows family devices, has led to a great demand for cloud computing. 
+Meanwhile, the local storages of these devices are limited, and the security of the files is not guaranteed. Therefore, there is a need to handle a massive amount of data kept on cloud storage efficiently
 
-
-## Overview
-If you want to be familiar with pretty much everything related to Networking in Openstack, knowing Neutron is mandatory. Neutron is Openstack’s networking service. It’s built to deliver Networking-as-a-Service (NaaS) in cloud environment. It enables you to create and manage network objects which include but are not limited to networks, subnets and ports that other services of OpenStack can use. It brings ease of use to the network operators by providing a “plug in” mechanism to facilitate different networking equipment or software providing flexibility to Openstack architecture and deployment. 
-
-It also provides networking API to help you define networking connections in your cloud. You can configure and manage diverse networking services ranging from L3 forwarding to NAT etc. You can also create multiple private networks and control their networking. One of the major consumer of Neutron service is Openstack compute which requires networking connections for instances. It is important to have a basic understanding of Neutron, as it is often needed in industry while dealing with requirements like efficient operation in heterogenous environments. It is adopted by many prominent networking suppliers such as Arista, Brocade Communications Systems, Hewlett-Packard, Cisco etc.
-
-Now let’s dig into hands-on ways to implement features from Neutron through Horizon Dashboard
+The OpenStack Swift distributed file system, stores files into different storage devices in the cluster instead of an exclusive or single server. To guarantee the quality of service (QoS), the distributed file system can also use the load balance scheduler to make every storage device handle the equal data access requirement
 
 
-## Accessing Horizon Dashboard
-To access the horizon dashboard, type the IP address of machine you received from our “Get Machine” service on course page in your browser. Enter the credentials for logging in.
+## Creating a Container
+As you have already created an instance, now we will create a swift object storage container. A container is a storage compartment for your data and provides a way for you to organize your data. You can think of a container as a folder in Windows ® or a directory in UNIX ®. It will be attached to your instance like a external hard drive or a flash drive.
 
-For Demo:
+We will go to object storage section under project tab. Now click on containers. 
+As we haven’t created any container. We will create one using “Create Container” option.
 
-Username: demo
-Password: secrete
+Let’s create a container named “OCI”. We will keep the container “Private”.  A Public Container will allow anyone with the Public URL to gain access to your objects in the container
 
-Some important parts of Neutron are:
-  * Public Networks
-  * Private Networks
-  * Creating Subnets
-  * Routers
-  * Interfaces
-  * Security Groups
-  * Security Rules
+Now we have created a container. 
+However, you can create an unlimited number of containers within your account. Data must be stored in a container so you must have at least one container defined in your account prior to uploading data.
 
-
-## Networks
-Before beginning into a hands-on practice, let’s understand the definitions of these terms so you can have a better understanding of what you are doing. We have extracted these definitions from Openstack documentation and presented below so you can have all of them at one place without having to separately search for each one of them.
-
-### Public Networks:
-Before launching an instance, you must create the necessary virtual network infrastructure.Openstack documentation describes it as “For networking option 1, an instance uses a public provider virtual network that connects to the physical network infrastructure via layer-2 (bridging/switching). This network includes a DHCP server that provides IP addresses to instances. The admin or other privileged user must create this network because it connects directly to the physical network infrastructure.”
-
-### Private Networks:
-“If you chose networking option 2, you can also create a private project virtual network that connects to the physical network infrastructure via layer-3 (routing) and NAT. This network includes a DHCP server that provides IP addresses to instances. An instance on this network can automatically access external networks such as the Internet. However, access to an instance on this network from external networks such as the Internet requires a floating IP address. The demo or other unprivileged user can create this network because it only provides connectivity to instances within the demo project.
-
-#### Network Topology
-Networks are fundamental to cloud computing and being able to configure them is an important skill.
-Let’s switch from admin user to demo user, so we can see demo user view of demo user. 
-
-On the left hand side you see a panel with different tabs such as “Project”, and “Identity”. Click on Project and under Project → Networks
-
-In their project, the topology is more complete because it shows the router connecting the external network to the demo network. The demo user can manage the demo subnet. However, it cannot manage the external subnet defined by the admin user. 
-
-#### Creating Network:
-As Demo User:
-
-Just click on “Create Network” button on top right corner of the screen.
-Give it a Name, The Admin State has two options UP or DOWN implying the state you want the network to start in. 
-
-#### Creating SubNet:
-After creating network, you can define a subnetwork for it by clicking on the Next button. Creating a subnet is a choice. You can create a network without creating a subnet, but if you don’t specify a subnet you won’t be able to attach the network to an instance. Subnets help you define and differentiate different areas of  your network for purposes such as security and broadcasting. Meaning, if you have a large network with many nodes, you can group some nodes together for specific purposes and so on. Through subnetting, networks can be organized more clearly specially in case of large networks. 
-
-Give your subnet a Name. The Network address has to be in CIDR format. Now select the IP (Internet Protocol) version which provides an identification and location system for computers on networks and also used for routing traffic across internet. There is an option at the bottom to Disable Gateway. If you have a gateway and if you have a network it will be routed but you can disable that as well. By default the gateway of the IP will be the first usable IP of 192.168.1.1. 
-
-#### Subnet Details
-Now under Subnet Details tab, you can select if you want DHCP, which is typically implementing a Linux dnsmasq service. As well as the DNS Names that you may want to use in case you are using DHCP. And Host Routes which will be supplied by DHCP for individual hosts.  
-
-After you’re done providing all the details go ahead and click on Create Network button. After several seconds you will find your network UP and running. We just created a Network named “Networkcheck” and defined a subnet called “Subnetcheck”. This network is now ready to be assigned to instances. As you can see it’s very simple to create networks through the Dashboard, Horizon component of Openstack.
-
-### Routers:
-Subnetting allows you to divide areas of your network out to prevent this. But how can we make them communicate with each other? By installing Layer 3 Switch or a Router. With the help of Router the subnets can essentially “talk” to each other.
-
-#### Creating Routers
-As Demo User:
-Under Networks Tab in Project click on “Routers” category. Click on “Create Router”. 
-
-
-
-Select a Router Name, Admin State and External Network. Now click on Create Router. I have created a Router with name “Routercheck” and selected external network “public”. 
-
-
-### Interfaces:
-A network interface is a point of interconnection between an instance and a public or private network. You can add a networking interface to an instance in Openstack after launching the instance. 
-
-#### Connecting to a Private Network:
-After creating a router, you can connect it to a private network. Click on the name of the router you want to configure in the Routers tab. I will be using the “Routercheck” router I just created in previous step. 
-
-It will take you to the “Router Details” page. Click on the “Interfaces” tab and then click “Add Interface”.   
+## Uploading Objects in the Container
+ In order to upload objects to the container, we need to select the container. As I have clicked on “OCI”, we can see several options like “Create Pseudo-folder” and “Upload Objects” coming up on the screen. Now we will upload an object using “Upload Object” option.
  
-By default OpenStack Networking uses the first host IP address in the subnet. You can change this default by setting up an IP Address for the router interface for the selected subnet. I have selected my previously made subnet named “Subnetcheck” for this example. Note that the Router Name and Router ID fields are automatically updated. After giving details, click on “Add Interface”. 
+As the description says, an object is the basic storage entity that represents a file you store in the OpenStack Object Storage system. 
+When you upload data to OpenStack Object Storage, the data is stored without any compression or encryption and it consists of a location, the object's name, and any metadata consisting of key/value pairs. 
 
-You can now check the new topology from Network Topology. It can be done in same way being an admin user. 
+And we can always create a pseudo-folder within a container so that you can group your objects into pseudo-folders, which behave similarly to folders in your desktop operating system. We will create the pseudo-folder later. Let’s upload an object to the OCI container 1st. 
 
-### Port Reservation:
-Ports are critically important while dealing with ingress and egress points for data traffic. Openstack Neutron ports are created automatically but we can also independently create them if needed. They are realized on the underlying hypervisor using interfaces. They play an important role in Neutron as they are not only associated with entry or exit points for data traffic but also with configurations such as interface and IP addresses [5].  
+You can choose any file from your host machine. I have selected a text file.
 
-#### Creating Ports:
-Only the administrator can create and manage ports. I will be switching to the Admin user for this feature. 
+Hit the “Upload Object” Button. 
 
-
-### DHCP Agent (quantum-dhcp-agent):
-Provides DHCP services to tenant networks. This agent is the same across all plug-ins. We have already discussed the assignment of this feature while creating subnets. The Openstack documentation states that “The OpenStack Networking service has a scheduler that lets you run multiple agents across nodes; the DHCP agent can be natively highly available. To configure the number of DHCP agents per network, modify it’s config file. By default this is set to 1. To achieve high availability, assign more than one DHCP agent per network.”
-
-### Security Groups: 
-Openstack documentation describes as - Security groups are sets of IP filter rules that are applied to an instance's networking. They are project specific, and project members can edit the default rules for their group and add new rules sets. All projects have a "default" security group, which is applied to instances that have no other security group defined. Unless changed, this security group denies all incoming traffic. 
-
-#### Creating Security Groups:
-To create Security Groups, go to Project in the left hand side panel, and under Compute tab, select Access & Security category. 
-
-Here click on “Create Security Group” button. 
-
-Enter the Name for your Security Group and an optional Description for your group. Then click on Create Security Group button. I have created a security group named”Securitycheck”. 
+So we have successfully uploaded the object to the container.
 
 
-Now you can see your security group in the list of groups. 
+## Create a Pseudo Folder
+Now we will look how to create a pseudo-folder inside “OCI” container.
+
+Let’s create “UTSA” as a pseudo-folder.
+
+Now you can see a pseudo folder named “UTSA” got created.
+
+You can create as many nested pseudo folders you want.
+
+Let’s upload some files in UTSA folder. Click on UTSA.
+
+There are no objects as of now in this folder, lets upload some. We will upload a PDF this time. You can upload any file type.
+
+So now you can see the PDF in UTSA folder.
 
 
-### Security Rules:
-You can also edit or add rules to this group by clicking on Manage Rules. 
+## Download Objects from the Container
+You can always delete or download as many number of objects you want. 
+Let’s download the txt file we just uploaded.  Simply click on download button to download the object.
 
-This will direct you to the Manage Security Group Rules for your security group’s page. By default all ports are opened for outbound connections and no inbound connections are allowed. 
-Click on Add Rule button on top. 
 
-Here select the rule you need from the dropdown menu.You can specify the desired rule template or use custom rules, the options are Custom TCP Rule, Custom UDP Rule, or Custom ICMP Rule.
+## Copy a Object
+Before going to delete option, we will see how to copy a file from a container to another container or to a pseudo folder or within the same container.
 
-Select the direction of traffic as Ingress or Egress.
+If you want to select a different container, you can do it using the drop down list of destination container.
+
+For now we will copy the file into UTSA pseudo folder. Hit “Copy Object”
+
+Now let’s go the UTSA folder to check whether we have successfully copied the file or not.
  
-Open Port / Port Range - For TCP and UDP rules you may choose to open either a single port or a range of ports. Selecting the "Port Range" option will provide you with space to provide both the starting and ending ports for the range. For ICMP rules you instead specify an ICMP type and code in the spaces provided.
- 
-Remote: You must specify the source of the traffic to be allowed via this rule. You may do so either in the form of an IP address block (CIDR) or via a source group (Security Group). Selecting a security group as the source will allow any other instance in that security group access to any other instance via this rule.
+Now here you can see the copy of the txt file.
 
-After configuring, click on Add. You will now see your added rule on the refreshed security group rules page. 
+
+## Delete the Objects and Container
+Similarly you can delete the object using drop down list. Before you delete a container you need to delete all the objects and pseudo folders in the container.
 
 ## Summary
-In this module, you have learned how to configure Openstack Neutron features as a demo user
 
-## Reference
-* http://docs.openstack.org/mitaka/networking-guide/intro-os-networking-overview.html#openstack-networking-concepts Accessed: July 27, 2016.
-* “OpenStack Fundamentals Configuring a Tenant Network” Byron Hynes, Enterprise Technology Strategist, Skillsoft. Accessed: July 27, 2016.
-* “Introduction to Openstack Neutron”, David Mahler. Accessed: July 27, 2016.
-* http://docs.openstack.org/user-guide/dashboard_create_networks.html Accessed: July 27, 2016.
-* “Ports in Openstack Neutron”, Blogs by Sriram, July 5, 2015. Accessed: July 27, 2016. 
+## References
+* http://docs.openstack.org/developer/openstack-ansible/install-guide/index.html

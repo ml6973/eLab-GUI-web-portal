@@ -36,9 +36,17 @@ class LoginController {
 		} else {
 			$userData = UserDataDB::getUserDataBy('userId', $user->getUserId());
 			$userData[0]->resetErrors();
-			$_SESSION['authenticatedUserData'] = $userData[0];
-			$_SESSION['authenticatedUser'] = $user;
-    		header('Location: /'.$_SESSION['base'].'/courses');
+			if (is_null($userData[0]->getVMPassword())) {
+				$_SESSION['user'] = $users[0];
+				$_SESSION['userData'] = $userData[0];
+				$_SESSION['authenticatedUserData'] = null;
+				$_SESSION['authenticatedUser'] = null;
+				header('Location: /'.$_SESSION['base'].'/finishRegistration');
+			}else{
+				$_SESSION['authenticatedUserData'] = $userData[0];
+				$_SESSION['authenticatedUser'] = $user;
+	    		header('Location: /'.$_SESSION['base'].'/courses');
+			}
 	    }
 	}
 }
