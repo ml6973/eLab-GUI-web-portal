@@ -1,5 +1,6 @@
 <?php
-require_once dirname(__FILE__).'\..\..\WebContent\models\Database.class.php';
+$db_class_file = implode(DIRECTORY_SEPARATOR, array(dirname(__FILE__), '..', '..', 'WebContent', 'models', 'Database.class.php'));
+require_once($db_class_file);
 require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'DBMaker.php';
 
 class DatabaseTest extends PHPUnit_Framework_TestCase {
