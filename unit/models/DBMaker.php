@@ -91,8 +91,14 @@ class DBMaker {
 		// Delete a database named $dbName
 		try {
 			$dbspec = 'mysql:host=localhost;dbname=' . $dbName . ";charset=utf8";
-			$username = 'root';
-			$password = '';
+                        $configPath = null;
+                        if ($configPath == null)
+                                $configPath = dirname(__FILE__).DIRECTORY_SEPARATOR."..".
+                                DIRECTORY_SEPARATOR. ".." . DIRECTORY_SEPARATOR.
+                                ".." . DIRECTORY_SEPARATOR . "myConfig.ini";
+                        $passArray = parse_ini_file($configPath);
+                        $username = $passArray["username"];
+                        $password = $passArray["password"];
 			$options = array (PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 			$db = new PDO ($dbspec, $username, $password, $options);
 			$st = $db->prepare ("DROP DATABASE if EXISTS $dbName");
