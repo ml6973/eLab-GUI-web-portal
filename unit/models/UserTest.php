@@ -1,6 +1,6 @@
 <?php
-require_once dirname(__FILE__).'\..\..\WebContent\models\Messages.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\models\User.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Messages.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'User.class.php';
 
 class UserTest extends PHPUnit_Framework_TestCase {
 	

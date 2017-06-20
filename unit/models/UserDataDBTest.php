@@ -1,11 +1,11 @@
 <?php
-require_once dirname(__FILE__).'\..\..\WebContent\models\Database.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\models\Messages.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\models\User.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\models\UsersDB.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\models\UserData.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\models\UserDataDB.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\tests\makeDB.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Database.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Messages.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'User.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'UsersDB.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'UserData.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'UserDataDB.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR.'makeDB.php';
 
 
 class UserDataDBTest extends PHPUnit_Framework_TestCase {
@@ -13,7 +13,8 @@ class UserDataDBTest extends PHPUnit_Framework_TestCase {
   public function testGetAllUserData() {
   	  $myDb = DBMaker::create ('ptest');
   	  Database::clearDB();
-  	  $db = Database::getDB('ptest', 'C:\xampp\myConfig.ini');
+  	  $db = Database::getDB($dbName = 'ptest',
+			$configPath = dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."myConfig.ini");
   	  $userData = UserDataDB::getUserDataBy();
   	  $this->assertEquals(4, count($userData), 
   	  		'It should fetch all of the user data in the test database');
@@ -26,7 +27,8 @@ class UserDataDBTest extends PHPUnit_Framework_TestCase {
   public function testInsertValidUserData() {
   	$myDb = DBMaker::create ('ptest');
   	Database::clearDB();
-  	$db = Database::getDB('ptest', 'C:\xampp\myConfig.ini');
+  	$db = Database::getDB($dbName = 'ptest',
+			$configPath = dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."myConfig.ini");
   	$beforeCount = count(UserDataDB::getUserDataBy());
   	$validTest = array("userName" => "blahuser", "password" => "123");
 	$user = new User($validTest);
@@ -44,7 +46,8 @@ class UserDataDBTest extends PHPUnit_Framework_TestCase {
   	ob_start();
   	$myDb = DBMaker::create ('ptest');
   	Database::clearDB();
-  	$db = Database::getDB('ptest', 'C:\xampp\myConfig.ini');
+  	$db = Database::getDB($dbName = 'ptest',
+			$configPath = dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."myConfig.ini");
   	$beforeCount = count(UsersDB::getUsersBy());
   	$validTest = array("userName" => "blahuser", "password" => "123");
   	$user = new User($validTest);

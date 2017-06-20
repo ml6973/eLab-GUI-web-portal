@@ -1,5 +1,5 @@
 <?php
-require_once dirname(__FILE__).'\..\..\WebContent\models\Database.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Database.class.php';
 require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'DBMaker.php';
 
 class DatabaseTest extends PHPUnit_Framework_TestCase {
@@ -8,7 +8,7 @@ class DatabaseTest extends PHPUnit_Framework_TestCase {
 	  DBMaker::create( 'ptest1' );
 	  Database::clearDB();
 	  $db = Database::getDB($dbName = 'ptest1', 
-	  		$configPath ="C:".DIRECTORY_SEPARATOR."xampp".DIRECTORY_SEPARATOR."myConfig.ini");
+	  		$configPath = dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."myConfig.ini");
 	  $this->assertTrue($db != null, 
 	  		'It should create a non-null connection to a database that does not exist');
 	}
@@ -19,12 +19,12 @@ class DatabaseTest extends PHPUnit_Framework_TestCase {
 		Database::clearDB();
 
 		$db = Database::getDB($dbName = 'ptest1',
-				$configPath ="C:".DIRECTORY_SEPARATOR."xampp".DIRECTORY_SEPARATOR."myConfig.ini");
+			$configPath = dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."myConfig.ini");
 		$output = ob_get_clean();
 		$this->assertNull($db,
 				'It should not create a connection to a database that does not exist');
 		$this->assertFalse(empty($output),
-				"It should produce error messages when database does not exist");		
+				"It should produce error messages when database does not exist");
 	}
 }
 ?>

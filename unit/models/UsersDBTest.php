@@ -1,9 +1,9 @@
 <?php
-require_once dirname(__FILE__).'\..\..\WebContent\models\Database.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\models\Messages.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\models\User.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\models\UsersDB.class.php';
-require_once dirname(__FILE__).'\..\..\WebContent\tests\makeDB.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Database.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'Messages.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'User.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'models'.DIRECTORY_SEPARATOR.'UsersDB.class.php';
+require_once dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'WebContent'.DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR.'makeDB.php';
 
 
 class UsersDBTest extends PHPUnit_Framework_TestCase {
@@ -11,7 +11,8 @@ class UsersDBTest extends PHPUnit_Framework_TestCase {
   public function testGetAllUsers() {
   	  $myDb = DBMaker::create ('ptest');
   	  Database::clearDB();
-  	  $db = Database::getDB('ptest', 'C:\xampp\myConfig.ini');
+  	  $db = Database::getDB($dbName = 'ptest', 
+	  		$configPath = dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."myConfig.ini");
   	  $users = UsersDB::getUsersBy();
   	  $this->assertEquals(4, count($users), 
   	  		'It should fetch all of the users in the test database');
@@ -24,7 +25,8 @@ class UsersDBTest extends PHPUnit_Framework_TestCase {
   public function testInsertValidUser() {
   	$myDb = DBMaker::create ('ptest');
   	Database::clearDB();
-  	$db = Database::getDB('ptest', 'C:\xampp\myConfig.ini');
+  	$db = Database::getDB($dbName = 'ptest', 
+	  		$configPath = dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."myConfig.ini");
   	$beforeCount = count(UsersDB::getUsersBy());
   	$validTest = array("userName" => "ryan", "password" => "123");
   	$s1 = new User($validTest);
@@ -39,7 +41,8 @@ class UsersDBTest extends PHPUnit_Framework_TestCase {
   	ob_start();
   	$myDb = DBMaker::create ('ptest');
   	Database::clearDB();
-  	$db = Database::getDB('ptest', 'C:\xampp\myConfig.ini');
+  	$db = Database::getDB($dbName = 'ptest', 
+	  		$configPath = dirname(__FILE__).DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."..".DIRECTORY_SEPARATOR."myConfig.ini");
   	$beforeCount = count(UsersDB::getUsersBy());
   	$duplicateTest = array("userName" => "May", "password" => "123");
   	$s1 = new User($duplicateTest);
