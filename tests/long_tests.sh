@@ -1,5 +1,5 @@
 cp /var/www/myConfig.ini ~
-cd ~/eLab-GUI-web-portal/unit/models
+cd unit/models
 
 phpunit DatabaseTest.php
 phpunit DBMaker.php
