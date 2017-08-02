@@ -3,19 +3,19 @@ cd unit/models
 
 echo "------DatabaseTest.php-----"
 phpunit DatabaseTest.php
-echo "------DBMaker.php-----"
+echo "\n------DBMaker.php-----"
 phpunit DBMaker.php
-echo "------DBMakerTest.php-----"
+echo "\n------DBMakerTest.php-----"
 phpunit DBMakerTest.php
-echo "------MessagesTest.php-----"
+echo "\n------MessagesTest.php-----"
 phpunit MessagesTest.php
-echo "------UserDataDBTest.php-----"
+echo "\n------UserDataDBTest.php-----"
 phpunit UserDataDBTest.php
-echo "------UserDataTest.php-----"
+echo "\n------UserDataTest.php-----"
 phpunit UserDataTest.php
-echo "------UsersDBTest.php-----"
+echo "\n------UsersDBTest.php-----"
 phpunit UsersDBTest.php
-echo "------UserTest.php-----"
+echo "\n------UserTest.php-----"
 phpunit UserTest.php
 
 
