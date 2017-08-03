@@ -1,4 +1,4 @@
-cp /var/www/myConfig.ini ../..
+cp /var/www/myConfig.ini ..
 cd unit/models
 declare -A return_codes
 
@@ -46,5 +46,5 @@ for testname in ${!return_codes[@]};
   fi
 done
 
-rm ../../../../myConfig.ini
+rm ../../../myConfig.ini
 exit $failures
