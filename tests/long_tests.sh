@@ -1,4 +1,4 @@
-cp /var/www/myConfig.ini ..
+cp /var/www/myConfig.ini ../..
 cd unit/models
 
 echo "------DatabaseTest.php-----"
