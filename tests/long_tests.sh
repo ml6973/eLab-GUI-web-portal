@@ -19,4 +19,4 @@ echo -e "\n------UserTest.php-----"
 phpunit UserTest.php
 
 
-rm ../../../myConfig.ini
+rm ../../../../myConfig.ini
